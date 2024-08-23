@@ -26,7 +26,7 @@ export const deleteTimelineByName = (timelineName: string) => {
 
 export const getEvents = () => {
     return beApi.get("/api/events").then((response) => {
-        return response.data;
+        return response.data.events;
     });
 };
 
