@@ -4,7 +4,7 @@ import { getEvents } from "../../../api";
 
 import TimelineConstructor from "./TimelineConstructor";
 
-const Timeline = () => {
+const Timelines = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [eventsData, setEventsData] = useState([]);
 
@@ -21,10 +21,10 @@ const Timeline = () => {
     if (isLoading) return <p>Loading Data</p>;
     return (
         <div className="Content">
-            Timeline
+            Timelines
             <TimelineConstructor eventsData={eventsData} />
         </div>
     );
 };
 
-export default Timeline;
+export default Timelines;

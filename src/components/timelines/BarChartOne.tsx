@@ -1,11 +1,12 @@
 import { Bar } from "react-chartjs-2";
 import "chartjs-adapter-date-fns";
 
-const BarChartOne = ({ chartData }: { chartData: any }) => {
+const BarChartOne = ({ barChartData }: { barChartData: any }) => {
     return (
         <div className="chart-container">
+            Bar Chart
             <Bar
-                data={chartData}
+                data={barChartData}
                 options={{
                     plugins: {
                         title: {

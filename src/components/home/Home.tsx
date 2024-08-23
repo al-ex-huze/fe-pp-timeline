@@ -1,5 +1,5 @@
 import HomeSidebar from "./Home-Sidebar";
-import Timeline from "../timeline/Timeline";
+import Timeline from "../timelines/Timelines";
 
 const Home = () => {
     return (
