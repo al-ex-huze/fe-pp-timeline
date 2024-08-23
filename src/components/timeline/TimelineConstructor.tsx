@@ -5,15 +5,17 @@ import BarChartOne from "./BarChartOne";
 
 Chart.register(CategoryScale);
 
-const TimelineConstructor = ({ eventsData } : { eventsData:any }) => {
-
+const TimelineConstructor = ({ eventsData }: { eventsData: any }) => {
     const [barChartOneData] = useState({
         // labels: Data.map((data) => data.year),
         labels: eventsData.map((data: any) => data.title),
         datasets: [
             {
                 label: "Event ",
-                data: eventsData.map((data: any) => data.event_id),
+                data: eventsData.map((data: any) => {
+                    // return [new Date(data.start_date), new Date(data.end_date)];
+                    return [data.start_date, data.end_date];
+                }),
                 backgroundColor: [
                     "rgba(255, 99, 132, 0.2)",
                     "rgba(255, 159, 64, 0.2)",
