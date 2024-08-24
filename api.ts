@@ -24,10 +24,20 @@ export const deleteTimelineByName = (timelineName: string) => {
     });
 };
 
-export const getEvents = () => {
-    return beApi.get("/api/events").then((response) => {
-        return response.data.events;
-    });
+export const getEvents = (timelineFilter: string, sortByQuery: string, sortByIsAsc: boolean) => {
+    let orderDirection = "";
+    sortByIsAsc ? (orderDirection = "asc") : (orderDirection = "desc");
+    return beApi
+        .get("/api/events", {
+            params: {
+                topic: timelineFilter,
+                sort_by: sortByQuery,
+                order: orderDirection
+            },
+        })
+        .then((response) => {
+            return response.data.events;
+        });
 };
 
 export const postEvent = (newEvent: object) => {
@@ -52,10 +62,12 @@ export const deleteEventByID = (eventID: number) => {
 };
 
 export const patchEventDates = (dateUpdate: object, eventID: number) => {
-    return beApi.delete(`/api/events/${eventID}`, dateUpdate).then((response) => {
-        console.log(response);
-        return response.data;
-    });
+    return beApi
+        .delete(`/api/events/${eventID}`, dateUpdate)
+        .then((response) => {
+            console.log(response);
+            return response.data;
+        });
 };
 
 // import {
@@ -74,65 +86,65 @@ export const patchEventDates = (dateUpdate: object, eventID: number) => {
 // const [events, setEvents] = useState([]);
 // const [eventIDToDelete, setEventIDToDelete] = useState(0);
 
-    // useEffect(() => {
-    //     setIsLoading(true);
-    //     console.log("USEEFFECT");
-    //     getEvents()
-    //         .then(({ events }) => {
-    //             console.log(events);
-    //             setEvents(events);
-    //             setIsLoading(false);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-    // }, []);
+// useEffect(() => {
+//     setIsLoading(true);
+//     console.log("USEEFFECT");
+//     getEvents()
+//         .then(({ events }) => {
+//             console.log(events);
+//             setEvents(events);
+//             setIsLoading(false);
+//         })
+//         .catch((error) => {
+//             console.log(error);
+//         });
+// }, []);
 
-    // const newTimeline = {
-    //     timeline_name: "NEW TL TEST 2",
-    //     descriptiion: "Test description 1",
-    // };
+// const newTimeline = {
+//     timeline_name: "NEW TL TEST 2",
+//     descriptiion: "Test description 1",
+// };
 
-    // const newEvent = {
-    //     author: "al-ex-huze",
-    //     title: "Test Title - New event",
-    //     body: "Test body - one, two, three",
-    //     timeline: "Northcoders Bootcamp",
-    //     start_date: "2024-07-15",
-    //     end_date: "2024-07-19",
-    // };
+// const newEvent = {
+//     author: "al-ex-huze",
+//     title: "Test Title - New event",
+//     body: "Test body - one, two, three",
+//     timeline: "Northcoders Bootcamp",
+//     start_date: "2024-07-15",
+//     end_date: "2024-07-19",
+// };
 
-    // getTimelines().then((timelines) => {
-    //     console.log(timelines);
-    // });
+// getTimelines().then((timelines) => {
+//     console.log(timelines);
+// });
 
-    // getEventByID(2).then((event) => {
-    //     console.log(event);
-    // });
+// getEventByID(2).then((event) => {
+//     console.log(event);
+// });
 
-    // postTimeline(newTimeline).then((timeline) => {
-    // });
+// postTimeline(newTimeline).then((timeline) => {
+// });
 
-    // postEvent(newEvent).then((event) => {
-    //     console.log(event);
-    // });
+// postEvent(newEvent).then((event) => {
+//     console.log(event);
+// });
 
-    // deleteTimelineByName(oldTimelineName).then(() => {
-    // });
-    // const eventIDToDelete = 30;
+// deleteTimelineByName(oldTimelineName).then(() => {
+// });
+// const eventIDToDelete = 30;
 
-    // const handleDeleteButton = () => {
-    //     deleteEventByID().then(() => {
-    //         console.log("deleted!");
-    //     });
-    // };
+// const handleDeleteButton = () => {
+//     deleteEventByID().then(() => {
+//         console.log("deleted!");
+//     });
+// };
 
-    // const datesToPatch = {
-    //     new_start_date: "2024-08-01",
-    //     new_end_date: "2024-08-01",
-    // };
-    // const eventIDToPatch = 9;
+// const datesToPatch = {
+//     new_start_date: "2024-08-01",
+//     new_end_date: "2024-08-01",
+// };
+// const eventIDToPatch = 9;
 
-    // patchEventDates(datesToPatch, eventIDToPatch).then((event) => {
-    //     console.log(event);
-    // });
+// patchEventDates(datesToPatch, eventIDToPatch).then((event) => {
+//     console.log(event);
+// });
