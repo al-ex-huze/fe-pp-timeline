@@ -3,12 +3,12 @@ import { CategoryScale } from "chart.js";
 import { useState } from "react";
 import BarChartOne from "./BarChartOne";
 import LineChartOne from "./LineChartOne";
+import GanttChartOneG from "./GanttChartOneG";
 
 Chart.register(CategoryScale);
 
 const TimelineConstructor = ({
     currentTimeline,
-    setCurrentTimeline,
     eventsData,
 }: {
     currentTimeline: any;
@@ -52,6 +52,41 @@ const TimelineConstructor = ({
         ],
     });
 
+    const ganttColumns = [
+        { type: "string", label: "Event ID" },
+        { type: "string", label: "Event Name" },
+        { type: "string", label: "Resource" },
+        { type: "date", label: "Start Date" },
+        { type: "date", label: "End Date" },
+        { type: "number", label: "Duration" },
+        { type: "number", label: "Percent Complete" },
+        { type: "string", label: "Dependencies" },
+    ];
+    const ganttRows = [
+        [
+            "Intro Week",
+            "Northcoders Bootcamp",
+            "test",
+            new Date(2014, 9, 28),
+            new Date(2015, 5, 20),
+            null,
+            86,
+            null,
+        ],
+        [
+            "Fundamentals",
+            "Northcoders Bootcamp",
+            "test",
+            new Date(2014, 9, 8),
+            new Date(2015, 5, 21),
+            null,
+            89,
+            null,
+        ],
+    ];
+
+    const [ganttChartData] = useState([ganttColumns, ...ganttRows]);
+
     return (
         <div className="constructor">
             Current Timline: {currentTimeline}
@@ -63,6 +98,10 @@ const TimelineConstructor = ({
                     />
                     <LineChartOne
                         lineChartData={lineChartOneData}
+                        eventsData={eventsData}
+                    />
+                    <GanttChartOneG
+                        ganttChartData={ganttChartData}
                         eventsData={eventsData}
                     />
                 </>

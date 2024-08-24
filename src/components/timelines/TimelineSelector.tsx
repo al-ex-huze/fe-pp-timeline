@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { getTimelines } from "../../../api";
 
 const TimelineSelector = ({
-    currentTimeline,
     setCurrentTimeline,
 }: {
     currentTimeline: any;
