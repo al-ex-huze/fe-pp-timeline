@@ -3,10 +3,18 @@ import { CategoryScale } from "chart.js";
 import { useState } from "react";
 import BarChartOne from "./BarChartOne";
 import LineChartOne from "./LineChartOne";
+import GanttChartOneG from "./GanttChartOneG";
 
 Chart.register(CategoryScale);
 
-const TimelineConstructor = ({ eventsData }: { eventsData: any }) => {
+const TimelineConstructor = ({
+    currentTimeline,
+    eventsData,
+}: {
+    currentTimeline: any;
+    setCurrentTimeline: any;
+    eventsData: any;
+}) => {
     const [barChartOneData] = useState({
         labels: eventsData.map((data: any) => data.title),
         datasets: [
@@ -44,16 +52,60 @@ const TimelineConstructor = ({ eventsData }: { eventsData: any }) => {
         ],
     });
 
+    const ganttColumns = [
+        { type: "string", label: "Event ID" },
+        { type: "string", label: "Event Name" },
+        { type: "string", label: "Resource" },
+        { type: "date", label: "Start Date" },
+        { type: "date", label: "End Date" },
+        { type: "number", label: "Duration" },
+        { type: "number", label: "Percent Complete" },
+        { type: "string", label: "Dependencies" },
+    ];
+    const ganttRows = [
+        [
+            "Intro Week",
+            "Northcoders Bootcamp",
+            "test",
+            new Date(2014, 9, 28),
+            new Date(2015, 5, 20),
+            null,
+            86,
+            null,
+        ],
+        [
+            "Fundamentals",
+            "Northcoders Bootcamp",
+            "test",
+            new Date(2014, 9, 8),
+            new Date(2015, 5, 21),
+            null,
+            89,
+            null,
+        ],
+    ];
+
+    const [ganttChartData] = useState([ganttColumns, ...ganttRows]);
+
     return (
         <div className="constructor">
-            {/* <ul>
-                {eventsData.map((event: any) => {
-                    return <li key={event.event_id}>{event.event_id}</li>;
-                })}
-            </ul> */}
-            <BarChartOne barChartData={barChartOneData} />
-            <LineChartOne lineChartData={lineChartOneData} />
-
+            Current Timline: {currentTimeline}
+            {eventsData[0] !== undefined ? (
+                <>
+                    <BarChartOne
+                        barChartData={barChartOneData}
+                        eventsData={eventsData}
+                    />
+                    <LineChartOne
+                        lineChartData={lineChartOneData}
+                        eventsData={eventsData}
+                    />
+                    <GanttChartOneG
+                        ganttChartData={ganttChartData}
+                        eventsData={eventsData}
+                    />
+                </>
+            ) : null}
         </div>
     );
 };

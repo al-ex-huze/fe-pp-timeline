@@ -1,14 +1,18 @@
+import { useState } from "react";
 import HomeSidebar from "./Home-Sidebar";
-import Timeline from "../timelines/Timelines";
+import Timelines from "../timelines/Timelines";
 
 const Home = () => {
+    const [currentTimeline, setCurrentTimeline] = useState("");
+
     return (
         <>
             <div className="Sidebar">
-                <HomeSidebar />
+                <HomeSidebar currentTimeline={currentTimeline} setCurrentTimeline={setCurrentTimeline} />
             </div>
-            <div className="Content">Home Content
-                <Timeline />
+            <div className="Content">
+                Home Content
+                <Timelines currentTimeline={currentTimeline} setCurrentTimeline={setCurrentTimeline} />
             </div>
         </>
     );
