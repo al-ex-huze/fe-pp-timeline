@@ -6,7 +6,15 @@ import LineChartOne from "./LineChartOne";
 
 Chart.register(CategoryScale);
 
-const TimelineConstructor = ({ eventsData }: { eventsData: any }) => {
+const TimelineConstructor = ({
+    currentTimeline,
+    setCurrentTimeline,
+    eventsData,
+}: {
+    currentTimeline: any;
+    setCurrentTimeline: any;
+    eventsData: any;
+}) => {
     const [barChartOneData] = useState({
         labels: eventsData.map((data: any) => data.title),
         datasets: [
@@ -46,14 +54,19 @@ const TimelineConstructor = ({ eventsData }: { eventsData: any }) => {
 
     return (
         <div className="constructor">
-            {/* <ul>
-                {eventsData.map((event: any) => {
-                    return <li key={event.event_id}>{event.event_id}</li>;
-                })}
-            </ul> */}
-            <BarChartOne barChartData={barChartOneData} />
-            <LineChartOne lineChartData={lineChartOneData} />
-
+            Current Timline: {currentTimeline}
+            {eventsData[0] !== undefined ? (
+                <>
+                    <BarChartOne
+                        barChartData={barChartOneData}
+                        eventsData={eventsData}
+                    />
+                    <LineChartOne
+                        lineChartData={lineChartOneData}
+                        eventsData={eventsData}
+                    />
+                </>
+            ) : null}
         </div>
     );
 };

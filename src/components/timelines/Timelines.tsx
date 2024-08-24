@@ -4,10 +4,16 @@ import { getEvents } from "../../../api";
 
 import TimelineConstructor from "./TimelineConstructor";
 
-const Timelines = () => {
+const Timelines = ({
+    currentTimeline,
+    setCurrentTimeline,
+}: {
+    currentTimeline: any;
+    setCurrentTimeline: any;
+}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [eventsData, setEventsData] = useState([]);
-    const [timelineFilter]  = useState("Northcoders Bootcamp");
+    const [timelineFilter] = useState("Northcoders Bootcamp");
     const [sortByQuery] = useState("");
     const [sortByIsAsc] = useState(true);
 
@@ -16,7 +22,7 @@ const Timelines = () => {
         setIsLoading(true);
         getEvents(timelineFilter, sortByQuery, sortByIsAsc).then((events) => {
             setEventsData(events);
-            console.log(events)
+            console.log(events);
             setIsLoading(false);
         });
     }, [timelineFilter, sortByQuery, sortByIsAsc]);
@@ -25,7 +31,11 @@ const Timelines = () => {
     return (
         <div className="Content">
             Timelines
-            <TimelineConstructor eventsData={eventsData} />
+            <TimelineConstructor
+                eventsData={eventsData}
+                currentTimeline={currentTimeline}
+                setCurrentTimeline={setCurrentTimeline}
+            />
         </div>
     );
 };

@@ -1,9 +1,19 @@
+import { useState } from "react";
 import { Bar } from "react-chartjs-2";
 import "chartjs-adapter-date-fns";
 
-const BarChartOne = ({ barChartData }: { barChartData: any }) => {
+const BarChartOne = ({
+    barChartData,
+    eventsData,
+}: {
+    barChartData: any;
+    eventsData: any;
+}) => {
+    const [minString] = useState(String(eventsData[0].start_date));
+    const [maxString] = useState(String(eventsData[eventsData.length - 1].end_date));
+
     return (
-        <div className="chart-container">
+        <div className="Content__chart-container">
             Bar Chart
             <Bar
                 data={barChartData}
@@ -21,14 +31,20 @@ const BarChartOne = ({ barChartData }: { barChartData: any }) => {
                             type: "time",
                             time: {
                                 parser: "yyyy-MM-dd",
-                                tooltipFormat: "yyyy-MM-dd",
                                 unit: "week",
                                 displayFormats: {
+                                    day: "yyyy-MM-dd",
                                     week: "yyyy-MM-dd",
+                                    month: "yyyy-MM-dd",
+                                    year: "yyyy-MM-dd",
                                 },
+                                tooltipFormat: "DD-MM-YYYY",
                             },
-                            min: "2024-03-01",
-                            max: "2024-08-31",
+                            min: minString,
+                            max: maxString,
+                        },
+                        y: {
+                            display: false,
                         },
                     },
                 }}
