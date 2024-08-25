@@ -4,6 +4,7 @@ import { useState } from "react";
 import BarChartOne from "./BarChartOne";
 import LineChartOne from "./LineChartOne";
 import GanttChartOneG from "./GanttChartOneG";
+import TimelineChartOneG from "./TimelineChartOneG";
 
 Chart.register(CategoryScale);
 
@@ -54,38 +55,51 @@ const TimelineConstructor = ({
 
     const ganttColumns = [
         { type: "string", label: "Event ID" },
-        { type: "string", label: "Event Name" },
-        { type: "string", label: "Resource" },
+        { type: "string", label: "Event" },
         { type: "date", label: "Start Date" },
         { type: "date", label: "End Date" },
         { type: "number", label: "Duration" },
         { type: "number", label: "Percent Complete" },
         { type: "string", label: "Dependencies" },
+        { type: "string", label: "Timeline" },
+        { type: "string", label: "Resource" },
+        { type: "date", label: "Created" },
     ];
-    const ganttRows = [
-        [
-            "Intro Week",
-            "Northcoders Bootcamp",
-            "test",
-            new Date(2014, 9, 28),
-            new Date(2015, 5, 20),
+
+    const ganttRows = eventsData.map((event: any) => {
+        return [
+            event.event_id,
+            event.title,
+            new Date(event.start_date),
+            new Date(event.end_date),
             null,
             86,
             null,
-        ],
-        [
-            "Fundamentals",
-            "Northcoders Bootcamp",
-            "test",
-            new Date(2014, 9, 8),
-            new Date(2015, 5, 21),
-            null,
-            89,
-            null,
-        ],
+            event.timeline_name,
+            event.body,
+            new Date(event.created_at),
+        ];
+    });
+
+    const [ganttChartOneData] = useState([ganttColumns, ...ganttRows]);
+
+    const timelineStructure = [
+        { type: "string", id: "Position" },
+        { type: "string", id: "Name" },
+        { type: "date", id: "Start" },
+        { type: "date", id: "End" },
     ];
 
-    const [ganttChartData] = useState([ganttColumns, ...ganttRows]);
+    const timelineOneData = eventsData.map((event: any) => {
+        return [
+            event.event_id,
+            event.title,
+            new Date(event.start_date),
+            new Date(event.end_date),
+        ];
+    });
+
+    const timelineChartOneData = [timelineStructure, ...timelineOneData];
 
     return (
         <div className="constructor">
@@ -101,7 +115,11 @@ const TimelineConstructor = ({
                         eventsData={eventsData}
                     />
                     <GanttChartOneG
-                        ganttChartData={ganttChartData}
+                        ganttChartData={ganttChartOneData}
+                        eventsData={eventsData}
+                    />
+                    <TimelineChartOneG
+                        timelineChartData={timelineChartOneData}
                         eventsData={eventsData}
                     />
                 </>
