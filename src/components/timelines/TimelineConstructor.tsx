@@ -7,6 +7,7 @@ import LineChartOne from "./LineChartOne";
 import GanttChartOneG from "./GanttChartOneG";
 import TimelineChartOneG from "./TimelineChartOneG";
 import PolarAreaChartOne from "./PolarAreaChartOne";
+import DoughnutChartOne from "./DoughnutChartOne";
 
 Chart.register(CategoryScale);
 
@@ -120,6 +121,23 @@ const TimelineConstructor = ({
         ],
     };
 
+    const doughnutChartOneData = {
+        labels: eventsData.map((data: any) => data.title),
+        datasets: [
+            {
+                label: "My First Dataset",
+                data: eventsData.map((data: any) => data.event_id),
+                backgroundColor: [
+                    "rgb(255, 99, 132)",
+                    "rgb(75, 192, 192)",
+                    "rgb(255, 205, 86)",
+                    "rgb(201, 203, 207)",
+                    "rgb(54, 162, 235)",
+                ],
+            },
+        ],
+    };
+
     return (
         <div className="constructor">
             Current Timline: {currentTimeline}
@@ -142,7 +160,12 @@ const TimelineConstructor = ({
                         eventsData={eventsData}
                     />
                     <PolarAreaChartOne
-                        polarAreaChartData={polarAreaChartOneData}            eventsData={eventsData}
+                        polarAreaChartData={polarAreaChartOneData}
+                        eventsData={eventsData}
+                    />
+                    <DoughnutChartOne
+                        doughnutChartData={doughnutChartOneData}
+                        eventsData={eventsData}
                     />
                 </>
             ) : null}
