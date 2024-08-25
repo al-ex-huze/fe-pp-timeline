@@ -27,6 +27,7 @@ const GanttChartOneG = ({
     return (
         <div className="Content__chart-container">
             Gantt Chart One
+            {eventsData[0].event_id}
             <Chart
                 chartType="Gantt"
                 data={ganttChartData}
