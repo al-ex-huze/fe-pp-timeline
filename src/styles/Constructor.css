@@ -1,0 +1,70 @@
+.Constructor {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "Timeline"
+        "Chart-Line"
+        "Chart-1"
+        "Chart-2"
+        "Chart-3"
+        "Chart-4"
+        "Chart-5"
+        "Chart-Gantt";
+}
+
+@media only screen and (min-width: 768px) {
+    .Constructor {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        grid-template-rows: min-content auto auto auto;
+        grid-template-areas:
+            "Chart-1 Chart-2 Chart-3"
+            "Timeline Timeline Timeline"
+            "Chart-Line Chart-Line Chart-Line"
+            "Chart-4 Chart-5 Chart-Gantt";
+    }
+}
+
+.Chart-1 {
+    width: 100%;
+    grid-area: Chart-1;
+}
+
+.Chart-3 {
+    width: 100%;
+    grid-area: Chart-2;
+}
+
+.Chart-2 {
+    width: 100%;
+    grid-area: Chart-3;
+}
+
+.Chart-4 {
+    width: 100%;
+    grid-area: Chart-4;
+}
+
+.Chart-5 {
+    width: 100%;
+    grid-area: Chart-5;
+}
+
+.Chart-Gantt {
+    width: 100%;
+    grid-area: Chart-Gantt;
+}
+
+.Chart-Line {
+    width: 100%;
+    height: 300px;
+    grid-area: Chart-Line;
+}
+
+.Timeline {
+    width: 100%;
+    grid-area: Timeline;
+}

@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 
 import { getEvents } from "../../../api";
 
-import TimelineConstructor from "./TimelineConstructor";
+import ChartConstructor from "./ChartConstructor";
+
+import "../../styles/Content.css"
 
 const Timelines = ({
     currentTimeline,
@@ -29,9 +31,9 @@ const Timelines = ({
 
     if (isLoading) return <p>Loading Data</p>;
     return (
-        <div className="Content">
+        <div>
             Timelines
-            <TimelineConstructor
+            <ChartConstructor
                 eventsData={eventsData}
                 currentTimeline={currentTimeline}
                 setCurrentTimeline={setCurrentTimeline}

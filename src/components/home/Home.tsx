@@ -2,6 +2,8 @@ import { useState } from "react";
 import HomeSidebar from "./Home-Sidebar";
 import Timelines from "../timelines/Timelines";
 
+import "../../styles/Content.css"
+
 const Home = () => {
     const [currentTimeline, setCurrentTimeline] = useState("");
 
