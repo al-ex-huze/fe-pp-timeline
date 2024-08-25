@@ -83,23 +83,23 @@ const TimelineConstructor = ({
 
     const [ganttChartOneData] = useState([ganttColumns, ...ganttRows]);
 
-    const timelineStructure = [
-        { type: "string", id: "Position" },
+    const timelineOneColumns = [
+        { type: "string", id: "Name" },
         { type: "string", id: "Name" },
         { type: "date", id: "Start" },
         { type: "date", id: "End" },
     ];
 
-    const timelineOneData = eventsData.map((event: any) => {
+    const timelineOneRows = eventsData.map((event: any) => {
         return [
-            event.event_id,
+            event.title,
             event.title,
             new Date(event.start_date),
             new Date(event.end_date),
         ];
     });
 
-    const timelineChartOneData = [timelineStructure, ...timelineOneData];
+    const timelineChartOneData = [timelineOneColumns, ...timelineOneRows];
 
     return (
         <div className="constructor">
