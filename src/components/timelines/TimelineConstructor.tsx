@@ -8,6 +8,7 @@ import GanttChartOneG from "./GanttChartOneG";
 import TimelineChartOneG from "./TimelineChartOneG";
 import PolarAreaChartOne from "./PolarAreaChartOne";
 import DoughnutChartOne from "./DoughnutChartOne";
+import RadarChartOne from "./RadarChartOne";
 
 Chart.register(CategoryScale);
 
@@ -167,6 +168,7 @@ const TimelineConstructor = ({
                         doughnutChartData={doughnutChartOneData}
                         eventsData={eventsData}
                     />
+                    <RadarChartOne eventsData={eventsData} />
                 </>
             ) : null}
         </div>
