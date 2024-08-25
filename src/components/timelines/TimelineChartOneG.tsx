@@ -1,6 +1,4 @@
-// import { callback } from "chart.js/helpers";
 import { Chart } from "react-google-charts";
-// import { GoogleChartOptions } from "react-google-charts";
 
 const TimelineChartOneG = ({
     timelineChartData,
@@ -14,15 +12,15 @@ const TimelineChartOneG = ({
         timeline: {
             showBarLabels: true,
             colorByRowLabel: true,
-            showRowLabels: true,
+            showRowLabels: false,
             groupByRowLabel: true,
             rowLabelStyle: {
                 fontName: "Helvetica",
                 fontSize: 24,
                 color: "#603913",
             },
+            barLabelStyle: { fontName: "Helvetica", fontSize: 14 },
         },
-        barLabelStyle: { fontName: "Garamond", fontSize: 14 },
         backgroundColor: "#dddddd",
         avoidOverlappingGridLines: false,
     };
@@ -36,7 +34,7 @@ const TimelineChartOneG = ({
                     options={options}
                     data={timelineChartData}
                     width="100%"
-                    height="1000px"
+                    height="100%"
                 />
             ) : null}
         </div>

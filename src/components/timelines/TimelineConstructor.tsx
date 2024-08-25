@@ -1,10 +1,12 @@
-import Chart from "chart.js/auto";
-import { CategoryScale } from "chart.js";
 import { useState } from "react";
+import { CategoryScale } from "chart.js";
+import Chart from "chart.js/auto";
+
 import BarChartOne from "./BarChartOne";
 import LineChartOne from "./LineChartOne";
 import GanttChartOneG from "./GanttChartOneG";
 import TimelineChartOneG from "./TimelineChartOneG";
+import PolarAreaChartOne from "./PolarAreaChartOne";
 
 Chart.register(CategoryScale);
 
@@ -101,6 +103,23 @@ const TimelineConstructor = ({
 
     const timelineChartOneData = [timelineOneColumns, ...timelineOneRows];
 
+    const polarAreaChartOneData = {
+        labels: eventsData.map((data: any) => data.title),
+        datasets: [
+            {
+                label: "My First Dataset",
+                data: eventsData.map((data: any) => data.event_id),
+                backgroundColor: [
+                    "rgb(255, 99, 132)",
+                    "rgb(75, 192, 192)",
+                    "rgb(255, 205, 86)",
+                    "rgb(201, 203, 207)",
+                    "rgb(54, 162, 235)",
+                ],
+            },
+        ],
+    };
+
     return (
         <div className="constructor">
             Current Timline: {currentTimeline}
@@ -121,6 +140,9 @@ const TimelineConstructor = ({
                     <TimelineChartOneG
                         timelineChartData={timelineChartOneData}
                         eventsData={eventsData}
+                    />
+                    <PolarAreaChartOne
+                        polarAreaChartData={polarAreaChartOneData}            eventsData={eventsData}
                     />
                 </>
             ) : null}
