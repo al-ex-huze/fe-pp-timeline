@@ -1,4 +1,5 @@
 import { Chart } from "react-google-charts";
+import { GoogleChartOptions } from "react-google-charts";
 
 const GanttChartOneG = ({
     ganttChartData,
@@ -7,10 +8,10 @@ const GanttChartOneG = ({
     ganttChartData: any;
     eventsData: any;
 }) => {
-    const options = {
+    const options: GoogleChartOptions = {
         backgroundColor: {
             fill: "#000D15",
-        },
+        } as any,
         height: 200,
         gantt: {
             trackHeight: 50,
