@@ -1,4 +1,5 @@
 import { Radar } from "react-chartjs-2";
+import "../../../styles/Chart.css";
 
 const RadarChartOne = ({ eventsData }: { eventsData: any }) => {
     const radarChartOneData = {
@@ -19,8 +20,8 @@ const RadarChartOne = ({ eventsData }: { eventsData: any }) => {
     };
 
     return (
-        <div className="Content__chart-container">
-            Radar One
+        <div className="Chart-4">
+            Radar Chart
             {radarChartOneData ? (
                 <Radar
                     data={radarChartOneData}

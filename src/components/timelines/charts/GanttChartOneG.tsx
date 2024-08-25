@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Chart } from "react-google-charts";
 import { GoogleChartOptions } from "react-google-charts";
+import "../../../styles/Timeline.css";
 
 const GanttChartOneG = ({ eventsData }: { eventsData: any }) => {
     const ganttColumns = [
@@ -50,8 +51,8 @@ const GanttChartOneG = ({ eventsData }: { eventsData: any }) => {
     };
 
     return (
-        <div className="Content__chart-container">
-            Gantt Chart One
+        <div className="Chart-Gantt">
+            Gantt Chart
             {ganttChartOneData ? (
                 <Chart
                     chartType="Gantt"

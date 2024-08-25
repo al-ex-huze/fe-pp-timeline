@@ -1,4 +1,5 @@
 import { Doughnut } from "react-chartjs-2";
+import "../../../styles/Chart.css";
 
 const DoughnutChartOne = ({ eventsData }: { eventsData: any }) => {
     const doughnutChartOneData = {
@@ -19,8 +20,8 @@ const DoughnutChartOne = ({ eventsData }: { eventsData: any }) => {
     };
 
     return (
-        <div className="Content__chart-container">
-            Doughnut One
+        <div className="Chart-1">
+            Doughnut Chart
             {doughnutChartOneData ? (
                 <Doughnut data={doughnutChartOneData} options={{}} />
             ) : null}

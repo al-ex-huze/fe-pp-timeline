@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Line } from "react-chartjs-2";
 import "chartjs-adapter-date-fns";
+import "../../../styles/Chart.css";
 
 const LineChartOne = ({ eventsData }: { eventsData: any }) => {
     const [lineChartOneData] = useState({
@@ -24,12 +25,14 @@ const LineChartOne = ({ eventsData }: { eventsData: any }) => {
     );
 
     return (
-        <div className="Content__chart-container">
+        <div className="Chart-Line">
             Line Chart
             {lineChartOneData ? (
                 <Line
                     data={lineChartOneData}
                     options={{
+                        maintainAspectRatio: false,
+                        responsive: true,
                         plugins: {
                             title: {
                                 display: true,
@@ -42,7 +45,6 @@ const LineChartOne = ({ eventsData }: { eventsData: any }) => {
                             },
                         },
                         indexAxis: "x",
-                        responsive: true,
                         scales: {
                             x: {
                                 type: "time",

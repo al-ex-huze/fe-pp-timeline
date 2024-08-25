@@ -4,6 +4,8 @@ import { getEvents } from "../../../api";
 
 import ChartConstructor from "./ChartConstructor";
 
+import "../../styles/Content.css"
+
 const Timelines = ({
     currentTimeline,
     setCurrentTimeline,
@@ -29,7 +31,7 @@ const Timelines = ({
 
     if (isLoading) return <p>Loading Data</p>;
     return (
-        <div className="Content">
+        <div>
             Timelines
             <ChartConstructor
                 eventsData={eventsData}

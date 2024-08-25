@@ -1,18 +1,19 @@
 import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
 
-import BarChartOne from "./BarChartOne";
-import LineChartOne from "./LineChartOne";
-import GanttChartOneG from "./GanttChartOneG";
-import TimelineChartOneG from "./TimelineChartOneG";
-import PolarAreaChartOne from "./PolarAreaChartOne";
-import DoughnutChartOne from "./DoughnutChartOne";
-import RadarChartOne from "./RadarChartOne";
+import BarChartOne from "./charts/BarChartOne";
+import LineChartOne from "./charts/LineChartOne";
+import GanttChartOneG from "./charts/GanttChartOneG";
+import TimelineChartOneG from "./charts/TimelineChartOneG";
+import PolarAreaChartOne from "./charts/PolarAreaChartOne";
+import DoughnutChartOne from "./charts/DoughnutChartOne";
+import RadarChartOne from "./charts/RadarChartOne";
+
+import "../../styles/Constructor.css";
 
 Chart.register(CategoryScale);
 
 const ChartConstructor = ({
-    currentTimeline,
     eventsData,
 }: {
     currentTimeline: any;
@@ -20,15 +21,15 @@ const ChartConstructor = ({
     eventsData: any;
 }) => {
     return (
-        <div className="constructor">
-            Current Timline: {currentTimeline}
+        <div className="Constructor">
             {eventsData[0] !== undefined ? (
                 <>
-                    <TimelineChartOneG eventsData={eventsData} />
-                    <BarChartOne eventsData={eventsData} />
-                    <LineChartOne eventsData={eventsData} />
-                    <PolarAreaChartOne eventsData={eventsData} />
                     <DoughnutChartOne eventsData={eventsData} />
+                    <BarChartOne eventsData={eventsData} />
+                    <PolarAreaChartOne eventsData={eventsData} />
+
+                    <TimelineChartOneG eventsData={eventsData} />
+                    <LineChartOne eventsData={eventsData} />
                     <RadarChartOne eventsData={eventsData} />
                     <GanttChartOneG eventsData={eventsData} />
                 </>

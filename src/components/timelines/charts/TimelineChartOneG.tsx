@@ -1,4 +1,5 @@
 import { Chart } from "react-google-charts";
+import "../../../styles/Timeline.css";
 
 const TimelineChartOneG = ({ eventsData }: { eventsData: any }) => {
     const timelineOneColumns = [
@@ -38,8 +39,8 @@ const TimelineChartOneG = ({ eventsData }: { eventsData: any }) => {
     };
 
     return (
-        <div className="Content___chart-container">
-            Timeline One {eventsData[0].event_id}
+        <div className="Timeline">
+            Timeline One
             {timelineChartOneData ? (
                 <Chart
                     chartType="Timeline"

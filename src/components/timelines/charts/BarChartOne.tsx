@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Bar } from "react-chartjs-2";
 import "chartjs-adapter-date-fns";
 
+import "../../../styles/Chart.css";
+
 const BarChartOne = ({ eventsData }: { eventsData: any }) => {
     const [barChartOneData] = useState({
         labels: eventsData.map((data: any) => data.title),
@@ -30,7 +32,7 @@ const BarChartOne = ({ eventsData }: { eventsData: any }) => {
     );
 
     return (
-        <div className="Content__chart-container">
+        <div className="Chart-2">
             Bar Chart
             {barChartOneData ? (
                 <Bar
