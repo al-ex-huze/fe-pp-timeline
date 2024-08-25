@@ -1,13 +1,38 @@
+import { useState } from "react";
 import { Chart } from "react-google-charts";
 import { GoogleChartOptions } from "react-google-charts";
 
-const GanttChartOneG = ({
-    ganttChartData,
-    eventsData,
-}: {
-    ganttChartData: any;
-    eventsData: any;
-}) => {
+const GanttChartOneG = ({ eventsData }: { eventsData: any }) => {
+    const ganttColumns = [
+        { type: "string", label: "Event ID" },
+        { type: "string", label: "Event" },
+        { type: "date", label: "Start Date" },
+        { type: "date", label: "End Date" },
+        { type: "number", label: "Duration" },
+        { type: "number", label: "Percent Complete" },
+        { type: "string", label: "Dependencies" },
+        { type: "string", label: "Timeline" },
+        { type: "string", label: "Resource" },
+        { type: "date", label: "Created" },
+    ];
+
+    const ganttRows = eventsData.map((event: any) => {
+        return [
+            event.event_id,
+            event.title,
+            new Date(event.start_date),
+            new Date(event.end_date),
+            null,
+            86,
+            null,
+            event.timeline_name,
+            event.body,
+            new Date(event.created_at),
+        ];
+    });
+
+    const [ganttChartOneData] = useState([ganttColumns, ...ganttRows]);
+
     const options: GoogleChartOptions = {
         backgroundColor: {
             fill: "#000D15",
@@ -26,11 +51,11 @@ const GanttChartOneG = ({
 
     return (
         <div className="Content__chart-container">
-            Gantt Chart One {eventsData[0].event_id}
-            {ganttChartData ? (
+            Gantt Chart One
+            {ganttChartOneData ? (
                 <Chart
                     chartType="Gantt"
-                    data={ganttChartData}
+                    data={ganttChartOneData}
                     options={options}
                     width="100%"
                     height="100%"

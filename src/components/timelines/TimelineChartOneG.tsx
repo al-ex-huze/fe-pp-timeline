@@ -1,12 +1,24 @@
 import { Chart } from "react-google-charts";
 
-const TimelineChartOneG = ({
-    timelineChartData,
-    eventsData,
-}: {
-    timelineChartData: any;
-    eventsData: any;
-}) => {
+const TimelineChartOneG = ({ eventsData }: { eventsData: any }) => {
+    const timelineOneColumns = [
+        { type: "string", id: "Name" },
+        { type: "string", id: "Name" },
+        { type: "date", id: "Start" },
+        { type: "date", id: "End" },
+    ];
+
+    const timelineOneRows = eventsData.map((event: any) => {
+        return [
+            event.title,
+            event.title,
+            new Date(event.start_date),
+            new Date(event.end_date),
+        ];
+    });
+
+    const timelineChartOneData = [timelineOneColumns, ...timelineOneRows];
+
     const options = {
         // allowHtml: true,
         timeline: {
@@ -28,11 +40,11 @@ const TimelineChartOneG = ({
     return (
         <div className="Content___chart-container">
             Timeline One {eventsData[0].event_id}
-            {timelineChartData ? (
+            {timelineChartOneData ? (
                 <Chart
                     chartType="Timeline"
                     options={options}
-                    data={timelineChartData}
+                    data={timelineChartOneData}
                     width="100%"
                     height="100%"
                 />
