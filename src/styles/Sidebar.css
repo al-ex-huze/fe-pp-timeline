@@ -2,3 +2,7 @@
     grid-area: Sidebar;
     width: 100%;
 }
+
+.Sidebar ul {
+    display: block;
+}

@@ -1,5 +1,6 @@
 import AddTimeline from "../timelines/AddTimeline";
 import TimelineSelector from "../timelines/TimelineSelector";
+import DeleteTimeline from "../timelines/DeleteTimeline";
 
 const HomeSidebar = ({
     currentTimeline,
@@ -11,11 +12,13 @@ const HomeSidebar = ({
     return (
         <div className="Sidebar">
             Home Sidebar
+            {currentTimeline.timeline_name}
             <TimelineSelector
                 currentTimeline={currentTimeline}
                 setCurrentTimeline={setCurrentTimeline}
             />
             <AddTimeline />
+            <DeleteTimeline currentTimeline={currentTimeline} />
         </div>
     );
 };

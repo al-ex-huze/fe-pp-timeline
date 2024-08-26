@@ -28,7 +28,6 @@ const ChartConstructor = ({
                     <DoughnutChartOne eventsData={eventsData} />
                     <BarChartOne eventsData={eventsData} />
                     <PolarAreaChartOne eventsData={eventsData} />
-
                     <TimelineChartOneG eventsData={eventsData} />
                     <LineChartOne eventsData={eventsData} />
                     <RadarChartOne eventsData={eventsData} />
