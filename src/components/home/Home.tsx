@@ -5,7 +5,7 @@ import Timelines from "../timelines/Timelines";
 import "../../styles/Content.css"
 
 const Home = () => {
-    const [currentTimeline, setCurrentTimeline] = useState("");
+    const [currentTimeline, setCurrentTimeline] = useState({});
 
     return (
         <>

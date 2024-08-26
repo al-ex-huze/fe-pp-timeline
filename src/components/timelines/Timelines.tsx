@@ -4,7 +4,7 @@ import { getEvents } from "../../../api";
 
 import ChartConstructor from "./ChartConstructor";
 
-import "../../styles/Content.css"
+import "../../styles/Content.css";
 
 const Timelines = ({
     currentTimeline,
@@ -15,19 +15,18 @@ const Timelines = ({
 }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [eventsData, setEventsData] = useState([]);
-    const [timelineFilter] = useState("Northcoders Bootcamp");
+
     const [sortByQuery] = useState("");
     const [sortByIsAsc] = useState(true);
 
     useEffect(() => {
         console.log("!! Timeline UseEffect() !!");
         setIsLoading(true);
-        getEvents(timelineFilter, sortByQuery, sortByIsAsc).then((events) => {
+        getEvents(currentTimeline, sortByQuery, sortByIsAsc).then((events) => {
             setEventsData(events);
-            console.log(events);
             setIsLoading(false);
         });
-    }, [timelineFilter, sortByQuery, sortByIsAsc]);
+    }, [currentTimeline, sortByQuery, sortByIsAsc]);
 
     if (isLoading) return <p>Loading Data</p>;
     return (
