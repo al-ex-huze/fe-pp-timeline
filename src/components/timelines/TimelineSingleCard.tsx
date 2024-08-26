@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
-
-import TimelineSelector from "../timelines/TimelineSelector";
-import { getTimelines } from "../../../api";
+import AddTimeline from "../timelines/AddTimeline";
+import DeleteTimeline from "../timelines/DeleteTimeline";
+import ChartConstructor from "./ChartConstructor";
 
 import "../../styles/Content.css";
 import TimelineSidebar from "./TimelinesSidebar";
 
-const Timelines = ({
+const TimelineSingleCard = ({
     timelinesData,
     setTimelinesData,
     currentTimeline,
@@ -17,18 +16,6 @@ const Timelines = ({
     currentTimeline: any;
     setCurrentTimeline: any;
 }) => {
-    const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(() => {
-        setIsLoading(true);
-        console.log("TimelineSelector Use Effect()");
-        getTimelines().then((timelines) => {
-            setTimelinesData(timelines);
-            setIsLoading(false);
-        });
-    }, []);
-
-    if (isLoading) return <p>Loading Timelines</p>;
     return (
         <>
             <div className="Sidebar">
@@ -42,15 +29,15 @@ const Timelines = ({
             <div className="Content">
                 Timelines
                 {currentTimeline.timeline_name}
-                <TimelineSelector
-                    timelinesData={timelinesData}
-                    setTimelinesData={setTimelinesData}
+                <ChartConstructor
                     currentTimeline={currentTimeline}
                     setCurrentTimeline={setCurrentTimeline}
                 />
+                <AddTimeline />
+                <DeleteTimeline currentTimeline={currentTimeline} />
             </div>
         </>
     );
 };
 
-export default Timelines;
+export default TimelineSingleCard;

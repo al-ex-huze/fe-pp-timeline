@@ -1,4 +1,8 @@
 import { CategoryScale } from "chart.js";
+
+import { useEffect, useState } from "react";
+import { getEvents } from "../../../api";
+
 import Chart from "chart.js/auto";
 
 import BarChartOne from "./charts/BarChartOne";
@@ -14,12 +18,27 @@ import "../../styles/Constructor.css";
 Chart.register(CategoryScale);
 
 const ChartConstructor = ({
-    eventsData,
+    currentTimeline,
 }: {
     currentTimeline: any;
     setCurrentTimeline: any;
-    eventsData: any;
 }) => {
+    const [isLoading, setIsLoading] = useState(false);
+    const [eventsData, setEventsData] = useState([]);
+
+    const [sortByQuery] = useState("");
+    const [sortByIsAsc] = useState(true);
+
+    useEffect(() => {
+        console.log("!! Timeline UseEffect() !!");
+        setIsLoading(true);
+        getEvents(currentTimeline, sortByQuery, sortByIsAsc).then((events) => {
+            setEventsData(events);
+            setIsLoading(false);
+        });
+    }, [currentTimeline, sortByQuery, sortByIsAsc]);
+
+    if (isLoading) return <p>Loading Data</p>;
     return (
         <div className="Constructor">
             Chart Constructor
