@@ -29,7 +29,7 @@ const AddTimeline = () => {
     if (addTimelineError) return <ErrorComponent error={addTimelineError} />;
     if (isCreating) return <p>Please Wait</p>;
     return (
-        <div className="Sidebar__component">
+        <div className="Content__component">
             Add Timeline
             <div className="Sidebar__add-timeline-form-container">
                 <form onSubmit={handleSubmitNewTimeline}>

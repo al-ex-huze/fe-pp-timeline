@@ -1,7 +1,7 @@
 const ChartSelector = () => {
 
     return (
-        <div className="Sidebar__selector">
+        <div className="Content__component">
             Chart Selector
         </div>
     )
