@@ -30,31 +30,37 @@
 
 .Chart-1 {
     width: 100%;
+    max-height: 30rem;
     grid-area: Chart-1;
-}
-
-.Chart-3 {
-    width: 100%;
-    grid-area: Chart-2;
 }
 
 .Chart-2 {
     width: 100%;
+    max-height: 30rem;
+    grid-area: Chart-2;
+}
+
+.Chart-3 {
+    width: 100%;
+    max-height: 30rem;
     grid-area: Chart-3;
 }
 
 .Chart-4 {
     width: 100%;
+    max-height: 30rem;
     grid-area: Chart-4;
 }
 
 .Chart-5 {
     width: 100%;
+    max-height: 30rem;
     grid-area: Chart-5;
 }
 
 .Chart-Gantt {
     width: 100%;
+    max-height: 30rem;
     grid-area: Chart-Gantt;
 }
 

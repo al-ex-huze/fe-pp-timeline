@@ -1,4 +1,3 @@
-import AddTimeline from "../timelines/AddTimeline";
 import DeleteTimeline from "../timelines/DeleteTimeline";
 import ChartConstructor from "./ChartConstructor";
 
@@ -8,6 +7,7 @@ import "../../styles/Content.css";
 import TimelineSidebar from "./TimelinesSidebar";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import AddEvent from "./AddEvent";
 
 const TimelineSingleCard = ({
     timelinesData,
@@ -27,7 +27,7 @@ const TimelineSingleCard = ({
     useEffect(() => {
         setIsLoading(true);
         console.log("TimelineSelector Use Effect()");
-        console.log("timeline_name_param " + timeline_name);
+        console.log("timeline_name " + timeline_name);
         if (timeline_name) {
             getTimelineByName(timeline_name!).then((timeline) => {
                 setTimelineSingleData(timeline);
@@ -54,7 +54,8 @@ const TimelineSingleCard = ({
                     currentTimeline={currentTimeline}
                     setCurrentTimeline={setCurrentTimeline}
                 />
-                <AddTimeline />
+                <AddEvent currentTimeline={currentTimeline}
+                />
                 <DeleteTimeline currentTimeline={currentTimeline} />
             </div>
         </>

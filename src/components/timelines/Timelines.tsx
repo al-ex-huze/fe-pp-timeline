@@ -25,19 +25,24 @@ const Timelines = ({
         getTimelines().then((timelines) => {
             setTimelinesData(timelines);
             setIsLoading(false);
-        });
+        }).catch((error) => {
+            console.log(error)
+        }
+        )
     }, []);
 
     if (isLoading) return <p>Loading Timelines</p>;
     return (
         <>
             <div className="Sidebar">
+                {timelinesData ? 
                 <TimelineSidebar
                     currentTimeline={currentTimeline}
                     setCurrentTimeline={setCurrentTimeline}
                     timelinesData={timelinesData}
                     setTimelinesData={setTimelinesData}
                 />
+                : null}
             </div>
             <div className="Content">
                 Timelines

@@ -36,7 +36,7 @@ const DeleteTimeline = ({ currentTimeline }: { currentTimeline: any }) => {
     if (isDeleting) return <div className="Sidebar__card">Please Wait</div>;
     if (isDeleted) return <div className="Sidebar__card">Timeline Deleted</div>;
     return (
-        <div className="Sidebar__component">
+        <div className="Content__component">
             <button onClick={toggleDeleteConfirm}>
                 Delete {currentTimeline.timeline_name}
             </button>

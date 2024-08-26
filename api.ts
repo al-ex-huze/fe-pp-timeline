@@ -36,7 +36,7 @@ export const getEvents = (timelineFilter: string, sortByQuery: string, sortByIsA
     return beApi
         .get("/api/events", {
             params: {
-                topic: timelineFilter,
+                timeline_name: timelineFilter,
                 sort_by: sortByQuery,
                 order: orderDirection
             },
