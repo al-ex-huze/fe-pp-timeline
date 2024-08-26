@@ -10,6 +10,12 @@ export const getTimelines = () => {
     });
 };
 
+export const getTimelineByName = (timeline_name: string) => {
+    return beApi.get(`/api/timelines/${timeline_name}`).then((response) => {
+        return response.data.timeline;
+    });
+};
+
 export const postTimeline = (newTimeline: object) => {
     return beApi.post("/api/timelines", newTimeline).then((response) => {
         console.log(response);

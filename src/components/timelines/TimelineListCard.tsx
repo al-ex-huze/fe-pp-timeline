@@ -1,4 +1,6 @@
-const TimelineCard = ({
+import { Link } from "react-router-dom";
+
+const TimelineListCard = ({
     timeline,
     setCurrentTimeline,
 }: {
@@ -6,13 +8,13 @@ const TimelineCard = ({
     setCurrentTimeline: any;
 }) => {
     const handleButton = () => {
-        setCurrentTimeline(timeline)
+        setCurrentTimeline(timeline);
     };
     return (
-        <li key={timeline.timeline_name}>
+        <Link to={`/timelines/${timeline.timeline_name}`}>
             <button onClick={handleButton}>{timeline.timeline_name}</button>
-        </li>
+        </Link>
     );
 };
 
-export default TimelineCard;
+export default TimelineListCard;

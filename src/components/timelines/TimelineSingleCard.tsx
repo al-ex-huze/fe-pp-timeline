@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import AddTimeline from "../timelines/AddTimeline";
+import DeleteTimeline from "../timelines/DeleteTimeline";
+import ChartConstructor from "./ChartConstructor";
 
-import TimelineSelector from "../timelines/TimelineSelector";
-import { getTimelines } from "../../../api";
+import { getTimelineByName } from "../../../api";
 
 import "../../styles/Content.css";
 import TimelineSidebar from "./TimelinesSidebar";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-const Timelines = ({
+const TimelineSingleCard = ({
     timelinesData,
     setTimelinesData,
     currentTimeline,
@@ -18,17 +21,23 @@ const Timelines = ({
     setCurrentTimeline: any;
 }) => {
     const [isLoading, setIsLoading] = useState(false);
+    const [, setTimelineSingleData] = useState({});
+    const { timeline_name } = useParams();
 
     useEffect(() => {
         setIsLoading(true);
         console.log("TimelineSelector Use Effect()");
-        getTimelines().then((timelines) => {
-            setTimelinesData(timelines);
-            setIsLoading(false);
-        });
+        console.log("timeline_name_param " + timeline_name);
+        if (timeline_name) {
+            getTimelineByName(timeline_name!).then((timeline) => {
+                setTimelineSingleData(timeline);
+                setIsLoading(false);
+            });
+        }
     }, []);
 
     if (isLoading) return <p>Loading Timelines</p>;
+
     return (
         <>
             <div className="Sidebar">
@@ -40,17 +49,16 @@ const Timelines = ({
                 />
             </div>
             <div className="Content">
-                Timelines
-                {currentTimeline.timeline_name}
-                <TimelineSelector
-                    timelinesData={timelinesData}
-                    setTimelinesData={setTimelinesData}
+                Timelines {timeline_name}
+                <ChartConstructor
                     currentTimeline={currentTimeline}
                     setCurrentTimeline={setCurrentTimeline}
                 />
+                <AddTimeline />
+                <DeleteTimeline currentTimeline={currentTimeline} />
             </div>
         </>
     );
 };
 
-export default Timelines;
+export default TimelineSingleCard;
