@@ -22,6 +22,7 @@ const ChartConstructor = ({
 }) => {
     return (
         <div className="Constructor">
+            Chart Constructor
             {eventsData[0] !== undefined ? (
                 <>
                     <DoughnutChartOne eventsData={eventsData} />

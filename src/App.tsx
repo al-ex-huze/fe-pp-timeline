@@ -8,7 +8,6 @@ import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
 import Nav from "./components/Nav";
-
 import Home from "./components/home/Home";
 import Profile from "./components/profile/Profile";
 import Portfolio from "./components/portfolio/Portfolio";
