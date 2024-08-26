@@ -1,3 +1,4 @@
+import AddTimeline from "../timelines/AddTimeline";
 import TimelineSelector from "../timelines/TimelineSelector";
 
 const HomeSidebar = ({
@@ -14,6 +15,7 @@ const HomeSidebar = ({
                 currentTimeline={currentTimeline}
                 setCurrentTimeline={setCurrentTimeline}
             />
+            <AddTimeline />
         </div>
     );
 };

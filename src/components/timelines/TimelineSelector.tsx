@@ -24,7 +24,7 @@ const TimelineSelector = ({
     };
 
     return (
-        <div className="Sidebar__selector">
+        <div className="Sidebar__component">
             Timeline Selector
             <select value={selectedValue} onChange={(e) => handleListSelect(e)}>
                 {listOfTimelines.map((item: any) => (
