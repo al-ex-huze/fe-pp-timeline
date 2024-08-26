@@ -2,8 +2,12 @@ import AddTimeline from "../timelines/AddTimeline";
 import DeleteTimeline from "../timelines/DeleteTimeline";
 import ChartConstructor from "./ChartConstructor";
 
+import { getTimelineByName } from "../../../api";
+
 import "../../styles/Content.css";
 import TimelineSidebar from "./TimelinesSidebar";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const TimelineSingleCard = ({
     timelinesData,
@@ -16,6 +20,24 @@ const TimelineSingleCard = ({
     currentTimeline: any;
     setCurrentTimeline: any;
 }) => {
+    const [isLoading, setIsLoading] = useState(false);
+    const [, setTimelineSingleData] = useState({});
+    const { timeline_name } = useParams();
+
+    useEffect(() => {
+        setIsLoading(true);
+        console.log("TimelineSelector Use Effect()");
+        console.log("timeline_name_param " + timeline_name);
+        if (timeline_name) {
+            getTimelineByName(timeline_name!).then((timeline) => {
+                setTimelineSingleData(timeline);
+                setIsLoading(false);
+            });
+        }
+    }, []);
+
+    if (isLoading) return <p>Loading Timelines</p>;
+
     return (
         <>
             <div className="Sidebar">
@@ -27,8 +49,7 @@ const TimelineSingleCard = ({
                 />
             </div>
             <div className="Content">
-                Timelines
-                {currentTimeline.timeline_name}
+                Timelines {timeline_name}
                 <ChartConstructor
                     currentTimeline={currentTimeline}
                     setCurrentTimeline={setCurrentTimeline}

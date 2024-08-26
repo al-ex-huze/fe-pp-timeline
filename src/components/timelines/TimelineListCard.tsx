@@ -11,11 +11,9 @@ const TimelineListCard = ({
         setCurrentTimeline(timeline);
     };
     return (
-        <li key={timeline.timeline_name}>
-            <Link to={`/timelines/${timeline.timeline_name}`}>
-                <button onClick={handleButton}>{timeline.timeline_name}</button>
-            </Link>
-        </li>
+        <Link to={`/timelines/${timeline.timeline_name}`}>
+            <button onClick={handleButton}>{timeline.timeline_name}</button>
+        </Link>
     );
 };
 

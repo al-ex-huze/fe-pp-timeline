@@ -10,15 +10,17 @@ const TimelineSelector = ({
     setCurrentTimeline: any;
 }) => {
     return (
-        <div className="Sidebar__component">
+        <div className="Content">
             Timeline Selector
             <ul>
                 {timelinesData.map((timeline: any) => {
                     return (
-                        <TimelineListCard
-                            timeline={timeline}
-                            setCurrentTimeline={setCurrentTimeline}
-                        />
+                        <li key={timeline.timeline_name}>
+                            <TimelineListCard
+                                timeline={timeline}
+                                setCurrentTimeline={setCurrentTimeline}
+                            />
+                        </li>
                     );
                 })}
             </ul>
