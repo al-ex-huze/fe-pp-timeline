@@ -1,3 +1,7 @@
 .Content {
     grid-area: Content;
 }
+
+.Content__delete-confirm-button {
+    background-color: red;
+}

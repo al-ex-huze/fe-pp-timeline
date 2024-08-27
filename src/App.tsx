@@ -11,8 +11,8 @@ import Header from "./components/Header";
 import Nav from "./components/Nav";
 import Profile from "./components/profile/Profile";
 import Portfolio from "./components/portfolio/Portfolio";
-import TimelineSingleCard from "./components/timelines/TimelineSingleCard";
-import Timelines from "./components/timelines/Timelines";
+import TimelinesHome from "./components/timelines/TimelinesHome";
+import Timeline from "./components/timelines/Timeline";
 
 function App() {
     const [currentTimeline, setCurrentTimeline] = useState({});
@@ -26,7 +26,7 @@ function App() {
                 <Route
                     path="/"
                     element={
-                        <Timelines
+                        <TimelinesHome
                             currentTimeline={currentTimeline}
                             setCurrentTimeline={setCurrentTimeline}
                             timelinesData={timelinesData}
@@ -37,7 +37,7 @@ function App() {
                 <Route
                     path="/timelines/:timeline_name"
                     element={
-                        <TimelineSingleCard
+                        <Timeline
                             currentTimeline={currentTimeline}
                             setCurrentTimeline={setCurrentTimeline}
                             timelinesData={timelinesData}

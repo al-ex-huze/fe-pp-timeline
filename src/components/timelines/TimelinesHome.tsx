@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-import TimelineSelector from "../timelines/TimelineSelector";
+import TimelineSelector from "./TimelineSelector";
 import { getTimelines } from "../../../api";
 
 import "../../styles/Content.css";
 import TimelineSidebar from "./TimelinesSidebar";
 
-const Timelines = ({
+const TimelinesHome = ({
     timelinesData,
     setTimelinesData,
     currentTimeline,
@@ -58,4 +58,4 @@ const Timelines = ({
     );
 };
 
-export default Timelines;
+export default TimelinesHome;

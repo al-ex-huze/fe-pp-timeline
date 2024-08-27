@@ -1,21 +1,21 @@
 import { useState } from "react";
-import { deleteTimelineByName } from "../../../api";
+import { deleteEventByID } from "../../../../api";
 
-import ErrorComponent from "../Error-Component";
+import ErrorComponent from "../../Error-Component";
 
-const DeleteTimeline = ({ timelineToDelete }: { timelineToDelete: any }) => {
+const DeleteEvent = ({ eventSingleData }: { eventSingleData: any }) => {
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
     const [isDeleted, setIsDeleted] = useState(false);
-    const [deleteTimelineError, setDeleteTimelineError] = useState("");
+    const [deleteEventError, setDeleteEventError] = useState("");
 
     const toggleDeleteConfirm = () => {
         setShowDeleteConfirm(!showDeleteConfirm);
     };
 
-    const handleDeleteTimeline = () => {
+    const handleDeleteEvent = () => {
         setIsDeleting(true);
-        deleteTimelineByName(timelineToDelete)
+        deleteEventByID(eventSingleData.event_id)
             .then((confirmation) => {
                 if (confirmation) {
                     setIsDeleting(false);
@@ -25,25 +25,25 @@ const DeleteTimeline = ({ timelineToDelete }: { timelineToDelete: any }) => {
             .catch((error) => {
                 setIsDeleting(false);
                 console.log(error);
-                setDeleteTimelineError(
+                setDeleteEventError(
                     " Delete Unsuccessful - Something Went Wrong"
                 );
             });
     };
 
-    if (deleteTimelineError)
-        return <ErrorComponent error={deleteTimelineError} />;
-    if (isDeleting) return <div className="Sidebar__card">Please Wait</div>;
-    if (isDeleted) return <div className="Sidebar__card">Timeline Deleted</div>;
+    if (deleteEventError)
+        return <ErrorComponent error={deleteEventError} />;
+    if (isDeleting) return <div className="Content__micro-card">Please Wait</div>;
+    if (isDeleted) return <div className="Content__micro-card">Event Deleted</div>;
     return (
         <div className="Content__component">
             <button onClick={toggleDeleteConfirm}>
-                Delete {timelineToDelete ? timelineToDelete : <p>Timeline</p>}
+                Delete Event {eventSingleData.title}
             </button>
             {showDeleteConfirm && (
                 <button
                     className="Content__delete-confirm-button"
-                    onClick={handleDeleteTimeline}
+                    onClick={handleDeleteEvent}
                 >
                     Confirm Delete
                 </button>
@@ -52,4 +52,4 @@ const DeleteTimeline = ({ timelineToDelete }: { timelineToDelete: any }) => {
     );
 };
 
-export default DeleteTimeline;
+export default DeleteEvent;
