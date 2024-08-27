@@ -4,7 +4,6 @@ import DeleteTimeline from "./DeleteTimeline";
 
 const TimelineListCard = ({
     timeline,
-    currentTimeline,
     setCurrentTimeline,
 }: {
     timeline: any;
@@ -16,10 +15,10 @@ const TimelineListCard = ({
     };
     return (
         <>
-        <Link to={`/timelines/${timeline.timeline_name}`}>
-            <button onClick={handleButton}>{timeline.timeline_name}</button>
-        </Link>
-        <DeleteTimeline currentTimeline={currentTimeline} />
+            <Link to={`/timelines/${timeline.timeline_name}`}>
+                <button onClick={handleButton}>{timeline.timeline_name}</button>
+            </Link>
+            <DeleteTimeline timelineToDelete={timeline.timeline_name} />
         </>
 
     );

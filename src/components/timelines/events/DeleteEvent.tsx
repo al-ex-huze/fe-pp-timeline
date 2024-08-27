@@ -38,7 +38,7 @@ const DeleteEvent = ({ eventSingleData }: { eventSingleData: any }) => {
     return (
         <div className="Content__component">
             <button onClick={toggleDeleteConfirm}>
-                Delete {eventSingleData.title}
+                Delete Event {eventSingleData.title}
             </button>
             {showDeleteConfirm && (
                 <button

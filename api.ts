@@ -53,10 +53,10 @@ export const postEvent = (newEvent: object) => {
     });
 };
 
-export const getEventByID = (eventID: number) => {
-    return beApi.post("/api/events", eventID).then((response) => {
+export const getEventByID = (eventID: any) => {
+    return beApi.get(`/api/events/${eventID}`).then((response) => {
         console.log(response);
-        return response.data;
+        return response.data.event;
     });
 };
 

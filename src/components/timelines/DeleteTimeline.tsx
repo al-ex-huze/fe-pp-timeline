@@ -3,7 +3,7 @@ import { deleteTimelineByName } from "../../../api";
 
 import ErrorComponent from "../Error-Component";
 
-const DeleteTimeline = ({ currentTimeline }: { currentTimeline: any }) => {
+const DeleteTimeline = ({ timelineToDelete }: { timelineToDelete: any }) => {
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
     const [isDeleted, setIsDeleted] = useState(false);
@@ -15,7 +15,7 @@ const DeleteTimeline = ({ currentTimeline }: { currentTimeline: any }) => {
 
     const handleDeleteTimeline = () => {
         setIsDeleting(true);
-        deleteTimelineByName(currentTimeline.timeline_name)
+        deleteTimelineByName(timelineToDelete)
             .then((confirmation) => {
                 if (confirmation) {
                     setIsDeleting(false);
@@ -38,7 +38,7 @@ const DeleteTimeline = ({ currentTimeline }: { currentTimeline: any }) => {
     return (
         <div className="Content__component">
             <button onClick={toggleDeleteConfirm}>
-                Delete {currentTimeline.timeline_name}
+                Delete {timelineToDelete ? timelineToDelete : <p>Timeline</p>}
             </button>
             {showDeleteConfirm && (
                 <button

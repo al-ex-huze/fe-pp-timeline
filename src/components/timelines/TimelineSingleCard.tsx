@@ -4,17 +4,16 @@ import ChartConstructor from "./ChartConstructor";
 import { getTimelineByName } from "../../../api";
 
 import "../../styles/Content.css";
-import TimelineSidebar from "./TimelinesSidebar";
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AddEvent from "./events/AddEvent";
+import EventSingleCard from "./events/EventSingleCard";
 
 const TimelineSingleCard = ({
-    timelinesData,
-    setTimelinesData,
+    timeline_name,
     currentTimeline,
     setCurrentTimeline,
 }: {
+    timeline_name: any;
     timelinesData: any;
     setTimelinesData: any;
     currentTimeline: any;
@@ -22,7 +21,6 @@ const TimelineSingleCard = ({
 }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [, setTimelineSingleData] = useState({});
-    const { timeline_name } = useParams();
 
     useEffect(() => {
         setIsLoading(true);
@@ -39,26 +37,17 @@ const TimelineSingleCard = ({
     if (isLoading) return <p>Loading Timelines</p>;
 
     return (
-        <>
-            <div className="Sidebar">
-                <TimelineSidebar
-                    currentTimeline={currentTimeline}
-                    setCurrentTimeline={setCurrentTimeline}
-                    timelinesData={timelinesData}
-                    setTimelinesData={setTimelinesData}
-                />
-            </div>
-            <div className="Content">
-                Timelines {timeline_name}
-                <ChartConstructor
-                    currentTimeline={currentTimeline}
-                    setCurrentTimeline={setCurrentTimeline}
-                />
-                <AddEvent currentTimeline={currentTimeline}
-                />
-                <DeleteTimeline currentTimeline={currentTimeline} />
-            </div>
-        </>
+        <div className="Content">
+            Timelines {timeline_name} {currentTimeline.timeline_name}
+            <ChartConstructor
+                currentTimeline={currentTimeline}
+                setCurrentTimeline={setCurrentTimeline}
+            />
+            <AddEvent currentTimeline={currentTimeline}
+            />
+            <EventSingleCard />
+            <DeleteTimeline timelineToDelete={currentTimeline.timeline_name} />
+        </div>
     );
 };
 
