@@ -2,8 +2,8 @@
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css"; import { useState } from "react";
-import { postEvent } from "../../../api";
-import ErrorComponent from "../Error-Component";
+import { postEvent } from "../../../../api";
+import ErrorComponent from "../../Error-Component";
 
 const AddEvent = ({ currentTimeline }: { currentTimeline: any }) => {
     const [isCreating, setIsCreating] = useState(false);

@@ -7,7 +7,7 @@ import "../../styles/Content.css";
 import TimelineSidebar from "./TimelinesSidebar";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import AddEvent from "./AddEvent";
+import AddEvent from "./events/AddEvent";
 
 const TimelineSingleCard = ({
     timelinesData,
