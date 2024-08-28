@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { getEvents } from "../../../api";
+import { getEvents } from "../../../../api";
 
-import "../../styles/Constructor.css";
+import "../../../styles/Constructor.css";
 
-import BarChartOne from "./charts/BarChartOne";
-import LineChartOne from "./charts/LineChartOne";
-import GanttChartOneG from "./charts/GanttChartOneG";
-import TimelineChartOneG from "./charts/TimelineChartOneG";
-import PolarAreaChartOne from "./charts/PolarAreaChartOne";
-import DoughnutChartOne from "./charts/DoughnutChartOne";
-import RadarChartOne from "./charts/RadarChartOne";
+import BarChartOne from "./BarChartOne";
+import LineChartOne from "./LineChartOne";
+import GanttChartOneG from "./GanttChartOneG";
+import TimelineChartOneG from "./TimelineChartOneG";
+import PolarAreaChartOne from "./PolarAreaChartOne";
+import DoughnutChartOne from "./DoughnutChartOne";
+import RadarChartOne from "./RadarChartOne";
 
 import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";

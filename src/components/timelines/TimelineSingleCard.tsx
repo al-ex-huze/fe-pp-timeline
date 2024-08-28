@@ -6,7 +6,7 @@ import { getTimelineByName } from "../../../api";
 import "../../styles/Content.css";
 
 import DeleteTimeline from "../timelines/DeleteTimeline";
-import ChartConstructor from "./ChartConstructor";
+import ChartConstructor from "./charts/ChartConstructor";
 import AddEvent from "./events/AddEvent";
 import EventSingleCard from "./events/EventSingleCard";
 

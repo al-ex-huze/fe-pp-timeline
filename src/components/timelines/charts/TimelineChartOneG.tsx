@@ -1,4 +1,4 @@
-import { Chart } from "react-google-charts";
+import { Chart, ReactGoogleChartEvent } from "react-google-charts";
 import "../../../styles/Timeline.css";
 
 const TimelineChartOneG = ({ eventsData }: { eventsData: any }) => {
@@ -38,6 +38,27 @@ const TimelineChartOneG = ({ eventsData }: { eventsData: any }) => {
         avoidOverlappingGridLines: false,
     };
 
+    const chartEvents: ReactGoogleChartEvent[] = [
+        {
+          eventName: "select",
+          callback: ({ chartWrapper }) => {
+            const chart = chartWrapper.getChart();
+            const selection = chart.getSelection();
+            if (selection.length === 1) {
+              const [selectedItem] = selection;
+              const dataTable = chartWrapper.getDataTable();
+              const { row, column } = selectedItem;
+      
+              console.log("You selected:", {
+                row,
+                column,
+                value: dataTable?.getValue(row, column),
+              });
+            }
+          },
+        },
+      ];
+
     return (
         <div className="Timeline">
             Timeline One
@@ -48,6 +69,7 @@ const TimelineChartOneG = ({ eventsData }: { eventsData: any }) => {
                     data={timelineChartOneData}
                     width="100%"
                     height="100%"
+                    chartEvents={chartEvents}
                 />
             ) : null}
         </div>
