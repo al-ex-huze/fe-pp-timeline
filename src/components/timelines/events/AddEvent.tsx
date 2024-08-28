@@ -1,11 +1,14 @@
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
+import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 
-import "react-datepicker/dist/react-datepicker.css"; import { useState } from "react";
 import { postEvent } from "../../../../api";
+
 import ErrorComponent from "../../Error-Component";
 
-const AddEvent = ({ currentTimeline }: { currentTimeline: any }) => {
+const AddEvent = () => {
     const [isCreating, setIsCreating] = useState(false);
     const [addEventError, setAddEventError] = useState("");
     const [eventTitleInput, setEventTitleInput] = useState("");
@@ -13,13 +16,14 @@ const AddEvent = ({ currentTimeline }: { currentTimeline: any }) => {
     const [startDateInput, setStartDateInput] = useState(new Date());
     const [endDateInput, setEndDateInput] = useState(new Date());
 
+    const { timeline_name} = useParams();
 
     const handleSubmitNewEvent = (event: any) => {
         event.preventDefault();
         setIsCreating(true);
         const newEvent = {
             author: "al-ex-huze",
-            timeline: currentTimeline.timeline_name,
+            timeline: timeline_name,
             title: eventTitleInput,
             body: eventBody,
             start_date: startDateInput,
@@ -36,13 +40,12 @@ const AddEvent = ({ currentTimeline }: { currentTimeline: any }) => {
             })
     }
 
-
     if (addEventError) return <ErrorComponent error={addEventError} />;
     if (isCreating) return <p>Please Wait</p>;
-    if (currentTimeline.timeline_name) {
+    if (timeline_name !== "Not Set") {
         return (
             <div className="Content__component">
-                Add Event
+                AddEvent
                 <div className="Content__add-event-form-container">
                     <form onSubmit={handleSubmitNewEvent}>
                         <ul>

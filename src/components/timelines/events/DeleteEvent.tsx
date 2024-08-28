@@ -31,8 +31,7 @@ const DeleteEvent = ({ eventSingleData }: { eventSingleData: any }) => {
             });
     };
 
-    if (deleteEventError)
-        return <ErrorComponent error={deleteEventError} />;
+    if (deleteEventError) return <ErrorComponent error={deleteEventError} />;
     if (isDeleting) return <div className="Content__micro-card">Please Wait</div>;
     if (isDeleted) return <div className="Content__micro-card">Event Deleted</div>;
     return (

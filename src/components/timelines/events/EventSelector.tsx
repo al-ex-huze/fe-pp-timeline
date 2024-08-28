@@ -1,23 +1,41 @@
-import AddEvent from "./AddEvent";
+import { useEffect, useState } from "react";
+
+import { getEventByID } from "../../../../api";
+
+import "../../../styles/Constructor.css"
+
 import EventSingleCard from "./EventSingleCard";
 
-
 const EventSelector = ({
-
-    currentTimeline,
-
+    eventID,
+    eventSingleData,
+    setEventSingleData,
 }: {
-    timelinesData: any;
-    setTimelinesData: any;
-    currentTimeline: any;
-    setCurrentTimeline: any;
+    eventID: any;
+    eventSingleData: any;
+    setEventSingleData: any;
 }) => {
+    const [isLoading, setIsLoading] = useState(false);
 
+    useEffect(() => {
+        setIsLoading(true);
+        console.log("EventSelector Use Effect()");
+        if (eventID !== 0) {
+            getEventByID(eventID!).then((event) => {
+                setEventSingleData(event);
+                setIsLoading(false);
+            });
+        }
+    }, [eventID]);
+
+    if (eventID === 0) return null;
+    if (isLoading) return <p>Loading Event</p>;
     return (
-        <div className="Content_component">
-            EVENT Selector
-            <EventSingleCard />
-            <AddEvent currentTimeline={currentTimeline} />
+        <div className="Content_Event-component">
+            <EventSingleCard
+                eventSingleData={eventSingleData}
+                setEventSingleData={setEventSingleData}
+            />
         </div>
     );
 };

@@ -21,7 +21,6 @@ const DoughnutChartOne = ({ eventsData }: { eventsData: any }) => {
 
     return (
         <div className="Chart-1">
-            Doughnut Chart
             {doughnutChartOneData ? (
                 <Doughnut data={doughnutChartOneData} options={{}} />
             ) : null}

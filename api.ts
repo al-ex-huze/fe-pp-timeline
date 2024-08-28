@@ -33,13 +33,17 @@ export const deleteTimelineByName = (timelineName: string) => {
 export const getEvents = (timelineFilter: string, sortByQuery: string, sortByIsAsc: boolean) => {
     let orderDirection = "";
     sortByIsAsc ? (orderDirection = "asc") : (orderDirection = "desc");
+    const params: {
+        timeline_name?: string,
+        sort_by?: string,
+        order?: string
+    } = { order: orderDirection }
+    if (sortByQuery) params.sort_by = sortByQuery;
+    if (timelineFilter) params.timeline_name = timelineFilter;
+
     return beApi
         .get("/api/events", {
-            params: {
-                timeline_name: timelineFilter,
-                sort_by: sortByQuery,
-                order: orderDirection
-            },
+            params,
         })
         .then((response) => {
             return response.data.events;

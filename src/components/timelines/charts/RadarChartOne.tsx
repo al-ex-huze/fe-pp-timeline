@@ -21,7 +21,6 @@ const RadarChartOne = ({ eventsData }: { eventsData: any }) => {
 
     return (
         <div className="Chart-4">
-            Radar Chart
             {radarChartOneData ? (
                 <Radar
                     data={radarChartOneData}

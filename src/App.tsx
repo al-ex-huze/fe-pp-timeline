@@ -1,23 +1,19 @@
+import { Routes, Route } from "react-router-dom";
+
 import "../src/styles/App.css";
 import "../src/styles/Header.css";
 import "../src/styles/Nav.css";
 import "../src/styles/Sidebar.css";
 import "../src/styles/Content.css";
 
-import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
-
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import Profile from "./components/profile/Profile";
 import Portfolio from "./components/portfolio/Portfolio";
 import TimelinesHome from "./components/timelines/TimelinesHome";
-import Timeline from "./components/timelines/Timeline";
+import TimelineSingle from "./components/timelines/TimelineSingle";
 
 function App() {
-    const [currentTimeline, setCurrentTimeline] = useState({});
-    const [timelinesData, setTimelinesData] = useState([]);
-
     return (
         <div className="App">
             <Header />
@@ -26,23 +22,13 @@ function App() {
                 <Route
                     path="/"
                     element={
-                        <TimelinesHome
-                            currentTimeline={currentTimeline}
-                            setCurrentTimeline={setCurrentTimeline}
-                            timelinesData={timelinesData}
-                            setTimelinesData={setTimelinesData}
-                        />
+                        <TimelinesHome />
                     }
                 />
                 <Route
                     path="/timelines/:timeline_name"
                     element={
-                        <Timeline
-                            currentTimeline={currentTimeline}
-                            setCurrentTimeline={setCurrentTimeline}
-                            timelinesData={timelinesData}
-                            setTimelinesData={setTimelinesData}
-                        />
+                        <TimelineSingle />
                     }
                 />
                 <Route path="/profile" element={<Profile />} />

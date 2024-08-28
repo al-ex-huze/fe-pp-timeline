@@ -1,27 +1,36 @@
+import { useEffect, useState } from "react";
+
+import { getTimelines } from "../../../api";
+
 import AddTimeline from "./AddTimeline";
 import TimelineListCard from "./TimelineListCard";
 
-const TimelineSelector = ({
-    timelinesData,
-    currentTimeline,
-    setCurrentTimeline,
-}: {
-    timelinesData: any;
-    setTimelinesData: any;
-    currentTimeline: any;
-    setCurrentTimeline: any;
-}) => {
+const TimelineSelector = () => {
+    const [isLoading, setIsLoading] = useState(false);
+    const [timelinesData, setTimelinesData] = useState([]);
+
+    useEffect(() => {
+        setIsLoading(true);
+        console.log("TimelineSelector Use Effect()");
+        getTimelines().then((timelines) => {
+            setTimelinesData(timelines);
+            setIsLoading(false);
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }, []);
+
+    if (isLoading) return <p>Loading Timelines</p>;
     return (
         <div className="Content_component">
-            Timeline Selector
+            TimelineSelector
             <ul>
                 {timelinesData.map((timeline: any) => {
                     return (
                         <li key={timeline.timeline_name}>
                             <TimelineListCard
                                 timeline={timeline}
-                                currentTimeline={currentTimeline}
-                                setCurrentTimeline={setCurrentTimeline}
                             />
                         </li>
                     );

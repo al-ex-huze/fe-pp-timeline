@@ -21,7 +21,6 @@ const PolarAreaChartOne = ({ eventsData }: { eventsData: any }) => {
 
     return (
         <div className="Chart-3">
-            Polar Chart
             {polarAreaChartOneData ? (
                 <PolarArea data={polarAreaChartOneData} options={{}} />
             ) : null}
