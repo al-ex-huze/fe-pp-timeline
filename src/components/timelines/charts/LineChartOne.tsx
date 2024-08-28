@@ -3,7 +3,7 @@ import { Line } from "react-chartjs-2";
 
 import "chartjs-adapter-date-fns";
 
-import "../../../styles/Chart.css";
+import "../../../styles/Constructor.css";
 
 const LineChartOne = ({ eventsData }: { eventsData: any }) => {
     const [lineChartOneData] = useState({
@@ -17,6 +17,7 @@ const LineChartOne = ({ eventsData }: { eventsData: any }) => {
                 fill: false,
                 borderColor: "rgb(75, 192, 192)",
                 tension: 0.2,
+                borderWidth: 1,
             },
         ],
     });
@@ -28,7 +29,6 @@ const LineChartOne = ({ eventsData }: { eventsData: any }) => {
 
     return (
         <div className="Chart-Line">
-            Line Chart
             {lineChartOneData ? (
                 <Line
                     data={lineChartOneData}

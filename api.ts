@@ -31,24 +31,15 @@ export const deleteTimelineByName = (timelineName: string) => {
 };
 
 export const getEvents = (timelineFilter: string, sortByQuery: string, sortByIsAsc: boolean) => {
-    let params = {};
     let orderDirection = "";
     sortByIsAsc ? (orderDirection = "asc") : (orderDirection = "desc");
-    timelineFilter === null || undefined ? timelineFilter = "" : timelineFilter;
-    sortByQuery === null || undefined ? sortByQuery = "" : sortByQuery;
-
-    if (sortByQuery) {
-        params = {
-            timeline_name: timelineFilter,
-            sort_by: sortByQuery,
-            order: orderDirection
-        }
-    } else {
-        params = {
-            timeline_name: timelineFilter,
-            order: orderDirection
-        }
-    }
+    const params: {
+        timeline_name?: string,
+        sort_by?: string,
+        order?: string
+    } = { order: orderDirection }
+    if (sortByQuery) params.sort_by = sortByQuery;
+    if (timelineFilter) params.timeline_name = timelineFilter;
 
     return beApi
         .get("/api/events", {

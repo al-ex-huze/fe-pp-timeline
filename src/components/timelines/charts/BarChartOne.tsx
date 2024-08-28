@@ -33,7 +33,6 @@ const BarChartOne = ({ eventsData }: { eventsData: any }) => {
 
     return (
         <div className="Chart-2">
-            Bar Chart
             {barChartOneData ? (
                 <Bar
                     data={barChartOneData}

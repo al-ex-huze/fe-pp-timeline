@@ -5,7 +5,7 @@ import "../../../styles/Constructor.css";
 
 import BarChartOne from "./BarChartOne";
 import LineChartOne from "./LineChartOne";
-import GanttChartOneG from "./GanttChartOneG";
+// import GanttChartOneG from "./GanttChartOneG";
 import TimelineChartOneG from "./TimelineChartOneG";
 import PolarAreaChartOne from "./PolarAreaChartOne";
 import DoughnutChartOne from "./DoughnutChartOne";
@@ -16,8 +16,10 @@ import Chart from "chart.js/auto";
 Chart.register(CategoryScale);
 
 const ChartConstructor = ({
+    setEventID,
     timelineSingleData,
 }: {
+    setEventID: any;
     timelineSingleData: any;
     setTimelineSingleData: any;
 }) => {
@@ -30,25 +32,31 @@ const ChartConstructor = ({
     useEffect(() => {
         console.log("Timeline UseEffect()");
         setIsLoading(true);
-        getEvents(timelineSingleData.timeline_name, sortByQuery, sortByIsAsc).then((events) => {
-            setEventsData(events);
-            setIsLoading(false);
-        });
+        getEvents(timelineSingleData.timeline_name, sortByQuery, sortByIsAsc)
+            .then((events) => {
+                setEventsData(events);
+                setIsLoading(false);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }, [timelineSingleData.timeline_name, sortByQuery, sortByIsAsc]);
 
     if (isLoading) return <p>Loading Data</p>;
     return (
         <div className="Constructor">
-            ChartConstructor
             {eventsData[0] !== undefined ? (
                 <>
+                    <LineChartOne eventsData={eventsData} />
+                    <TimelineChartOneG
+                        eventsData={eventsData}
+                        setEventID={setEventID}
+                    />
                     <DoughnutChartOne eventsData={eventsData} />
                     <BarChartOne eventsData={eventsData} />
                     <PolarAreaChartOne eventsData={eventsData} />
-                    <TimelineChartOneG eventsData={eventsData} />
-                    <LineChartOne eventsData={eventsData} />
                     <RadarChartOne eventsData={eventsData} />
-                    <GanttChartOneG eventsData={eventsData} />
+                    {/* <GanttChartOneG eventsData={eventsData} /> */}
                 </>
             ) : null}
         </div>

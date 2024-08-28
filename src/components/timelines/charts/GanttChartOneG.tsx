@@ -52,7 +52,6 @@ const GanttChartOneG = ({ eventsData }: { eventsData: any }) => {
 
     return (
         <div className="Chart-Gantt">
-            Gantt Chart
             {ganttChartOneData ? (
                 <Chart
                     chartType="Gantt"
