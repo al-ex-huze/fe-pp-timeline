@@ -1,9 +1,7 @@
-import { CategoryScale } from "chart.js";
-
 import { useEffect, useState } from "react";
 import { getEvents } from "../../../api";
 
-import Chart from "chart.js/auto";
+import "../../styles/Constructor.css";
 
 import BarChartOne from "./charts/BarChartOne";
 import LineChartOne from "./charts/LineChartOne";
@@ -13,15 +11,15 @@ import PolarAreaChartOne from "./charts/PolarAreaChartOne";
 import DoughnutChartOne from "./charts/DoughnutChartOne";
 import RadarChartOne from "./charts/RadarChartOne";
 
-import "../../styles/Constructor.css";
-
+import { CategoryScale } from "chart.js";
+import Chart from "chart.js/auto";
 Chart.register(CategoryScale);
 
 const ChartConstructor = ({
-    currentTimeline,
+    timelineSingleData,
 }: {
-    currentTimeline: any;
-    setCurrentTimeline: any;
+    timelineSingleData: any;
+    setTimelineSingleData: any;
 }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [eventsData, setEventsData] = useState([]);
@@ -30,18 +28,18 @@ const ChartConstructor = ({
     const [sortByIsAsc] = useState(true);
 
     useEffect(() => {
-        console.log("!! Timeline UseEffect() !!");
+        console.log("Timeline UseEffect()");
         setIsLoading(true);
-        getEvents(currentTimeline, sortByQuery, sortByIsAsc).then((events) => {
+        getEvents(timelineSingleData.timeline_name, sortByQuery, sortByIsAsc).then((events) => {
             setEventsData(events);
             setIsLoading(false);
         });
-    }, [currentTimeline, sortByQuery, sortByIsAsc]);
+    }, [timelineSingleData.timeline_name, sortByQuery, sortByIsAsc]);
 
     if (isLoading) return <p>Loading Data</p>;
     return (
         <div className="Constructor">
-            Chart Constructor
+            ChartConstructor
             {eventsData[0] !== undefined ? (
                 <>
                     <DoughnutChartOne eventsData={eventsData} />

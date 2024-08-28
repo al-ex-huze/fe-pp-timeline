@@ -31,7 +31,7 @@ const LineChartOne = ({ eventsData }: { eventsData: any }) => {
                 <Line
                     data={lineChartOneData}
                     options={{
-                        maintainAspectRatio: false,
+                        maintainAspectRatio: true,
                         responsive: true,
                         plugins: {
                             title: {

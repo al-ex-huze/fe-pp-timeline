@@ -1,5 +1,7 @@
 import { useState } from "react";
+
 import { postTimeline } from "../../../api";
+
 import ErrorComponent from "../Error-Component";
 
 const AddTimeline = () => {
@@ -30,7 +32,7 @@ const AddTimeline = () => {
     if (isCreating) return <p>Please Wait</p>;
     return (
         <div className="Content__component">
-            Add Timeline
+            AddTimeline
             <div className="Sidebar__add-timeline-form-container">
                 <form onSubmit={handleSubmitNewTimeline}>
                     <ul>

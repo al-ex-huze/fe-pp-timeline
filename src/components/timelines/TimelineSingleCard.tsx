@@ -1,26 +1,20 @@
-import DeleteTimeline from "../timelines/DeleteTimeline";
-import ChartConstructor from "./ChartConstructor";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import { getTimelineByName } from "../../../api";
 
 import "../../styles/Content.css";
-import { useEffect, useState } from "react";
+
+import DeleteTimeline from "../timelines/DeleteTimeline";
+import ChartConstructor from "./ChartConstructor";
 import AddEvent from "./events/AddEvent";
 import EventSingleCard from "./events/EventSingleCard";
 
-const TimelineSingleCard = ({
-    timeline_name,
-    currentTimeline,
-    setCurrentTimeline,
-}: {
-    timeline_name: any;
-    timelinesData: any;
-    setTimelinesData: any;
-    currentTimeline: any;
-    setCurrentTimeline: any;
-}) => {
+const TimelineSingleCard = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [, setTimelineSingleData] = useState({});
+    const [timelineSingleData, setTimelineSingleData] = useState({});
+
+    const { timeline_name } = useParams();
 
     useEffect(() => {
         setIsLoading(true);
@@ -35,19 +29,16 @@ const TimelineSingleCard = ({
     }, []);
 
     if (isLoading) return <p>Loading Timelines</p>;
-
     return (
-        <div className="Content">
-            Timelines {timeline_name} {currentTimeline.timeline_name}
+        <><div className="Content">
+            TimelineSingleCard {timeline_name}
             <ChartConstructor
-                currentTimeline={currentTimeline}
-                setCurrentTimeline={setCurrentTimeline}
-            />
-            <AddEvent currentTimeline={currentTimeline}
-            />
+                timelineSingleData={timelineSingleData}
+                setTimelineSingleData={setTimelineSingleData} />
+            <AddEvent />
             <EventSingleCard />
-            <DeleteTimeline timelineToDelete={currentTimeline.timeline_name} />
-        </div>
+            <DeleteTimeline timelineToDelete={timeline_name} />
+        </div></>
     );
 };
 

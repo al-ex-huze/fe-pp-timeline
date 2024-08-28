@@ -1,20 +1,20 @@
 import "../../styles/Content.css";
-
-import TimelineSelector from "./TimelineSelector";
 import TimelineSidebar from "./TimelinesSidebar";
 
-const TimelinesHome = () => {
+import TimelineSingleCard from "./TimelineSingleCard";
+
+const Timeline = () => {
+
     return (
         <>
-            TimelinesHome
             <div className="Sidebar">
                 <TimelineSidebar />
             </div>
             <div className="Content">
-                <TimelineSelector />
+                <TimelineSingleCard />
             </div>
         </>
     );
 };
 
-export default TimelinesHome;
+export default Timeline;

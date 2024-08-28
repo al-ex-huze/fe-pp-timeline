@@ -1,4 +1,4 @@
-const ErrorComponent = ({ error } : { error: any}) => {
+const ErrorComponent = ({ error }: { error: any }) => {
     return (
         <div className="Error">
             <p>{error.message}: </p>
