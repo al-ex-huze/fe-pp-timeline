@@ -22,7 +22,7 @@ const TimelineChartOneG = ({
         return [
             String(event.event_id),
             event.title,
-            event.body,
+            tooltipHTML(event),
             new Date(event.start_date),
             new Date(event.end_date),
         ];
@@ -32,6 +32,8 @@ const TimelineChartOneG = ({
 
     const options = {
         allowHtml: true,
+        tooltip: { isHtml: true },
+        legend: "LEGENENENE",
         height: timelineOneRows.length * rowHeight,
         // chartArea: {
         //     height: rowHeight,
@@ -51,10 +53,21 @@ const TimelineChartOneG = ({
             },
             barLabelStyle: { fontName: "Helvetica", fontSize: 14 },
         },
-        
+
         backgroundColor: "#ffffff",
         avoidOverlappingGridLines: false,
     };
+
+    function tooltipHTML(event: any) {
+        return (
+            '<div style="color:black;padding:5px 5px 5px 5px;">' +
+            '<h1>' + event.title + '</h1>' +
+            '<p>' + event.body + '</p>' +
+            '<p>' + event.start_date + '</p>' +
+            '<p>' + event.end_date + '</p>' +
+            '</div>'
+        );
+    }
 
     return (
         <div className="Timeline">
