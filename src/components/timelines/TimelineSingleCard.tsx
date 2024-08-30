@@ -35,7 +35,6 @@ const TimelineSingleCard = () => {
         <>
             <div className="Content">
                 TimelineSingleCard {timeline_name}
-                <ReposParent />
                 <ChartConstructor
                     setEventID={setEventID}
                     timelineSingleData={timelineSingleData}
@@ -46,6 +45,7 @@ const TimelineSingleCard = () => {
                     eventSingleData={eventSingleData}
                     setEventSingleData={setEventSingleData}
                 />
+                <ReposParent />
                 <AddEvent />
                 <DeleteTimeline timelineToDelete={timeline_name} />
             </div>

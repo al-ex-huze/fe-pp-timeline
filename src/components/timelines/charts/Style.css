@@ -1,0 +1,87 @@
+.Timeline__button-container {
+    display: flex;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Work+Sans");
+@import "./Items.css";
+body {
+    font-family: "Work Sans", sans-serif;
+    font-size: 18px;
+    color: #fff;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #5271ff,
+        0 0 82px #5271ff, 0 0 92px #5271ff, 0 0 102px #5271ff, 0 0 151px #5271ff;
+    background: #000d15;
+}
+
+.rct-item-content {
+    border: dotted 1px deepskyblue;
+}
+
+.react-calendar-timeline .rct-horizontal-lines .rct-hl-even,
+.react-calendar-timeline .rct-horizontal-lines .rct-hl-odd {
+    border-bottom: none;
+}
+
+.react-calendar-timeline .rct-horizontal-lines .rct-hl-even {
+    background-color: #001320;
+}
+
+.react-calendar-timeline .rct-sidebar .rct-sidebar-row {
+    border-bottom: none;
+}
+
+.react-calendar-timeline .rct-sidebar .rct-sidebar-row-odd {
+    border-bottom: none;
+    background-color: #00192a !important;
+}
+
+.react-calendar-timeline .rct-sidebar .rct-sidebar-row-even {
+    border-bottom: none;
+    background-color: #00192a;
+}
+
+.react-calendar-timeline .rct-header .rct-label {
+    border-bottom: none;
+}
+
+.react-calendar-timeline .rct-vertical-lines .rct-vl.rct-vl-first {
+    border-bottom: none;
+}
+
+.react-calendar-timeline .rct-vertical-lines .rct-vl {
+    border-left: 1px solid #eeeeee87;
+}
+
+.react-calendar-timeline .rct-header .rct-label-group {
+    font-family: "Work Sans", sans-serif;
+    background: #eee;
+    color: #000;
+    font-size: 1rem;
+}
+
+.react-calendar-timeline .rct-sidebar-header {
+    background: #eee;
+    color: #000;
+    text-align: center;
+    padding-top: 1rem;
+    border: none;
+    border-right: solid 2px #ccc !important;
+}
+
+.react-calendar-timeline .rct-items {
+    background-color: transparent !important;
+    border: 1px solid transparent !important;
+    text-align: center;
+    cursor: default !important;
+    color: #000011 !important;
+    font-size: 1rem !important;
+}
+
+.react-calendar-timeline .rct-calendar-header div:first-child {
+    height: 55px !important;
+}
+
+.react-calendar-timeline .rct-header-root {
+    color: red !important;
+    background-color: #00192a !important;
+}
