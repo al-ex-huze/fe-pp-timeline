@@ -80,6 +80,19 @@ export const patchEventDates = (dateUpdate: object, eventID: number) => {
         });
 };
 
+export const getRepos = () => {
+    return beApi.get("/api/repos").then((response) => {
+        return response.data.repos;
+    });
+};
+
+
+export const getGHLanguages = (repo_name: any) => {
+    return beApi.get(`/ghapi/languages_used/${repo_name}`).then((response) => {
+        return response.data.languages;
+    });
+};
+
 // import {
 //     getTimelines,
 //     postTimeline,
