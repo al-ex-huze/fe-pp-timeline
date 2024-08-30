@@ -1,13 +1,14 @@
 const Keys = {
     groupIdKey: "id",
     groupTitleKey: "title",
-    groupRightTitleKey: "rightTitle",
     itemIdKey: "id",
     itemTitleKey: "title",
     itemDivTitleKey: "title",
     itemGroupKey: "group",
-    itemTimeStartKey: "start",
-    itemTimeEndKey: "end",
+    groupRightTitleKey: 'groupRightTitleKey',
+    itemTimeStartKey: "start_time",
+    itemTimeEndKey: "end_time",
     groupLabelKey: "title",
 };
+
 export default Keys;

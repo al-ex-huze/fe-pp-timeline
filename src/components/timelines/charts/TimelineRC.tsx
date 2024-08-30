@@ -1,24 +1,16 @@
 import Timeline, {
-    TimelineHeaders,
-    SidebarHeader,
-    DateHeader,
     TimelineMarkers,
     TodayMarker,
+    CustomMarker,
 } from "react-calendar-timeline";
 import "react-calendar-timeline/lib/Timeline.css";
 
 import { useState } from "react";
-import "./style.css";
+import "./Style.css";
 import ItemRender from "./ItemRender";
-import Keys from "./Keys";
+import keys from "./Keys";
 
-const TimelineRC = ({
-    eventsData,
-    setEventID,
-}: {
-    eventsData: any;
-    setEventID: any;
-}) => {
+const TimelineRC = ({ eventsData }: { eventsData: any; setEventID: any }) => {
     // const groups = eventsData.map((event: any) => {
     //     console.log(event.event_id)
     //     console.log(event.timeline)
@@ -29,7 +21,7 @@ const TimelineRC = ({
 
     let groups: any[] = [];
     let items: any[] = [];
-    let groupLookup: {} = {};
+    const groupLookup: { [key: string]: number } = {};
 
     const initGroups = () => {
         if (groupRowState) {
@@ -48,9 +40,11 @@ const TimelineRC = ({
                 groupCounter++;
             }
         } else {
+            let groupCounter = 0;
             for (let i = 0; i < eventsData.length; i++) {
-                // groupLookup[eventsData[i].timeline] = i;
+                groupLookup[i] = eventsData[i].timeline;
                 groups.push({ id: i, title: eventsData[i].timeline });
+                groupCounter++;
             }
             // groups = eventsData.map((event: any) => {
             //     console.log(event.event_id);
@@ -64,6 +58,7 @@ const TimelineRC = ({
     };
 
     const initItems = () => {
+        let counter = 0;
         items = eventsData.map(
             (event: {
                 title: any;
@@ -75,8 +70,8 @@ const TimelineRC = ({
                 return {
                     id: event.event_id,
                     group: groupRowState
-                        ? groupLookup[event.timeline]
-                        : event.event_id,
+                        ? groupLookup[event.timeline as keyof object]
+                        : counter++,
                     title: event.title,
                     className: "test",
                     start_time: new Date(event.start_date),
@@ -93,16 +88,16 @@ const TimelineRC = ({
     initGroups();
     initItems();
 
-    const [yearMin, setYearMin] = useState(2024);
-    const [monthMin, setMonthMin] = useState(0);
-    const [yearMax, setYearMax] = useState(2024);
-    const [monthMax, setMonthMax] = useState(11);
-    const [hAxisMinValue, setHAxisMinValue] = useState(
-        new Date(yearMin, monthMin, 0)
-    );
-    const [hAxisMaxValue, setHAxisMaxValue] = useState(
-        new Date(yearMax, monthMax, 0)
-    );
+    // const [yearMin, setYearMin] = useState(2024);
+    // const [monthMin, setMonthMin] = useState(0);
+    // const [yearMax, setYearMax] = useState(2024);
+    // const [monthMax, setMonthMax] = useState(11);
+    // const [hAxisMinValue, setHAxisMinValue] = useState(
+    //     new Date(yearMin, monthMin, 0)
+    // );
+    // const [hAxisMaxValue, setHAxisMaxValue] = useState(
+    //     new Date(yearMax, monthMax, 0)
+    // );
 
     const toggleGroupByRows = () => {
         setGroupRowState(!groupRowState);
@@ -110,7 +105,8 @@ const TimelineRC = ({
         initItems();
     };
 
-    function handleItemSelect(itemId: Id, e: any, time: number): void {
+    function handleItemSelect(): void {
+        // itemId: Id, e: any, time: number
         toggleGroupByRows();
     }
 
@@ -125,7 +121,7 @@ const TimelineRC = ({
     return (
         <div className="Timeline">
             <Timeline
-                // keys={Keys}
+                keys={keys}
                 groups={groups}
                 items={items}
                 defaultTimeStart={new Date(2024, 0, 0)}
@@ -145,7 +141,10 @@ const TimelineRC = ({
                 // onItemMove={this.handleItemMove}
                 // onItemResize={this.handleItemResize}
             >
-                <TimelineMarkers></TimelineMarkers>
+                <TimelineMarkers>
+                    <TodayMarker date={Date.now()} />
+                    <CustomMarker date={Date.now()} />
+                </TimelineMarkers>
             </Timeline>
 
             <div className="Timeline__button-container">

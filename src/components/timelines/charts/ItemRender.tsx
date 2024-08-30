@@ -4,20 +4,23 @@ const ItemRender = ({
     item,
     itemContext,
     getItemProps,
-    getResizeProps,
 }: {
     item: any;
     itemContext: any;
     getItemProps: any;
     getResizeProps: any;
 }) => {
-    const { left: leftResizeProps, right: rightResizeProps } = getResizeProps();
-    const backgroundColor = itemContext.selected
-        ? itemContext.dragging
-            ? "red"
-            : item.selectedBgColor
-        : item.bgColor;
-    const borderColor = itemContext.resizing ? "red" : item.color;
+    const backgroundColor = "blue";
+    const borderColor = "gold";
+
+    // const { left: leftResizeProps, right: rightResizeProps } = getResizeProps();
+
+    // const backgroundColor = itemContext.selected
+    //     ? itemContext.dragging
+    //         ? "red"
+    //         : item.selectedBgColor
+    //     : item.bgColor;
+    // const borderColor = itemContext.resizing ? "red" : item.color;
     return (
         <div
             {...getItemProps({
@@ -33,12 +36,12 @@ const ItemRender = ({
                     0 2px 2px 0 rgba(0, 0, 0, 0.14),
                     0 3px 1px -2px rgba(0, 0, 0, 0.12)`,
                 },
-                onMouseDown: () => {
-                    console.log("on item click", item);
-                },
+                // onMouseDown: () => {
+                //     console.log("on item click", item);
+                // },
             })}
         >
-            {itemContext.useResizeHandle ? <div {...leftResizeProps} /> : null}
+            {/* {itemContext.useResizeHandle ? <div {...leftResizeProps} /> : null} */}
 
             <div
                 className="ripple"
@@ -55,7 +58,7 @@ const ItemRender = ({
                 {itemContext.title}
             </div>
 
-            {itemContext.useResizeHandle ? <div {...rightResizeProps} /> : null}
+            {/* {itemContext.useResizeHandle ? <div {...rightResizeProps} /> : null} */}
         </div>
     );
 };
