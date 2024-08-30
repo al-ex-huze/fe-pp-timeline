@@ -18,14 +18,12 @@ export const getTimelineByName = (timeline_name: string) => {
 
 export const postTimeline = (newTimeline: object) => {
     return beApi.post("/api/timelines", newTimeline).then((response) => {
-        console.log(response);
         return response.data;
     });
 };
 
 export const deleteTimelineByName = (timelineName: string) => {
     return beApi.delete(`/api/timelines/${timelineName}`).then((response) => {
-        console.log(response);
         return response.data;
     });
 };
@@ -52,21 +50,18 @@ export const getEvents = (timelineFilter: string, sortByQuery: string, sortByIsA
 
 export const postEvent = (newEvent: object) => {
     return beApi.post("/api/events", newEvent).then((response) => {
-        console.log(response);
         return response.data;
     });
 };
 
 export const getEventByID = (eventID: any) => {
     return beApi.get(`/api/events/${eventID}`).then((response) => {
-        console.log(response);
         return response.data.event;
     });
 };
 
 export const deleteEventByID = (eventID: number) => {
     return beApi.delete(`/api/events/${eventID}`).then((response) => {
-        console.log(response);
         return response.data;
     });
 };
@@ -75,7 +70,6 @@ export const patchEventDates = (dateUpdate: object, eventID: number) => {
     return beApi
         .delete(`/api/events/${eventID}`, dateUpdate)
         .then((response) => {
-            console.log(response);
             return response.data;
         });
 };
@@ -86,6 +80,11 @@ export const getRepos = () => {
     });
 };
 
+export const getLanguages = () => {
+    return beApi.get("/api/languages").then((response) => {
+        return response.data.languages;
+    });
+};
 
 export const getGHLanguages = (repo_name: any) => {
     return beApi.get(`/ghapi/languages_used/${repo_name}`).then((response) => {

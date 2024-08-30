@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 
-import { getGHLanguages, getRepos } from "../../../../api";
-import RepoSingleCard from "./RepoSingleCard";
-import RepoLanguagePolarChart from "./RepoLanguagePolarChart";
+import { getRepos } from "../../../../api";
 
-const ReposHandler = () => {
+const ReposHandler = ({
+    setReposData,
+}: {
+    reposData: any;
+    setReposData: any;
+}) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [reposData, setReposData] = useState([]);
-    const [repoLanguageData, setRepoLanguageData] = useState([]);
 
     useEffect(() => {
         setIsLoading(true);
@@ -23,25 +24,7 @@ const ReposHandler = () => {
     }, []);
 
     if (isLoading) return <p>Loading Repos</p>;
-    return (
-        <div className="Content__component">
-            Repos
-            <ul>
-                {reposData.map((repoData: any) => {
-                    return (
-                        <li key={repoData.repo_id}>
-                            <RepoSingleCard
-                                repoData={repoData}
-                                repoLanguageData={repoLanguageData}
-                                setRepoLanguageData={setRepoLanguageData}
-                            />
-                        </li>
-                    );
-                })}
-            </ul>
-            <RepoLanguagePolarChart repoLanguageData={repoLanguageData} />
-        </div>
-    );
+    return <div className="Content__component">Repos</div>;
 };
 
 export default ReposHandler;

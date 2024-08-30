@@ -1,48 +1,31 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import { getGHLanguages } from "../../../../api";
+import RepoLanguagePolarChart from "./RepoLanguagePolarChart";
 
 const RepoSingleCard = ({
-    repoData,
+    reposDataSingleElement,
     repoLanguageData,
-    setRepoLanguageData,
 }: {
-    repoData: any;
+    reposDataSingleElement: any;
     repoLanguageData: any;
-    setRepoLanguageData: any;
 }) => {
-    const [isLoading, setIsLoading] = useState(false);
+    const [showChart, setShowChart] = useState(false);
 
-    // useEffect(() => {
-    //     setIsLoading(true);
-    //     console.log("RepoSingleCard Use Effect()");
-    //     getGHLanguages(repoData.name)
-    //         .then((repoLanguage) => {
-    //             console.log(repoLanguageData)
-    //             setRepoLanguageData([repoLanguage]);
-    //             setIsLoading(false);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-    // }, []);
+    const toggleShowChart = () => {
+        setShowChart(!showChart);
+    };
 
-    // getGHLanguages(repoData.name)
-    //     .then((repoLanguage) => {
-    //         console.log(repoData.name);
-
-    //         console.log(repoLanguage);
-
-    //         setIsLoading(false);
-    //     })
-    //     .catch((error) => {});
-
-    const handleRepoSelect = () => {};
-
-    if (isLoading) return <p>Loading Repo Language</p>;
     return (
-        <div className="Content__component">
-            <button onClick={handleRepoSelect}>{repoData.name}</button>
+        <div className="Content__single-repo">
+            <button onClick={toggleShowChart}>
+                {reposDataSingleElement.name}
+            </button>
+            {showChart && (
+                <RepoLanguagePolarChart
+                    reposDataSingleElement={reposDataSingleElement}
+                    repoLanguageData={repoLanguageData}
+                />
+            )}
         </div>
     );
 };

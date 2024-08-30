@@ -2,28 +2,35 @@ import { PolarArea } from "react-chartjs-2";
 import "../../../styles/Chart.css";
 
 const RepoLanguagePolarChart = ({
+    reposDataSingleElement,
     repoLanguageData,
 }: {
+    reposDataSingleElement: any;
     repoLanguageData: any;
 }) => {
-    console.log("repoLanguageData " + repoLanguageData);
+    const filteredRepoLanguagesAndSize = repoLanguageData.filter(
+        (element: any) => {
+            if (
+                element.full_name_languages === reposDataSingleElement.full_name
+            ) {
+                return JSON.parse(element.languages_and_size);
+            }
+        }
+    );
+    if(filteredRepoLanguagesAndSize === undefined) return
+    if(filteredRepoLanguagesAndSize === null) return
+    if(filteredRepoLanguagesAndSize.length === 0) return
 
-    const polarLabels = [1,2,3]
-    // repoLanguageData.map((element) => {
-    //     console.log(element);
-    //     for (const key in element) {
-    //         return key;
-    //     }
-    // });
+    const firstInArr = filteredRepoLanguagesAndSize[0]
 
-    const polarDatasetLabels = [4,5,6]
-    // repoLanguageData.map((element) => {
-    //     console.log(element);
-    //     for (const key in element) {
-    //         return element[key];
-    //     }
-    // });
+    const dataObject = JSON.parse(firstInArr["languages_and_size"])
 
+    const polarLabels = [];
+    const polarDatasetLabels = [];
+    for (const key in dataObject) {
+        polarLabels.push(key);
+        polarDatasetLabels.push(dataObject[key]);
+    }
 
     const polarAreaChartOneData = {
         labels: polarLabels,
@@ -41,8 +48,6 @@ const RepoLanguagePolarChart = ({
             },
         ],
     };
-
-    console.log(polarAreaChartOneData.datasets);
 
     return (
         <div className="Chart-3">

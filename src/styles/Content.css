@@ -5,3 +5,16 @@
 .Content__delete-confirm-button {
     background-color: red;
 }
+
+.Content__container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Content__container ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+.Content__container button {
+    width: fit-content;
+}
