@@ -6,13 +6,14 @@ import "../../../styles/Constructor.css";
 import BarChartOne from "./BarChartOne";
 import LineChartOne from "./LineChartOne";
 // import GanttChartOneG from "./GanttChartOneG";
-import TimelineChartOneG from "./TimelineChartOneG";
+// import TimelineChartOneG from "./TimelineChartOneG";
 import PolarAreaChartOne from "./PolarAreaChartOne";
 import DoughnutChartOne from "./DoughnutChartOne";
 import RadarChartOne from "./RadarChartOne";
 
 import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
+import TimelineRC from "./TimelineRC";
 Chart.register(CategoryScale);
 
 const ChartConstructor = ({
@@ -48,10 +49,14 @@ const ChartConstructor = ({
             {eventsData[0] !== undefined ? (
                 <>
                     <LineChartOne eventsData={eventsData} />
-                    <TimelineChartOneG
+                    <TimelineRC
                         eventsData={eventsData}
                         setEventID={setEventID}
                     />
+                    {/* <TimelineChartOneG
+                        eventsData={eventsData}
+                        setEventID={setEventID}
+                    /> */}
                     <DoughnutChartOne eventsData={eventsData} />
                     <BarChartOne eventsData={eventsData} />
                     <PolarAreaChartOne eventsData={eventsData} />
