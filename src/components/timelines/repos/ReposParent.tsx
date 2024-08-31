@@ -15,7 +15,6 @@ const ReposParent = () => {
                 repoLanguageData={repoLanguageData}
                 setRepoLanguageData={setRepoLanguageData}
             />
-            {/* {reposData.length > 0 && repoLanguageData.length > 0 ? ( */}
                 <ul>
                     {reposData.map((reposDataSingleElement: any) => {
                         return (
@@ -30,7 +29,6 @@ const ReposParent = () => {
                         );
                     })}
                 </ul>
-            {/* ) : null} */}
         </div>
     );
 };

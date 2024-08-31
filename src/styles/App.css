@@ -102,6 +102,7 @@ button:hover {
         grid-template-rows: min-content auto auto;
         grid-template-areas:
             "Header Nav"
-            "Sidebar Content";
+            "Sidebar Sidebar"
+            "Content Content";
     }
 }
