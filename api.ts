@@ -86,6 +86,12 @@ export const getLanguages = () => {
     });
 };
 
+export const getFeelings = () => {
+    return beApi.get("/api/feelings").then((response) => {
+        return response.data.feelings;
+    });
+};
+
 export const getGHLanguages = (repo_name: any) => {
     return beApi.get(`/ghapi/languages_used/${repo_name}`).then((response) => {
         return response.data.languages;

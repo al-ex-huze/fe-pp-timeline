@@ -5,27 +5,87 @@ import "chartjs-adapter-date-fns";
 
 import "../../../styles/Constructor.css";
 
-const LineChartOne = ({ eventsData }: { eventsData: any }) => {
+const LineChartOne = ({ feelingsData }: { feelingsData: any }) => {
     const [lineChartOneData] = useState({
-        labels: eventsData.map((data: any) => data.start_date),
+        labels: feelingsData.map((data: any) => data.week_start_date),
         datasets: [
             {
                 label: "Knowledge ",
-                data: eventsData.map((data: any) => {
-                    return data.event_id;
+                data: feelingsData.map((data: any) => {
+                    return data.knowledge;
                 }),
                 fill: false,
                 borderColor: "rgb(75, 192, 192)",
                 tension: 0.2,
                 borderWidth: 1,
             },
+            {
+                label: "Experience ",
+                data: feelingsData.map((data: any) => {
+                    return data.experience;
+                }),
+                fill: false,
+                borderColor: "rgb(75, 92, 192)",
+                tension: 0.2,
+                borderWidth: 1,
+            },
+            {
+                label: "Enthusiasm ",
+                data: feelingsData.map((data: any) => {
+                    return data.enthusiasm;
+                }),
+                fill: false,
+                borderColor: "rgb(75, 192, 92)",
+                tension: 0.2,
+                borderWidth: 1,
+            },
+            {
+                label: "Confidence ",
+                data: feelingsData.map((data: any) => {
+                    return data.confidence;
+                }),
+                fill: false,
+                borderColor: "rgb(175, 192, 192)",
+                tension: 0.2,
+                borderWidth: 1,
+            },
+            {
+                label: "Passion ",
+                data: feelingsData.map((data: any) => {
+                    return data.passion;
+                }),
+                fill: false,
+                borderColor: "rgb(275, 292, 92)",
+                tension: 0.2,
+                borderWidth: 1,
+            },
+            {
+                label: "Wisdom ",
+                data: feelingsData.map((data: any) => {
+                    return data.wisdom;
+                }),
+                fill: false,
+                borderColor: "rgb(275, 92, 192)",
+                tension: 0.2,
+                borderWidth: 1,
+            },
+            {
+                label: "Despair ",
+                data: feelingsData.map((data: any) => {
+                    return data.despair;
+                }),
+                fill: false,
+                borderColor: "rgb(275, 192, 92)",
+                tension: 0.2,
+                borderWidth: 1,
+            },
         ],
     });
 
-    const [minString] = useState(String(eventsData[0].start_date));
-    const [maxString] = useState(
-        String(eventsData[eventsData.length - 1].end_date)
-    );
+    // const [minString] = useState(String(feelingsData[0].week_start_date));
+    // const [maxString] = useState(
+    //     String(feelingsData[feelingsData.length - 1].week_end_date)
+    // );
 
     return (
         <div className="Chart-Line">
@@ -61,8 +121,8 @@ const LineChartOne = ({ eventsData }: { eventsData: any }) => {
                                         year: "yyyy-MM-dd",
                                     },
                                 },
-                                min: minString,
-                                max: maxString,
+                                min: "2024-1-1",
+                                max: "2024-12-31",
                             },
                             y: {
                                 display: false,
