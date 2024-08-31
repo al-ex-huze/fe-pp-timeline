@@ -4,16 +4,15 @@ import { getEvents } from "../../../../api";
 import "../../../styles/Constructor.css";
 
 import BarChartOne from "./BarChartOne";
-import LineChartOne from "./LineChartOne";
-// import GanttChartOneG from "./GanttChartOneG";
-// import TimelineChartOneG from "./TimelineChartOneG";
+import TimelineChartOneG from "./TimelineChartOneG";
 import PolarAreaChartOne from "./PolarAreaChartOne";
 import DoughnutChartOne from "./DoughnutChartOne";
 import RadarChartOne from "./RadarChartOne";
 
+import LineConstructor from "./LineConstructor";
+
 import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
-import TimelineRC from "./TimelineRC";
 Chart.register(CategoryScale);
 
 const ChartConstructor = ({
@@ -48,20 +47,15 @@ const ChartConstructor = ({
         <div className="Constructor">
             {eventsData[0] !== undefined ? (
                 <>
-                    <LineChartOne eventsData={eventsData} />
-                    <TimelineRC
+                    <TimelineChartOneG
                         eventsData={eventsData}
                         setEventID={setEventID}
                     />
-                    {/* <TimelineChartOneG
-                        eventsData={eventsData}
-                        setEventID={setEventID}
-                    /> */}
+                    <LineConstructor />
                     <DoughnutChartOne eventsData={eventsData} />
                     <BarChartOne eventsData={eventsData} />
                     <PolarAreaChartOne eventsData={eventsData} />
                     <RadarChartOne eventsData={eventsData} />
-                    {/* <GanttChartOneG eventsData={eventsData} /> */}
                 </>
             ) : null}
         </div>

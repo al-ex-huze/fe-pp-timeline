@@ -21,9 +21,9 @@
         grid-template-columns: 25% 25% 25% 25%;
         grid-template-rows: auto auto auto auto auto;
         grid-template-areas:
-            "Chart-1 Chart-2 Chart-3 Chart-4"
             "Timeline Timeline Timeline Timeline"
-            "Chart-Line Chart-Line Chart-Line Chart-Line";
+            "Chart-Line Chart-Line Chart-Line Chart-Line"
+            "Chart-1 Chart-2 Chart-3 Chart-4"
     }
 }
 
