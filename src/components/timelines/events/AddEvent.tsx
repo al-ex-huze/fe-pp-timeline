@@ -8,7 +8,14 @@ import { postEvent } from "../../../../api";
 
 import ErrorComponent from "../../Error-Component";
 
-const AddEvent = () => {
+const AddEvent = ({
+    // toReloadAddEvent,
+    setToReloadAddEvent,
+}: {
+    toReloadAddEvent: any;
+    setToReloadAddEvent: any;
+}) => {
+    setToReloadAddEvent(false);
     const [isCreating, setIsCreating] = useState(false);
     const [addEventError, setAddEventError] = useState("");
     const [eventTitleInput, setEventTitleInput] = useState("");
@@ -16,7 +23,7 @@ const AddEvent = () => {
     const [startDateInput, setStartDateInput] = useState(new Date());
     const [endDateInput, setEndDateInput] = useState(new Date());
 
-    const { timeline_name} = useParams();
+    const { timeline_name } = useParams();
 
     const handleSubmitNewEvent = (event: any) => {
         event.preventDefault();
@@ -29,16 +36,18 @@ const AddEvent = () => {
             start_date: startDateInput,
             end_date: endDateInput,
         };
-        postEvent(newEvent).then(() => {
-            setEventTitleInput("");
-            setEventBody("");
-            setIsCreating(false);
-        })
-            .catch((error) => {
-                console.log(error)
-                setAddEventError("Unsuccessful - Something Went Wrong");
+        postEvent(newEvent)
+            .then(() => {
+                setToReloadAddEvent(true);
+                setEventTitleInput("");
+                setEventBody("");
+                setIsCreating(false);
             })
-    }
+            .catch((error) => {
+                console.log(error);
+                setAddEventError("Unsuccessful - Something Went Wrong");
+            });
+    };
 
     if (addEventError) return <ErrorComponent error={addEventError} />;
     if (isCreating) return <p>Please Wait</p>;
@@ -57,7 +66,9 @@ const AddEvent = () => {
                                         placeholder="Event *"
                                         value={eventTitleInput}
                                         onChange={(event) => {
-                                            setEventTitleInput(event.target.value);
+                                            setEventTitleInput(
+                                                event.target.value
+                                            );
                                         }}
                                     />
                                 </label>
@@ -73,10 +84,20 @@ const AddEvent = () => {
                                     />
                                 </label>
                                 <label>
-                                    <DatePicker selected={startDateInput} onChange={date => date && setStartDateInput(date)} />
+                                    <DatePicker
+                                        selected={startDateInput}
+                                        onChange={(date) =>
+                                            date && setStartDateInput(date)
+                                        }
+                                    />
                                 </label>
                                 <label>
-                                    <DatePicker selected={endDateInput} onChange={date => date && setEndDateInput(date)} />
+                                    <DatePicker
+                                        selected={endDateInput}
+                                        onChange={(date) =>
+                                            date && setEndDateInput(date)
+                                        }
+                                    />
                                 </label>
                             </li>
                         </ul>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import LineChartOne from "./LineChartOne";
 import { getFeelings } from "../../../../api";
+import LineApex from "./LineApex";
 
 const LineConstructor = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -23,7 +24,8 @@ const LineConstructor = () => {
     return (
         <>
             LineConstructor
-                <LineChartOne feelingsData={feelingsData} />
+            <LineApex feelingsData={feelingsData} />
+            {/* <LineChartOne feelingsData={feelingsData} /> */}
         </>
     );
 };

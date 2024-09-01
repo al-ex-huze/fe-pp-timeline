@@ -16,6 +16,7 @@ const TimelineSingleCard = () => {
     const [timelineSingleData, setTimelineSingleData] = useState({});
     const [eventSingleData, setEventSingleData] = useState({});
     const [eventID, setEventID] = useState(0);
+    const [toReloadAddEvent, setToReloadAddEvent] = useState(false);
 
     const { timeline_name } = useParams();
 
@@ -46,7 +47,12 @@ const TimelineSingleCard = () => {
                     setEventSingleData={setEventSingleData}
                 />
                 {/* <ReposParent /> */}
-                <AddEvent />
+                {!toReloadAddEvent ? (
+                    <AddEvent
+                        toReloadAddEvent={toReloadAddEvent}
+                        setToReloadAddEvent={setToReloadAddEvent}
+                    />
+                ) : null}
                 <DeleteTimeline timelineToDelete={timeline_name} />
             </div>
         </>
