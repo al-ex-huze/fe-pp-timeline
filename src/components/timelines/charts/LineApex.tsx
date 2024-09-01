@@ -165,7 +165,7 @@ const LineApex = ({ feelingsData }: { feelingsData: any }) => {
             //     display: flex,
             // },
             fixed: {
-                enabled: false,
+                enabled: true,
                 position: "topRight",
                 offsetX: 0,
                 offsetY: 0,
@@ -183,7 +183,7 @@ const LineApex = ({ feelingsData }: { feelingsData: any }) => {
             floating: false,
             decimalsInFloat: undefined,
             overwriteCategories: undefined,
-            position: "top",
+            position: "bottom",
             labels: {
                 show: true,
                 rotate: -45,
@@ -201,7 +201,7 @@ const LineApex = ({ feelingsData }: { feelingsData: any }) => {
                     cssClass: "apexcharts-xaxis-label",
                 },
                 offsetX: 0,
-                offsetY: 0,
+                offsetY: 2,
                 format: undefined,
                 formatter: undefined,
                 datetimeUTC: true,

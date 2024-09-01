@@ -207,6 +207,10 @@ const TimelineApex = ({
             type: "datetime",
             min: new Date(2024, 0, 0).getTime(),
             max: new Date(2024, 11, 0).getTime(),
+            position: "top",
+            labels: {
+                show: false,
+            },
         },
         yaxis: {
             show: false,
