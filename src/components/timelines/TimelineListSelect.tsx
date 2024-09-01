@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getTimelines } from "../../../api";
-import CarouselSidebar from "./carousels/CarouselSidebar";
-// import TimelineListSelect from "./TimelineListSelect";
 
 const TimelineSidebar = () => {
+    const navigate = useNavigate();
+    const [selectedValue, setSelectedValue] = useState("");
     const [timelinesData, setTimelinesData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -20,11 +21,21 @@ const TimelineSidebar = () => {
             });
     }, []);
 
+    const handleListSelect = (e: any) => {
+        setSelectedValue(e.target.value);
+        navigate(`/timelines/${e.target.value}`);
+    };
+
     if (isLoading) return <p>Loading Sidebar</p>;
     return (
         <div className="Sidebar">
-            <CarouselSidebar timelinesData={timelinesData}></CarouselSidebar>
-            {/* <TimelineListSelect /> */}
+            <select value={selectedValue} onChange={(e) => handleListSelect(e)}>
+                {timelinesData.map((item: any) => (
+                    <option key={item.timeline_name} value={item.timeline_name}>
+                        {item.timeline_name}
+                    </option>
+                ))}
+            </select>
         </div>
     );
 };

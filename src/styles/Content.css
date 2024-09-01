@@ -2,10 +2,6 @@
     grid-area: Content;
 }
 
-.Content__delete-confirm-button {
-    background-color: red;
-}
-
 .Content__container {
     display: flex;
     flex-wrap: wrap;
@@ -15,6 +11,15 @@
     display: flex;
     flex-wrap: wrap;
 }
+
 .Content__container button {
     width: fit-content;
+}
+
+.Content__delete-confirm-button {
+    background-color: red;
+}
+
+.Content__delete-confirm-button:hover {
+    background-color: red;
 }
