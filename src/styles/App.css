@@ -84,10 +84,9 @@ button:hover {
     width: 100%;
     display: grid;
     grid-template-columns: 25% 75%;
-    grid-template-rows: auto;
+    grid-template-rows: min-content auto auto;
     grid-template-areas:
-        "Header Header"
-        "Nav Nav"
+        "Header Nav"
         "Sidebar Sidebar"
         "Content Content";
 }
