@@ -4,6 +4,7 @@ import { getTimelines } from "../../../api";
 
 import AddTimeline from "./AddTimeline";
 import TimelineListCard from "./TimelineListCard";
+import CarouselContent from "./carousels/CarouselContent";
 
 const TimelineSelector = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +25,7 @@ const TimelineSelector = () => {
     if (isLoading) return <p>Loading Timelines</p>;
     return (
         <div className="Content_component">
-            TimelineSelector
+            <CarouselContent timelinesData={timelinesData} />
             <ul>
                 {timelinesData.map((timeline: any) => {
                     return (

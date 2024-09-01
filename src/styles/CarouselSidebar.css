@@ -1,0 +1,48 @@
+.Sidebar__Carousel {
+    height: 100%;
+    width: 100%;
+}
+
+.Content__Carousel-swiper-slide {
+    margin-top: 0.6rem;
+    margin-bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.Content__Carousel-swiper-slide img {
+    display: block;
+}
+
+.Sidebar__Carousel-micro-card {
+    align-self: center;
+    display: block;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 0px;
+    /* border: 0px solid transparent; */
+    /* padding: 0.6em 1.2em; */
+    padding-top: 1rem;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #001320;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+
+.Sidebar__Carousel-micro-card:hover {
+    background-color: #00192a;
+    border-color: #8f9daf;
+    box-shadow: 0 0px #161b22, 0 0 10px #161b22, 0 0 10px #161b22;
+}
+
+.Sidebar__Carousel-mySwiper {
+    width: 100%;
+    height: 100%;
+}

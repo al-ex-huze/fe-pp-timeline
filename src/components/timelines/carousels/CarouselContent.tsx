@@ -6,7 +6,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import "../../../styles/Carousel.css";
+import "../../../styles/CarouselContent.css";
 
 import {
     Autoplay,
@@ -14,17 +14,20 @@ import {
     Navigation,
     Pagination,
 } from "swiper/modules";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
-const CarouselContent = () => {
+const CarouselContent = ({ timelinesData }: { timelinesData: any }) => {
     return (
-        <div className="Carousel">
+        <div className="Content__Carousel">
             <Swiper
+                // cssMode={true}
+                speed={100}
                 spaceBetween={50}
                 // effect={"coverflow"}
                 grabCursor={true}
                 centeredSlides={false}
-                slidesPerView={3}
+                slidesPerView={2}
                 // coverflowEffect={{
                 //     rotate: 0,
                 //     stretch: 0,
@@ -35,23 +38,33 @@ const CarouselContent = () => {
                 navigation={true}
                 loop={true}
                 autoplay={{
-                    delay: 1000,
-                    disableOnInteraction: false,
+                    delay: 4000,
+                    disableOnInteraction: true,
                 }}
                 // pagination={{
                 //     clickable: true,
                 // }}
                 modules={[Autoplay, EffectCoverflow, Navigation, Pagination]}
-                className="mySwiper"
+                className="Content__Carousel-mySwiper"
             >
-                <SwiperSlide>One</SwiperSlide>
-                <SwiperSlide>
-Two
-                </SwiperSlide>
-                <SwiperSlide>Three</SwiperSlide>
-                <SwiperSlide>Four</SwiperSlide>
-                <SwiperSlide>Five</SwiperSlide>
-                <SwiperSlide>Six</SwiperSlide>
+                <ul>
+                    {timelinesData.map((timeline: any) => {
+                        return (
+                            <li key={timeline.timeline_name}>
+                                <SwiperSlide className="Content__Carousel-swiper-slide">
+                                    <Link
+                                        className="Content__Carousel-micro-card"
+                                        to={`/timelines/${timeline.timeline_name}`}
+                                    >
+                                        {/* <button> */}
+                                        {timeline.timeline_name}
+                                        {/* </button> */}
+                                    </Link>
+                                </SwiperSlide>
+                            </li>
+                        );
+                    })}
+                </ul>
             </Swiper>
         </div>
     );

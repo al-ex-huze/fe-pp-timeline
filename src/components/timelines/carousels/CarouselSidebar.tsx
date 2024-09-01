@@ -6,7 +6,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import "../../../styles/Carousel.css";
+import "../../../styles/CarouselSidebar.css";
 
 import {
     Autoplay,
@@ -18,14 +18,16 @@ import { Link } from "react-router-dom";
 
 const CarouselSidebar = ({ timelinesData }: { timelinesData: any }) => {
     return (
-        <div className="Carousel">
+        <div className="Sidebar__Carousel">
             <Swiper
                 // cssMode={true}
+                speed={100}
                 spaceBetween={50}
                 // effect={"coverflow"}
                 grabCursor={true}
                 centeredSlides={false}
                 slidesPerView={2}
+                style={{ height: "100%" }}
                 // coverflowEffect={{
                 //     rotate: 0,
                 //     stretch: 0,
@@ -36,28 +38,26 @@ const CarouselSidebar = ({ timelinesData }: { timelinesData: any }) => {
                 navigation={true}
                 loop={true}
                 autoplay={{
-                    delay: 1000,
+                    delay: 4000,
                     disableOnInteraction: true,
                 }}
                 // pagination={{
                 //     clickable: true,
                 // }}
                 modules={[Autoplay, EffectCoverflow, Navigation, Pagination]}
-                className="mySwiper"
+                className="Sidebar__Carousel-mySwiper"
             >
                 <ul>
                     {timelinesData.map((timeline: any) => {
                         return (
                             <li key={timeline.timeline_name}>
-                                <SwiperSlide className="Carousel__swiper-slide">
-                                    <Link
-                                        className="Carousel-Sidebar__micro-card"
-                                        to={`/timelines/${timeline.timeline_name}`}
-                                    >
-                                        {/* <button> */}
-                                        {timeline.timeline_name}
-                                        {/* </button> */}
-                                    </Link>
+                                <SwiperSlide className="Sidebar__Carousel-swiper-slide" >
+                                        <Link
+                                            className="Sidebar__Carousel-micro-card"
+                                            to={`/timelines/${timeline.timeline_name}`}
+                                        >
+                                            {timeline.timeline_name}
+                                        </Link>
                                 </SwiperSlide>
                             </li>
                         );
