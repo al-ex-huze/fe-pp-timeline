@@ -26,6 +26,8 @@ const AddEvent = ({
     const [addEventError, setAddEventError] = useState("");
     const [eventTitleInput, setEventTitleInput] = useState("");
     const [eventBody, setEventBody] = useState("");
+    const [eventSkills, setEventSkills] = useState("");
+    const [eventTopics, setEventTopics] = useState("");
     const [startDateInput, setStartDateInput] = useState(new Date());
     const [endDateInput, setEndDateInput] = useState(new Date());
 
@@ -39,6 +41,8 @@ const AddEvent = ({
             timeline: timeline_name,
             title: eventTitleInput,
             body: eventBody,
+            skills: eventSkills,
+            topics: eventTopics,
             start_date: startDateInput,
             end_date: endDateInput,
         };
@@ -88,6 +92,26 @@ const AddEvent = ({
                                         value={eventBody}
                                         onChange={(event) => {
                                             setEventBody(event.target.value);
+                                        }}
+                                    />
+                                </label>
+                                <label>
+                                    <input
+                                        className="Sidebar__skills-body-input"
+                                        placeholder="Skills"
+                                        value={eventSkills}
+                                        onChange={(event) => {
+                                            setEventSkills(event.target.value);
+                                        }}
+                                    />
+                                </label>
+                                <label>
+                                    <input
+                                        className="Sidebar__topics-body-input"
+                                        placeholder="Topics"
+                                        value={eventTopics}
+                                        onChange={(event) => {
+                                            setEventTopics(event.target.value);
                                         }}
                                     />
                                 </label>
