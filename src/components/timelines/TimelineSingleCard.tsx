@@ -9,6 +9,7 @@ import DeleteTimeline from "../timelines/DeleteTimeline";
 import ChartConstructor from "./charts/ChartConstructor";
 import AddEvent from "./events/AddEvent";
 import EventSelector from "./events/EventSelector";
+import AddTimeline from "./AddTimeline";
 // import ReposParent from "./repos/ReposParent";
 
 const TimelineSingleCard = () => {
@@ -35,7 +36,7 @@ const TimelineSingleCard = () => {
     return (
         <>
             <div className="Content">
-                TimelineSingleCard {timeline_name}
+                <h1>{timeline_name}</h1>
                 <ChartConstructor
                     setEventID={setEventID}
                     timelineSingleData={timelineSingleData}
@@ -53,6 +54,8 @@ const TimelineSingleCard = () => {
                         setToReloadAddEvent={setToReloadAddEvent}
                     />
                 ) : null}
+                            <AddTimeline />
+
                 <DeleteTimeline timelineToDelete={timeline_name} />
             </div>
         </>

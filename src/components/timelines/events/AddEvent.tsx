@@ -16,6 +16,12 @@ const AddEvent = ({
     setToReloadAddEvent: any;
 }) => {
     setToReloadAddEvent(false);
+    const [showAddEventToggle, setShowAddEventToggle] = useState(false);
+
+    const toggleShowAddEvent = () => {
+        setShowAddEventToggle(!showAddEventToggle);
+    };
+
     const [isCreating, setIsCreating] = useState(false);
     const [addEventError, setAddEventError] = useState("");
     const [eventTitleInput, setEventTitleInput] = useState("");
@@ -53,8 +59,10 @@ const AddEvent = ({
     if (isCreating) return <p>Please Wait</p>;
     if (timeline_name !== "Not Set") {
         return (
-            <div className="Content__component">
-                AddEvent
+            <div className="">
+                <button onClick={toggleShowAddEvent}>AddEvent</button>
+                {showAddEventToggle && (
+
                 <div className="Content__add-event-form-container">
                     <form onSubmit={handleSubmitNewEvent}>
                         <ul>
@@ -104,6 +112,7 @@ const AddEvent = ({
                         <button type="submit">Add Event</button>
                     </form>
                 </div>
+                )}
             </div>
         );
     }
