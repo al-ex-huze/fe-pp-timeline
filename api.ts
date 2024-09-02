@@ -39,17 +39,15 @@ export const getEvents = (
         timeline_name?: string;
         sort_by?: string;
         order?: string;
-    } = { order: orderDirection };
+    } = { timeline_name: timelineFilter, order: orderDirection };
     if (sortByQuery) params.sort_by = sortByQuery;
     if (timelineFilter) params.timeline_name = timelineFilter;
 
-    return beApi
-        .get("/api/events", {
-            params,
-        })
-        .then((response) => {
-            return response.data.events;
-        });
+    console.log("params " + JSON.stringify(params));
+    return beApi.get("/api/events", { params: params }).then((response) => {
+        console.log("response " + JSON.stringify(response));
+        return response.data.events;
+    });
 };
 
 export const postEvent = (newEvent: object) => {

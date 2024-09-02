@@ -6,7 +6,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import "../../../styles/Carousel.css";
+import "../../styles/Carousel.css";
 
 import {
     Autoplay,
@@ -17,13 +17,13 @@ import {
 import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
-const Carousel = ({ timelinesData }: { timelinesData: any }) => {
+const Carousel = ({ carouselData }: { carouselData: any }) => {
     return (
         <div className="Carousel">
             <Swiper
                 // cssMode={true}
-                speed={100}
-                spaceBetween={50}
+                speed={5000}
+                // spaceBetween={0}
                 effect={"coverflow"}
                 grabCursor={true}
                 centeredSlides={true}
@@ -38,7 +38,7 @@ const Carousel = ({ timelinesData }: { timelinesData: any }) => {
                 navigation={true}
                 loop={true}
                 autoplay={{
-                    delay: 4000,
+                    delay: 400,
                     disableOnInteraction: true,
                 }}
                 // pagination={{
@@ -47,21 +47,25 @@ const Carousel = ({ timelinesData }: { timelinesData: any }) => {
                 modules={[Autoplay, EffectCoverflow, Navigation, Pagination]}
                 className="mySwiper"
             >
-                <ul>
-                    {timelinesData.map((timeline: any) => {
-                        return (
-                            <li key={timeline.timeline_name}>
-                                <SwiperSlide>
-                                    <Link
-                                        to={`/timelines/${timeline.timeline_name}`}
-                                    >
-                                        {timeline.timeline_name}
-                                    </Link>
-                                </SwiperSlide>
-                            </li>
-                        );
-                    })}
-                </ul>
+                {carouselData ? (
+                    <ul>
+                        {carouselData.map((datum: any) => {
+                            if (datum.timeline === "Project") {
+                                return (
+                                    <li key={datum.title}>
+                                        <SwiperSlide>
+                                            <Link
+                                                to={`/timelines/${datum.title}`}
+                                            >
+                                                {datum.title}
+                                            </Link>
+                                        </SwiperSlide>
+                                    </li>
+                                );
+                            }
+                        })}
+                    </ul>
+                ) : null}
             </Swiper>
         </div>
     );

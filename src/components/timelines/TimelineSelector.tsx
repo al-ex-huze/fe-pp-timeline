@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { getTimelines } from "../../../api";
 
 // import TimelineListCard from "./TimelineListCard";
-import CarouselContent from "./carousels/CarouselContent";
-import Carousel from "./carousels/Carousel";
+import CarouselContent from "../carousels/CarouselContent";
+import Carousel from "../carousels/Carousel";
 
 const TimelineSelector = () => {
     const [isLoading, setIsLoading] = useState(false);

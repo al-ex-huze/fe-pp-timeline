@@ -6,7 +6,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import "../../../styles/CarouselContent.css";
+import "../../styles/CarouselContent.css";
 
 import {
     Autoplay,
