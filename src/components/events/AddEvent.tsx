@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 import { postEvent } from "../../../api";
 
 import ErrorComponent from "../Error-Component";
-
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 const AddEvent = ({ timelineSingleData }: { timelineSingleData: any }) => {
     const { timeline_name } = useParams();
