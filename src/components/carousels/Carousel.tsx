@@ -14,10 +14,19 @@ import {
     Navigation,
     Pagination,
 } from "swiper/modules";
-import { Link } from "react-router-dom";
-// import { Link } from "react-router-dom";
 
-const Carousel = ({ carouselData }: { carouselData: any }) => {
+const Carousel = ({
+    carouselData,
+    setProjectEventID,
+}: {
+    carouselData: any;
+    setProjectEventID: any;
+}) => {
+    const handleSelectProject = (selectedID: any) => {
+        console.log("HANDLE " + selectedID);
+        setProjectEventID(selectedID);
+    };
+    if (carouselData == undefined) return <div> UNDEFINED</div>;
     return (
         <div className="Carousel">
             <Swiper
@@ -47,25 +56,22 @@ const Carousel = ({ carouselData }: { carouselData: any }) => {
                 modules={[Autoplay, EffectCoverflow, Navigation, Pagination]}
                 className="mySwiper"
             >
-                {carouselData ? (
-                    <ul>
-                        {carouselData.map((datum: any) => {
-                            if (datum.timeline === "Project") {
-                                return (
-                                    <li key={datum.title}>
-                                        <SwiperSlide>
-                                            <Link
-                                                to={`/timelines/${datum.title}`}
-                                            >
-                                                {datum.title}
-                                            </Link>
-                                        </SwiperSlide>
-                                    </li>
-                                );
-                            }
-                        })}
-                    </ul>
-                ) : null}
+                {carouselData.map((datum: any) => {
+                    if (datum.timeline === "Project") {
+                        return (
+                            <SwiperSlide key={datum.event_id}>
+                                {/* <div onClick={setProjectEventID(datum.event_id)}> */}
+                                <div
+                                    onClick={() =>
+                                        handleSelectProject(datum.event_id)
+                                    }
+                                >
+                                    {datum.title}
+                                </div>
+                            </SwiperSlide>
+                        );
+                    }
+                })}
             </Swiper>
         </div>
     );

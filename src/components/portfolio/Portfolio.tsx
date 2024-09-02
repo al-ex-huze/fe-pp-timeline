@@ -9,16 +9,19 @@ import "../../styles/Portfolio.css";
 const Portfolio = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [projectEventsData, setProjectEventsData] = useState([]);
+    const [projectEventID, setProjectEventID] = useState(null)
 
     const [sortByQuery] = useState("");
     const [sortByIsAsc] = useState(true);
 
+    
+
     useEffect(() => {
-        console.log("Timeline UseEffect()");
+        console.log("Portfolio UseEffect()");
         setIsLoading(true);
         getEvents("Project", sortByQuery, sortByIsAsc)
             .then((events) => {
-                console.log(events);
+                // console.log(events);
                 setProjectEventsData(events);
                 setIsLoading(false);
             })
@@ -36,10 +39,10 @@ const Portfolio = () => {
             <div className="Content">
                 <div className="Portfolio__carousel-container">
                     <div className="Portfolio__carousel">
-                        <Carousel carouselData={projectEventsData} />
+                        <Carousel carouselData={projectEventsData} setProjectEventID={setProjectEventID} />
                     </div>
                     <div className="Portfolio__carousel">
-                        <CarouselTextScroller />
+                        <CarouselTextScroller projectEventID={projectEventID}/>
                     </div>
                 </div>
             </div>

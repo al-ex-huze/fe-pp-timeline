@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -11,8 +11,26 @@ import "../../styles/CarouselTextScroller.css";
 
 // import required modules
 import { FreeMode, Scrollbar, Mousewheel } from "swiper/modules";
+import { getEventByID } from "../../../api";
 
-const CarouselTextScroller = () => {
+const CarouselTextScroller = ({ projectEventID }: { projectEventID: any }) => {
+    const [isLoading, setIsLoading] = useState(false);
+    const [projectEventSingleData, setProjectEventSingleData] = useState(null);
+
+    // if (projectEventID !== null) {
+    useEffect(() => {
+        setIsLoading(true);
+        console.log("CarouselTextScroller Use Effect()");
+        console.log(projectEventID);
+        if (projectEventID !== null) {
+            getEventByID(projectEventID!).then((event) => {
+                setProjectEventSingleData(event);
+                setIsLoading(false);
+            });
+        }
+    }, [projectEventID]);
+
+    if (isLoading) return <p>"Look at all those projects!"</p>;
     return (
         <>
             <Swiper
@@ -25,29 +43,22 @@ const CarouselTextScroller = () => {
                 className="mySwiper__text-scroller"
             >
                 <SwiperSlide>
-                    <h4>Scroll Container</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        In luctus, ex eu sagittis faucibus, ligula ipsum
-                        sagittis magna, et imperdiet dolor lectus eu libero.
-                        Vestibulum venenatis eget turpis sed faucibus. Maecenas
-                        in ullamcorper orci, eu ullamcorper sem. Etiam elit
-                        ante, luctus non ante sit amet, sodales vulputate odio.
-                        Aenean tristique nisl tellus, sit amet fringilla nisl
-                        volutpat cursus. Quisque dignissim lectus ac nunc
-                        consectetur mattis. Proin vel hendrerit ipsum, et
-                        lobortis dolor. Vestibulum convallis, nibh et tincidunt
-                        tristique, nisl risus facilisis lectus, ut interdum orci
-                        nisl ac nunc. Cras et aliquam felis. Quisque vel ipsum
-                        at elit sodales posuere eget non est. Fusce convallis
-                        vestibulum dolor non volutpat. Vivamus vestibulum quam
-                        ut ultricies pretium.
-                    </p>
-                    
+                    <h4>Projects</h4>
+
+                    {projectEventSingleData === null ? (
+                        <p>"Look at all those projects!"</p>
+                    ) : (
+                        <>
+                            <p>{projectEventSingleData.title}</p>
+                            <p>{projectEventSingleData.body}</p>
+                            <p>{projectEventSingleData.skills}</p>
+                            <p>{projectEventSingleData.topics}</p>
+                        </>
+                    )}
                 </SwiperSlide>
             </Swiper>
         </>
     );
-}
+};
 
-export default CarouselTextScroller
+export default CarouselTextScroller;

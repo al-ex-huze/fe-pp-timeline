@@ -1,15 +1,11 @@
-import React, { useRef, useState } from "react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import "../../styles/CarouselProfile.css";
 
-// import required modules
 import { Parallax, Pagination, Navigation } from "swiper/modules";
 
 const CarouselProfile = () => {
@@ -36,7 +32,10 @@ const CarouselProfile = () => {
                     className="parallax-bg"
                     data-swiper-parallax="-23%"
                 >
-                    <img src="https://alimageexbuckhuetzepub.s3.eu-north-1.amazonaws.com/ah2003153.png" className="parallax-bg-img"/>
+                    <img
+                        src="https://alimageexbuckhuetzepub.s3.eu-north-1.amazonaws.com/ah2003153.png"
+                        className="parallax-bg-img"
+                    />
                 </div>
                 <SwiperSlide>
                     <div className="title" data-swiper-parallax="-300">
@@ -56,10 +55,10 @@ const CarouselProfile = () => {
                 </SwiperSlide>
                 <SwiperSlide>
                     <div className="title" data-swiper-parallax="-300">
-                    Profile
+                        Profile
                     </div>
                     <div className="subtitle" data-swiper-parallax="-200">
-                    Alex Hughes
+                        Alex Hughes
                     </div>
                     <div className="text" data-swiper-parallax="-100">
                         <p>
@@ -72,10 +71,10 @@ const CarouselProfile = () => {
                 </SwiperSlide>
                 <SwiperSlide>
                     <div className="title" data-swiper-parallax="-300">
-                    Profile
+                        Profile
                     </div>
                     <div className="subtitle" data-swiper-parallax="-200">
-                    Alex Hughes
+                        Alex Hughes
                     </div>
                     <div className="text" data-swiper-parallax="-100">
                         <p>
@@ -88,10 +87,11 @@ const CarouselProfile = () => {
                 </SwiperSlide>
                 <SwiperSlide>
                     <div className="title" data-swiper-parallax="-300">
-                    Profile
+                        Profile
                     </div>
                     <div className="subtitle" data-swiper-parallax="-200">
-                    Alex Hughes                    </div>
+                        Alex Hughes{" "}
+                    </div>
                     <div className="text" data-swiper-parallax="-100">
                         <p>
                             As a quick-learner, accustomed to facing unique

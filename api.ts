@@ -43,9 +43,9 @@ export const getEvents = (
     if (sortByQuery) params.sort_by = sortByQuery;
     if (timelineFilter) params.timeline_name = timelineFilter;
 
-    console.log("params " + JSON.stringify(params));
+    // console.log("params " + JSON.stringify(params));
     return beApi.get("/api/events", { params: params }).then((response) => {
-        console.log("response " + JSON.stringify(response));
+        // console.log("response " + JSON.stringify(response));
         return response.data.events;
     });
 };
