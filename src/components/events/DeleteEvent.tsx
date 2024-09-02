@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { deleteEventByID } from "../../../../api";
 
-import ErrorComponent from "../../Error-Component";
+import { deleteEventByID } from "../../../api";
+
+import ErrorComponent from "../Error-Component";
 
 const DeleteEvent = ({ eventSingleData }: { eventSingleData: any }) => {
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -16,11 +17,9 @@ const DeleteEvent = ({ eventSingleData }: { eventSingleData: any }) => {
     const handleDeleteEvent = () => {
         setIsDeleting(true);
         deleteEventByID(eventSingleData.event_id)
-            .then((confirmation) => {
-                if (confirmation) {
-                    setIsDeleting(false);
-                    setIsDeleted(true);
-                }
+            .then(() => {
+                setIsDeleting(false);
+                setIsDeleted(true);
             })
             .catch((error) => {
                 setIsDeleting(false);
@@ -32,8 +31,10 @@ const DeleteEvent = ({ eventSingleData }: { eventSingleData: any }) => {
     };
 
     if (deleteEventError) return <ErrorComponent error={deleteEventError} />;
-    if (isDeleting) return <div className="Content__micro-card">Please Wait</div>;
-    if (isDeleted) return <div className="Content__micro-card">Event Deleted</div>;
+    if (isDeleting)
+        return <div className="Content__micro-card">Please Wait</div>;
+    if (isDeleted)
+        return <div className="Content__micro-card">Event Deleted</div>;
     return (
         <div className="Content__component">
             <button onClick={toggleDeleteConfirm}>

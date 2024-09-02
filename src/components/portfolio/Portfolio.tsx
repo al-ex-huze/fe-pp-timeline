@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import PortfolioSidebar from "./Portfolio-Sidebar";
+// import PortfolioSidebar from "./Portfolio-Sidebar";
 import { getEvents } from "../../../api";
 import Carousel from "../carousels/Carousel";
-import CarouselTextScroller from "../carousels/CarouselTextScroller";
+import TextScrollerPortfolio from "../carousels/TextScrollerPortfolio";
 
 import "../../styles/Portfolio.css";
 
@@ -21,7 +21,6 @@ const Portfolio = () => {
         setIsLoading(true);
         getEvents("Project", sortByQuery, sortByIsAsc)
             .then((events) => {
-                // console.log(events);
                 setProjectEventsData(events);
                 setIsLoading(false);
             })
@@ -34,7 +33,7 @@ const Portfolio = () => {
     return (
         <>
             <div className="Sidebar">
-                <PortfolioSidebar />
+                {/* <PortfolioSidebar /> */}
             </div>
             <div className="Content">
                 <div className="Portfolio__carousel-container">
@@ -42,7 +41,7 @@ const Portfolio = () => {
                         <Carousel carouselData={projectEventsData} setProjectEventID={setProjectEventID} />
                     </div>
                     <div className="Portfolio__carousel">
-                        <CarouselTextScroller projectEventID={projectEventID}/>
+                        <TextScrollerPortfolio projectEventID={projectEventID}/>
                     </div>
                 </div>
             </div>

@@ -32,10 +32,7 @@ const CarouselProfile = () => {
                     className="parallax-bg"
                     data-swiper-parallax="-23%"
                 >
-                    <img
-                        src="https://alimageexbuckhuetzepub.s3.eu-north-1.amazonaws.com/ah2003153.png"
-                        className="parallax-bg-img"
-                    />
+                    <img src="https://alimageexbuckhuetzepub.s3.eu-north-1.amazonaws.com/ah2003153bg.png" />
                 </div>
                 <SwiperSlide>
                     <div className="title" data-swiper-parallax="-300">

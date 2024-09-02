@@ -1,11 +1,11 @@
 import CarouselProfile from "../carousels/CarouselProfile";
-import ProfileSidebar from "./Profile.-Sidebar";
+// import ProfileSidebar from "./Profile.-Sidebar";
 
 const Profile = () => {
     return (
         <>
             <div className="Sidebar">
-                <ProfileSidebar />
+                {/* <ProfileSidebar /> */}
             </div>
             <div className="Content"><CarouselProfile/></div>
         </>

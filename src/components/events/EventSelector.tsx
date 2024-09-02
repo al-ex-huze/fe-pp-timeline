@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 
-import { getEventByID } from "../../../../api";
 
-import "../../../styles/Constructor.css"
 
 import EventSingleCard from "./EventSingleCard";
+
+import "../../styles/Constructor.css"
+import { getEventByID } from "../../../api";
 
 const EventSelector = ({
     eventID,

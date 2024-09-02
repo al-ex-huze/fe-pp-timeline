@@ -1,23 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
-// Import Swiper React components
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Scrollbar, Mousewheel } from "swiper/modules";
 
-// Import Swiper styles
+import { getEventByID } from "../../../api";
+
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/scrollbar";
 
-import "../../styles/CarouselTextScroller.css";
+import "../../styles/TextScroller.css";
 
-// import required modules
-import { FreeMode, Scrollbar, Mousewheel } from "swiper/modules";
-import { getEventByID } from "../../../api";
-
-const CarouselTextScroller = ({ projectEventID }: { projectEventID: any }) => {
+const TextScrollerPortfolio = ({ projectEventID }: { projectEventID: any }) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [projectEventSingleData, setProjectEventSingleData] = useState(null);
+    const [projectEventSingleData, setProjectEventSingleData] = useState<any>(null);
 
-    // if (projectEventID !== null) {
     useEffect(() => {
         setIsLoading(true);
         console.log("CarouselTextScroller Use Effect()");
@@ -40,7 +36,7 @@ const CarouselTextScroller = ({ projectEventID }: { projectEventID: any }) => {
                 scrollbar={true}
                 mousewheel={true}
                 modules={[FreeMode, Scrollbar, Mousewheel]}
-                className="mySwiper__text-scroller"
+                className="mySwiper__text-scroller-portfolio"
             >
                 <SwiperSlide>
                     <h4>Projects</h4>
@@ -61,4 +57,4 @@ const CarouselTextScroller = ({ projectEventID }: { projectEventID: any }) => {
     );
 };
 
-export default CarouselTextScroller;
+export default TextScrollerPortfolio;

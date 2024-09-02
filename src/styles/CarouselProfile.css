@@ -24,12 +24,11 @@
     align-items: center;
     justify-content: center;
 }
-
+/* 
 .parallax-bg img {
-  margin-top: 10%;
-  width: 25%;
-}
-
+    
+} 
+*/
 .swiper-slide .title {
     font-size: 41px;
     font-weight: 300;

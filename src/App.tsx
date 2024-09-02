@@ -10,7 +10,6 @@ import Header from "./components/Header";
 import Nav from "./components/Nav";
 import Profile from "./components/profile/Profile";
 import Portfolio from "./components/portfolio/Portfolio";
-import TimelinesHome from "./components/timelines/TimelinesHome";
 import TimelineSingle from "./components/timelines/TimelineSingle";
 
 function App() {
@@ -22,7 +21,7 @@ function App() {
                 <Route
                     path="/"
                     element={
-                        <TimelinesHome />
+                        <TimelineSingle />
                     }
                 />
                 <Route
