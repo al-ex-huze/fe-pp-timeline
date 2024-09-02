@@ -70,7 +70,7 @@ export const deleteEventByID = (eventID: number) => {
 
 export const patchEventDates = (dateUpdate: object, eventID: number) => {
     return beApi
-        .delete(`/api/events/${eventID}`, dateUpdate)
+        .patch(`/api/events/${eventID}`, dateUpdate)
         .then((response) => {
             return response.data;
         });
@@ -88,11 +88,22 @@ export const getLanguages = () => {
     });
 };
 
-export const getFeelings = () => {
+export const getFeels = () => {
     return beApi.get("/api/feelings").then((response) => {
         return response.data.feelings;
     });
 };
+
+export const patchFeels = (feelingsUpdate: object, patchWeek: string) => {
+    console.log(feelingsUpdate, "<<--")
+    console.log(patchWeek, "<<--")
+    return beApi
+        .patch(`/api/feelings/${patchWeek}`, feelingsUpdate)
+        .then((response) => {
+            return response.data;
+        });
+};
+
 
 export const getGHLanguages = (repo_name: any) => {
     return beApi.get(`/ghapi/languages_used/${repo_name}`).then((response) => {

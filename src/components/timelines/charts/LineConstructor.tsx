@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 // import LineChartOne from "./LineChartOne";
-import { getFeelings } from "../../../../api";
+import { getFeels } from "../../../../api";
 import LineApex from "./LineApex";
 
 const LineConstructor = () => {
@@ -10,7 +10,7 @@ const LineConstructor = () => {
     useEffect(() => {
         console.log("LineFeelings UseEffect()");
         setIsLoading(true);
-        getFeelings()
+        getFeels()
             .then((feelings) => {
                 setFeelingsdata(feelings);
                 setIsLoading(false);

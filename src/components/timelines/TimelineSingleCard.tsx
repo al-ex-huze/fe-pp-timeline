@@ -10,6 +10,7 @@ import EventSelector from "../events/EventSelector";
 import AddTimeline from "./AddTimeline";
 
 import "../../styles/Content.css";
+import UpdateFeels from "./UpdateFeels";
 
 // import ReposParent from "./repos/ReposParent";
 
@@ -47,6 +48,7 @@ const TimelineSingleCard = () => {
                     eventSingleData={eventSingleData}
                     setEventSingleData={setEventSingleData}
                 />
+                <UpdateFeels />
                 {/* <ReposParent /> */}
                 <AddEvent timelineSingleData={timelineSingleData} />
                 <AddTimeline />
