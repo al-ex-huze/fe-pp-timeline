@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTimelines } from "../../../api";
-import CarouselSidebar from "./carousels/CarouselSidebar";
+// import CarouselSidebar from "./carousels/CarouselSidebar";
+import TimelineListCard from "./TimelineListCard";
 
 const TimelineSidebar = () => {
     const [timelinesData, setTimelinesData] = useState([]);
@@ -22,7 +23,16 @@ const TimelineSidebar = () => {
     if (isLoading) return <p>Loading Sidebar</p>;
     return (
         <>
-            <CarouselSidebar timelinesData={timelinesData}></CarouselSidebar>
+            <ul>
+                {timelinesData.map((timeline: any) => {
+                    return (
+                        <li key={timeline.timeline_name}>
+                            <TimelineListCard timeline={timeline} />
+                        </li>
+                    );
+                })}
+            </ul>
+            {/* <CarouselSidebar timelinesData={timelinesData}></CarouselSidebar> */}
         </>
     );
 };

@@ -6,7 +6,6 @@ import TimelineSidebar from "./TimelinesSidebar";
 const TimelinesHome = () => {
     return (
         <>
-            TimelinesHome
             <div className="Sidebar">
                 <TimelineSidebar />
             </div>

@@ -14,29 +14,32 @@ import {
     Navigation,
     Pagination,
 } from "swiper/modules";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
-const Carousel = () => {
+const Carousel = ({ timelinesData }: { timelinesData: any }) => {
     return (
         <div className="Carousel">
             <Swiper
+                // cssMode={true}
+                speed={100}
                 spaceBetween={50}
-                // effect={"coverflow"}
+                effect={"coverflow"}
                 grabCursor={true}
-                centeredSlides={false}
-                slidesPerView={3}
-                // coverflowEffect={{
-                //     rotate: 0,
-                //     stretch: 0,
-                //     depth: 100,
-                //     modifier: 1,
-                //     slideShadows: true,
-                // }}
+                centeredSlides={true}
+                slidesPerView={"auto"}
+                coverflowEffect={{
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                }}
                 navigation={true}
                 loop={true}
                 autoplay={{
-                    delay: 1000,
-                    disableOnInteraction: false,
+                    delay: 4000,
+                    disableOnInteraction: true,
                 }}
                 // pagination={{
                 //     clickable: true,
@@ -44,14 +47,21 @@ const Carousel = () => {
                 modules={[Autoplay, EffectCoverflow, Navigation, Pagination]}
                 className="mySwiper"
             >
-                <SwiperSlide>One</SwiperSlide>
-                <SwiperSlide>
-                    Two
-                </SwiperSlide>
-                <SwiperSlide>Three</SwiperSlide>
-                <SwiperSlide>Four</SwiperSlide>
-                <SwiperSlide>Five</SwiperSlide>
-                <SwiperSlide>Six</SwiperSlide>
+                <ul>
+                    {timelinesData.map((timeline: any) => {
+                        return (
+                            <li key={timeline.timeline_name}>
+                                <SwiperSlide>
+                                    <Link
+                                        to={`/timelines/${timeline.timeline_name}`}
+                                    >
+                                        {timeline.timeline_name}
+                                    </Link>
+                                </SwiperSlide>
+                            </li>
+                        );
+                    })}
+                </ul>
             </Swiper>
         </div>
     );

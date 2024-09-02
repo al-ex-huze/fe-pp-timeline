@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 
 import { getTimelines } from "../../../api";
 
-import AddTimeline from "./AddTimeline";
-import TimelineListCard from "./TimelineListCard";
+// import TimelineListCard from "./TimelineListCard";
 import CarouselContent from "./carousels/CarouselContent";
+import Carousel from "./carousels/Carousel";
 
 const TimelineSelector = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -26,18 +26,7 @@ const TimelineSelector = () => {
     return (
         <div className="Content_component">
             <CarouselContent timelinesData={timelinesData} />
-            <ul>
-                {timelinesData.map((timeline: any) => {
-                    return (
-                        <li key={timeline.timeline_name}>
-                            <TimelineListCard
-                                timeline={timeline}
-                            />
-                        </li>
-                    );
-                })}
-            </ul>
-            <AddTimeline />
+            <Carousel timelinesData={timelinesData} />
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import LineChartOne from "./LineChartOne";
+// import LineChartOne from "./LineChartOne";
 import { getFeelings } from "../../../../api";
 import LineApex from "./LineApex";
 
@@ -23,7 +23,6 @@ const LineConstructor = () => {
     if (isLoading) return <p>Loading Feelings</p>;
     return (
         <>
-            LineConstructor
             <LineApex feelingsData={feelingsData} />
             {/* <LineChartOne feelingsData={feelingsData} /> */}
         </>
