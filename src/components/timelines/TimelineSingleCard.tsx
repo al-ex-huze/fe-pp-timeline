@@ -3,13 +3,14 @@ import { useParams } from "react-router-dom";
 
 import { getTimelineByName } from "../../../api";
 
-import "../../styles/Content.css";
-
 import DeleteTimeline from "../timelines/DeleteTimeline";
 import ChartConstructor from "./charts/ChartConstructor";
-import AddEvent from "./events/AddEvent";
-import EventSelector from "./events/EventSelector";
+import AddEvent from "../events/AddEvent"
+import EventSelector from "../events/EventSelector";
 import AddTimeline from "./AddTimeline";
+
+import "../../styles/Content.css";
+
 // import ReposParent from "./repos/ReposParent";
 
 const TimelineSingleCard = () => {
@@ -17,13 +18,12 @@ const TimelineSingleCard = () => {
     const [timelineSingleData, setTimelineSingleData] = useState({});
     const [eventSingleData, setEventSingleData] = useState({});
     const [eventID, setEventID] = useState(0);
-    const [toReloadAddEvent, setToReloadAddEvent] = useState(false);
 
-    const { timeline_name } = useParams();
+    const { timeline_name = "Northcoders Bootcamp" } = useParams();
 
     useEffect(() => {
         setIsLoading(true);
-        console.log("TimelineSelector Use Effect()");
+        console.log("TimelineSingleCard Use Effect()");
         if (timeline_name) {
             getTimelineByName(timeline_name!).then((timeline) => {
                 setTimelineSingleData(timeline);
@@ -48,14 +48,8 @@ const TimelineSingleCard = () => {
                     setEventSingleData={setEventSingleData}
                 />
                 {/* <ReposParent /> */}
-                {!toReloadAddEvent ? (
-                    <AddEvent
-                        toReloadAddEvent={toReloadAddEvent}
-                        setToReloadAddEvent={setToReloadAddEvent}
-                    />
-                ) : null}
-                            <AddTimeline />
-
+                <AddEvent timelineSingleData={timelineSingleData} />
+                <AddTimeline />
                 <DeleteTimeline timelineToDelete={timeline_name} />
             </div>
         </>

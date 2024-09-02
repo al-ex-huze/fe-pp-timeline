@@ -6,7 +6,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import "../../../styles/Carousel.css";
+import "../../styles/Carousel.css";
 
 import {
     Autoplay,
@@ -14,16 +14,25 @@ import {
     Navigation,
     Pagination,
 } from "swiper/modules";
-import { Link } from "react-router-dom";
-// import { Link } from "react-router-dom";
 
-const Carousel = ({ timelinesData }: { timelinesData: any }) => {
+const Carousel = ({
+    carouselData,
+    setProjectEventID,
+}: {
+    carouselData: any;
+    setProjectEventID: any;
+}) => {
+    const handleSelectProject = (selectedID: any) => {
+        console.log("HANDLE " + selectedID);
+        setProjectEventID(selectedID);
+    };
+    if (carouselData == undefined) return <div> UNDEFINED</div>;
     return (
         <div className="Carousel">
             <Swiper
                 // cssMode={true}
-                speed={100}
-                spaceBetween={50}
+                speed={5000}
+                // spaceBetween={0}
                 effect={"coverflow"}
                 grabCursor={true}
                 centeredSlides={true}
@@ -38,7 +47,7 @@ const Carousel = ({ timelinesData }: { timelinesData: any }) => {
                 navigation={true}
                 loop={true}
                 autoplay={{
-                    delay: 4000,
+                    delay: 400,
                     disableOnInteraction: true,
                 }}
                 // pagination={{
@@ -47,21 +56,22 @@ const Carousel = ({ timelinesData }: { timelinesData: any }) => {
                 modules={[Autoplay, EffectCoverflow, Navigation, Pagination]}
                 className="mySwiper"
             >
-                <ul>
-                    {timelinesData.map((timeline: any) => {
+                {carouselData.map((datum: any) => {
+                    if (datum.timeline === "Project") {
                         return (
-                            <li key={timeline.timeline_name}>
-                                <SwiperSlide>
-                                    <Link
-                                        to={`/timelines/${timeline.timeline_name}`}
-                                    >
-                                        {timeline.timeline_name}
-                                    </Link>
-                                </SwiperSlide>
-                            </li>
+                            <SwiperSlide key={datum.event_id}>
+                                {/* <div onClick={setProjectEventID(datum.event_id)}> */}
+                                <div
+                                    onClick={() =>
+                                        handleSelectProject(datum.event_id)
+                                    }
+                                >
+                                    {datum.title}
+                                </div>
+                            </SwiperSlide>
                         );
-                    })}
-                </ul>
+                    }
+                })}
             </Swiper>
         </div>
     );

@@ -1,5 +1,5 @@
 import "../../styles/Content.css";
-import TimelineSidebar from "./TimelinesSidebar";
+// import TimelineSidebar from "./TimelinesSidebar";
 
 import TimelineSingleCard from "./TimelineSingleCard";
 
@@ -8,7 +8,7 @@ const Timeline = () => {
     return (
         <>
             <div className="Sidebar">
-                <TimelineSidebar />
+                {/* <TimelineSidebar /> */}
             </div>
             <div className="Content">
                 <TimelineSingleCard />
