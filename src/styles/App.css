@@ -105,11 +105,12 @@ button:hover {
     width: 100%;
     display: grid;
     grid-template-columns: 15% 70% 15%;
-        grid-template-rows: auto auto auto;
-        grid-template-areas:
-            "Header Nav Nav"
-            "Header Nav Nav"
-            "Sidebar-Left Content Sidebar-Right"
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+        "Header Nav Nav"
+        "Sidebar-Left Sidebar-Left Sidebar-Left"
+        "Content Content Content"
+        "Sidebar-Right Sidebar-Right Sidebar-Right";
 }
 
 @media only screen and (min-width: 768px) {
@@ -122,8 +123,8 @@ button:hover {
         grid-template-rows: auto auto auto;
         grid-template-areas:
             "Header Nav Nav"
-            "Header Nav Nav"
             "Sidebar-Left Content Sidebar-Right"
+            "Sidebar-Left Content Sidebar-Right";
     }
 }
 
@@ -137,7 +138,7 @@ button:hover {
         grid-template-rows: auto auto auto;
         grid-template-areas:
             "Header Nav Nav"
-            "Header Nav Nav"
+            "Sidebar-Left Content Sidebar-Right"
             "Sidebar-Left Content Sidebar-Right";
     }
 }
@@ -152,7 +153,7 @@ button:hover {
         grid-template-rows: auto auto auto;
         grid-template-areas:
             "Header Nav Nav"
-            "Header Nav Nav"
+            "Chart Content Chart"
             "Sidebar-Left Content Sidebar-Right";
     }
 }

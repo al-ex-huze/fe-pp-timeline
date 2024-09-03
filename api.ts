@@ -35,15 +35,15 @@ export const getEvents = (
 ) => {
     let orderDirection = "";
     sortByIsAsc ? (orderDirection = "asc") : (orderDirection = "desc");
-    const params: {
-        timeline_name?: string;
+    let params: {
+        timeline?: string;
         sort_by?: string;
         order?: string;
-    } = { timeline_name: timelineFilter, order: orderDirection };
+    } = { timeline: timelineFilter, order: orderDirection };
     if (sortByQuery) params.sort_by = sortByQuery;
-    if (timelineFilter) params.timeline_name = timelineFilter;
+    if (timelineFilter) params.timeline = timelineFilter;
 
-    // console.log("params " + JSON.stringify(params));
+    console.log("params " + JSON.stringify(params));
     return beApi.get("/api/events", { params: params }).then((response) => {
         // console.log("response " + JSON.stringify(response));
         return response.data.events;
@@ -95,8 +95,6 @@ export const getFeels = () => {
 };
 
 export const patchFeels = (feelingsUpdate: object, patchWeek: string) => {
-    console.log(feelingsUpdate, "<<--")
-    console.log(patchWeek, "<<--")
     return beApi
         .patch(`/api/feelings/${patchWeek}`, feelingsUpdate)
         .then((response) => {

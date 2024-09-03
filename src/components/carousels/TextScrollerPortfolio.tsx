@@ -31,7 +31,7 @@ const TextScrollerPortfolio = ({ projectEventID }: { projectEventID: any }) => {
         <>
             <Swiper
                 direction={"vertical"}
-                slidesPerView={"auto"}
+                slidesPerView={1}
                 freeMode={true}
                 scrollbar={true}
                 mousewheel={true}
@@ -40,7 +40,6 @@ const TextScrollerPortfolio = ({ projectEventID }: { projectEventID: any }) => {
             >
                 <SwiperSlide>
                     <h4>Projects</h4>
-
                     {projectEventSingleData === null ? (
                         <p>"Look at all those projects!"</p>
                     ) : (

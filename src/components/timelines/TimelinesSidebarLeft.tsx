@@ -1,27 +1,25 @@
-// import { useEffect, useState } from "react";
-// import { getTimelines } from "../../../api";
-// import UpdateFeels from "./UpdateFeels";
+// import BarApex from "./charts/BarApex";
 
-const TimelineSidebarLeft = () => {
-    // const [isLoading, setIsLoading] = useState(false);
+const TimelineSidebarLeft = ({
+    // timeline_name,
+    // timelineSingleData,
+    // lineChartSelectedWeek,
 
-    // useEffect(() => {
-    //     setIsLoading(true);
-    //     console.log("TimelinesSidebar Use Effect()");
-    //     getTimelines()
-    //         .then((timelines) => {
-    //             setTimelinesData(timelines);
-    //             setIsLoading(false);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-    // }, []);
+}: // setLineChartSelectedWeek,
+// setTimelineSingleData,
+{
+    timeline_name: any;
+    timelineSingleData: any;
+    setTimelineSingleData: any;
+    lineChartSelectedWeek: any;
+    setLineChartSelectedWeek: any;
 
-    // if (isLoading) return <p>Loading Sidebar</p>;
+}) => {
+
     return (
         <>
-            SIDE BAR LEFT
+            {/* <BarApex timelineSingleData={timelineSingleData} /> */}
+            
         </>
     );
 };

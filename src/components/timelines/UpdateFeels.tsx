@@ -4,19 +4,19 @@ import { patchFeels } from "../../../api";
 
 import ErrorComponent from "../Error-Component";
 
-// import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Slider } from "@mui/material";
 
-// const updateFeels = ({ weekToPatch }: { weekToPatch: any }) => {
 const UpdateFeels = ({
     lineChartSelectedWeek,
+    setLineChartSelectedWeek,
 }: {
     lineChartSelectedWeek: any;
+    setLineChartSelectedWeek: any;
 }) => {
     const [isUpdating, setIsUpdating] = useState(false);
     const [updateFeelsError, setUpdateFeelsError] = useState("");
-    // const [patchWeekInput, setPatchWeekInput] = useState();
+
     const [knowledgeInput, setKnowledgeInput] = useState(
         lineChartSelectedWeek.selectedKnowledgeValue
     );
@@ -45,16 +45,10 @@ const UpdateFeels = ({
         lineChartSelectedWeek.selectedOutputValue
     );
 
-    const [showupdateFeelsToggle, setShowupdateFeelsToggle] = useState(true);
+    const [showupdateFeelsToggle, setShowupdateFeelsToggle] = useState(false);
 
     const toggleShowupdateFeels = () => {
         setShowupdateFeelsToggle(!showupdateFeelsToggle);
-    };
-
-    const [showSubmitConfirm, setShowSubmitConfirm] = useState(false);
-
-    const toggleSubmitConfirm = () => {
-        setShowSubmitConfirm(!showSubmitConfirm);
     };
 
     const handleSubmitFeelsUpdate = (_event: any) => {
@@ -75,6 +69,7 @@ const UpdateFeels = ({
         patchFeels(update, patchWeekInput!)
             .then(() => {
                 setIsUpdating(false);
+                setLineChartSelectedWeek(null);
             })
             .catch((error: any) => {
                 console.log(error);
@@ -88,10 +83,7 @@ const UpdateFeels = ({
     return (
         <div>
             <button onClick={toggleShowupdateFeels}>
-                <h3>
-                    Week{" "}
-                    {lineChartSelectedWeek.selectedWeekNumber.split("-")[0]}
-                </h3>
+                Update Week {lineChartSelectedWeek.selectedWeekNumber.split("-")[0]}
             </button>
             {showupdateFeelsToggle && (
                 <div className="update-feels-form-container">
@@ -379,15 +371,12 @@ const UpdateFeels = ({
                                 </label> */}
                         {/* </li>
                         </ul> */}
-                        <button onClick={toggleSubmitConfirm}>Update</button>
-                        {showSubmitConfirm && (
-                            <button
-                                type="submit"
-                                className="Content__submit-confirm-button"
-                            >
-                                Confirm Update
-                            </button>
-                        )}
+                        <button
+                            type="submit"
+                            className="Content__submit-confirm-button"
+                        >
+                            Update
+                        </button>
                     </form>
                 </div>
             )}
