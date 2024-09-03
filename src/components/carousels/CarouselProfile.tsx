@@ -51,11 +51,11 @@ const CarouselProfile = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className="title" data-swiper-parallax="-300">
+                    {/* <div className="title" data-swiper-parallax="-300">
                         Profile
-                    </div>
+                    </div> */}
                     <div className="subtitle" data-swiper-parallax="-200">
-                        Alex Hughes
+                        Junior Software Developer
                     </div>
                     <div className="text" data-swiper-parallax="-100">
                         <p>
@@ -67,11 +67,11 @@ const CarouselProfile = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className="title" data-swiper-parallax="-300">
+                    {/* <div className="title" data-swiper-parallax="-300">
                         Profile
-                    </div>
+                    </div> */}
                     <div className="subtitle" data-swiper-parallax="-200">
-                        Alex Hughes
+                        Team Player
                     </div>
                     <div className="text" data-swiper-parallax="-100">
                         <p>
@@ -83,11 +83,11 @@ const CarouselProfile = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className="title" data-swiper-parallax="-300">
+                    {/* <div className="title" data-swiper-parallax="-300">
                         Profile
-                    </div>
+                    </div> */}
                     <div className="subtitle" data-swiper-parallax="-200">
-                        Alex Hughes{" "}
+                        Problem Solver
                     </div>
                     <div className="text" data-swiper-parallax="-100">
                         <p>

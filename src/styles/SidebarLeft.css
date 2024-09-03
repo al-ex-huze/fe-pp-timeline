@@ -1,0 +1,24 @@
+.Sidebar-Left {
+    grid-area: Sidebar-Left;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.Sidebar ul {
+    display: block;
+    height: 100%;
+    display: flex;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.Sidebar li {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}

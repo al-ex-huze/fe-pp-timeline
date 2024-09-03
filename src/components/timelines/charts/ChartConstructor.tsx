@@ -20,10 +20,12 @@ Chart.register(CategoryScale);
 const ChartConstructor = ({
     setEventID,
     timelineSingleData,
+    setLineChartSelectedWeek,
 }: {
     setEventID: any;
     timelineSingleData: any;
     setTimelineSingleData: any;
+    setLineChartSelectedWeek: any;
 }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [eventsData, setEventsData] = useState([]);
@@ -49,14 +51,17 @@ const ChartConstructor = ({
         <div className="Constructor">
             {eventsData[0] !== undefined ? (
                 <>
-                    <TimelineApex eventsData={eventsData}
+                    <TimelineApex
+                        eventsData={eventsData}
                         setEventID={setEventID}
                     />
                     {/* <TimelineChartOneG
                         eventsData={eventsData}
                         setEventID={setEventID}
                     /> */}
-                    <LineConstructor />
+                    <LineConstructor
+                        setLineChartSelectedWeek={setLineChartSelectedWeek}
+                    />
                     {/* <BarApex eventsData={eventsData} setEventID={setEventID} /> */}
                     {/* <DoughnutChartOne eventsData={eventsData} />
                     <BarChartOne eventsData={eventsData} />

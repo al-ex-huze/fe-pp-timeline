@@ -2,7 +2,13 @@ import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import "../../../styles/Timeline.css";
 
-const LineApex = ({ feelingsData }: { feelingsData: any }) => {
+const LineApex = ({
+    feelingsData,
+    setLineChartSelectedWeek,
+}: {
+    feelingsData: any;
+    setLineChartSelectedWeek: any;
+}) => {
     const series = [
         {
             name: "Knowledge ",
@@ -10,6 +16,7 @@ const LineApex = ({ feelingsData }: { feelingsData: any }) => {
                 return {
                     y: data.knowledge,
                     x: new Date(data.week_start_date).getTime(),
+                    weekNumber: data.week_number,
                 };
             }),
         },
@@ -19,6 +26,7 @@ const LineApex = ({ feelingsData }: { feelingsData: any }) => {
                 return {
                     y: data.experience,
                     x: new Date(data.week_start_date).getTime(),
+                    weekNumber: data.week_number,
                 };
             }),
         },
@@ -28,6 +36,7 @@ const LineApex = ({ feelingsData }: { feelingsData: any }) => {
                 return {
                     y: data.enthusiasm,
                     x: new Date(data.week_start_date).getTime(),
+                    weekNumber: data.week_number,
                 };
             }),
         },
@@ -37,6 +46,7 @@ const LineApex = ({ feelingsData }: { feelingsData: any }) => {
                 return {
                     y: data.confidence,
                     x: new Date(data.week_start_date).getTime(),
+                    weekNumber: data.week_number,
                 };
             }),
         },
@@ -46,6 +56,7 @@ const LineApex = ({ feelingsData }: { feelingsData: any }) => {
                 return {
                     y: data.passion,
                     x: new Date(data.week_start_date).getTime(),
+                    weekNumber: data.week_number,
                 };
             }),
         },
@@ -55,6 +66,7 @@ const LineApex = ({ feelingsData }: { feelingsData: any }) => {
                 return {
                     y: data.wisdom,
                     x: new Date(data.week_start_date).getTime(),
+                    weekNumber: data.week_number,
                 };
             }),
         },
@@ -64,6 +76,27 @@ const LineApex = ({ feelingsData }: { feelingsData: any }) => {
                 return {
                     y: data.despair,
                     x: new Date(data.week_start_date).getTime(),
+                    weekNumber: data.week_number,
+                };
+            }),
+        },
+        {
+            name: "Input ",
+            data: feelingsData.map((data: any) => {
+                return {
+                    y: data.input,
+                    x: new Date(data.week_start_date).getTime(),
+                    weekNumber: data.week_number,
+                };
+            }),
+        },
+        {
+            name: "Output ",
+            data: feelingsData.map((data: any) => {
+                return {
+                    y: data.output,
+                    x: new Date(data.week_start_date).getTime(),
+                    weekNumber: data.week_number,
                 };
             }),
         },
@@ -92,11 +125,67 @@ const LineApex = ({ feelingsData }: { feelingsData: any }) => {
                     speed: 350,
                 },
             },
-            // events: {
-            //     click: function (event, chartContext, opts) {
-            //         console.log("The last parameter opts contains additional information like `seriesIndex` and `dataPointIndex` for cartesian charts")
-            //     },
-            // },
+            events: {
+                click: function (_event, _chartContext, opts) {
+                    // console.log(opts);
+                    // console.log(opts.seriesIndex);
+                    // console.log(opts.dataPointIndex);
+                    // console.log(opts.globals.initialSeries[opts.seriesIndex]);
+                    // console.log(
+                    //     opts.globals.initialSeries[opts.seriesIndex].data[
+                    //         opts.dataPointIndex
+                    //     ]
+                    // );
+                    // console.log(opts.globals);
+                    // console.log(
+                    //     opts.globals.initialSeries[1].data[opts.dataPointIndex]
+                    //         .y,
+                    //     "<<<---"
+                    // );
+                    setLineChartSelectedWeek({
+                        selectedWeekNumber:
+                            opts.globals.initialSeries[opts.seriesIndex].data[
+                                opts.dataPointIndex
+                            ].weekNumber,
+                        selectedKnowledgeValue:
+                            opts.globals.initialSeries[0].data[
+                                opts.dataPointIndex
+                            ].y,
+                        selectedExperienceValue:
+                            opts.globals.initialSeries[1].data[
+                                opts.dataPointIndex
+                            ].y,
+                        selectedEnthusiasmValue:
+                            opts.globals.initialSeries[2].data[
+                                opts.dataPointIndex
+                            ].y,
+                        selectedConfidenceValue:
+                            opts.globals.initialSeries[3].data[
+                                opts.dataPointIndex
+                            ].y,
+                        selectedPassionValue:
+                            opts.globals.initialSeries[4].data[
+                                opts.dataPointIndex
+                            ].y,
+                        selectedWisdomValue:
+                            opts.globals.initialSeries[5].data[
+                                opts.dataPointIndex
+                            ].y,
+                        selectedDespairValue:
+                            opts.globals.initialSeries[6].data[
+                                opts.dataPointIndex
+                            ].y,
+                        selectedInputValue:
+                            opts.globals.initialSeries[7].data[
+                                opts.dataPointIndex
+                            ].y,
+                        selectedOutputValue:
+                            opts.globals.initialSeries[8].data[
+                                opts.dataPointIndex
+                            ].y,
+                    });
+                },
+            },
         },
         dataLabels: {
             enabled: false,

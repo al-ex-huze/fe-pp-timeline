@@ -23,3 +23,11 @@
 .Content__delete-confirm-button:hover {
     background-color: red;
 }
+
+.Content__submit-confirm-button {
+    background-color: green;
+}
+
+.Content__submit-confirm-button :hover {
+    background-color: green;
+}

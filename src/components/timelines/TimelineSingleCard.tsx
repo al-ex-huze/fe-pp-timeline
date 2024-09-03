@@ -1,26 +1,34 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 import { getTimelineByName } from "../../../api";
 
-import DeleteTimeline from "../timelines/DeleteTimeline";
+// import DeleteTimeline from "../timelines/DeleteTimeline";
 import ChartConstructor from "./charts/ChartConstructor";
-import AddEvent from "../events/AddEvent"
+// import AddEvent from "../events/AddEvent";
 import EventSelector from "../events/EventSelector";
-import AddTimeline from "./AddTimeline";
+// import AddTimeline from "./AddTimeline";
 
 import "../../styles/Content.css";
-import UpdateFeels from "./UpdateFeels";
 
 // import ReposParent from "./repos/ReposParent";
 
-const TimelineSingleCard = () => {
+const TimelineSingleCard = ({
+    timeline_name,
+    timelineSingleData,
+    setLineChartSelectedWeek,
+    setTimelineSingleData,
+}: {
+    timeline_name: any;
+    timelineSingleData: any;
+    setTimelineSingleData: any;
+    setLineChartSelectedWeek: any;
+}) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [timelineSingleData, setTimelineSingleData] = useState({});
     const [eventSingleData, setEventSingleData] = useState({});
     const [eventID, setEventID] = useState(0);
 
-    const { timeline_name = "Northcoders Bootcamp" } = useParams();
+    // const { timeline_name = "Northcoders Bootcamp" } = useParams();
 
     useEffect(() => {
         setIsLoading(true);
@@ -42,17 +50,17 @@ const TimelineSingleCard = () => {
                     setEventID={setEventID}
                     timelineSingleData={timelineSingleData}
                     setTimelineSingleData={setTimelineSingleData}
+                    setLineChartSelectedWeek={setLineChartSelectedWeek}
                 />
                 <EventSelector
                     eventID={eventID}
                     eventSingleData={eventSingleData}
                     setEventSingleData={setEventSingleData}
                 />
-                <UpdateFeels />
                 {/* <ReposParent /> */}
-                <AddEvent timelineSingleData={timelineSingleData} />
+                {/* <AddEvent timelineSingleData={timelineSingleData} />
                 <AddTimeline />
-                <DeleteTimeline timelineToDelete={timeline_name} />
+                <DeleteTimeline timelineToDelete={timeline_name} /> */}
             </div>
         </>
     );

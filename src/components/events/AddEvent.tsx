@@ -118,6 +118,7 @@ const AddEvent = ({ timelineSingleData }: { timelineSingleData: any }) => {
                                             onChange={(date) =>
                                                 date && setStartDateInput(date)
                                             }
+                                            dateFormat="dd/MM/yyyy"
                                         />
                                     </label>
                                     <label>
@@ -126,6 +127,7 @@ const AddEvent = ({ timelineSingleData }: { timelineSingleData: any }) => {
                                             onChange={(date) =>
                                                 date && setEndDateInput(date)
                                             }
+                                            dateFormat="dd/MM/yyyy"
                                         />
                                     </label>
                                 </li>

@@ -81,6 +81,7 @@ const AddTimeline = () => {
                                         onChange={(date) =>
                                             date && setBeginDateInput(date)
                                         }
+                                        dateFormat="dd/MM/yyyy"
                                     />
                                 </label>
                                 <label>
@@ -89,6 +90,7 @@ const AddTimeline = () => {
                                         onChange={(date) =>
                                             date && setFinishDateInput(date)
                                         }
+                                        dateFormat="dd/MM/yyyy"
                                     />
                                 </label>
                             </li>
