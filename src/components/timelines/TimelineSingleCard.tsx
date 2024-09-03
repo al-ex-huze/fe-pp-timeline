@@ -15,11 +15,13 @@ import "../../styles/Content.css";
 
 const TimelineSingleCard = ({
     timeline_name,
+    timelinesData,
     timelineSingleData,
     setLineChartSelectedWeek,
     setTimelineSingleData,
 }: {
     timeline_name: any;
+    timelinesData: any;
     timelineSingleData: any;
     setTimelineSingleData: any;
     setLineChartSelectedWeek: any;
@@ -34,20 +36,23 @@ const TimelineSingleCard = ({
         setIsLoading(true);
         console.log("TimelineSingleCard Use Effect()");
         if (timeline_name) {
-            getTimelineByName(timeline_name!).then((timeline) => {
+            getTimelineByName(timeline_name).then((timeline) => {
                 setTimelineSingleData(timeline);
                 setIsLoading(false);
             });
+        } else {
+            setIsLoading(false)
         }
     }, []);
 
-    if (isLoading) return <p>Loading Timelines</p>;
+    if (isLoading) return <p>Loading Timeline Single Card</p>;
     return (
         <>
             <div className="Content">
                 <h1>{timeline_name}</h1>
                 <ChartConstructor
                     setEventID={setEventID}
+                    timelinesData={timelinesData}
                     timelineSingleData={timelineSingleData}
                     setTimelineSingleData={setTimelineSingleData}
                     setLineChartSelectedWeek={setLineChartSelectedWeek}

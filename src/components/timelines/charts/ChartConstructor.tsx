@@ -19,10 +19,13 @@ Chart.register(CategoryScale);
 
 const ChartConstructor = ({
     setEventID,
+    timelinesData,
     timelineSingleData,
+    setTimelineSingleData,
     setLineChartSelectedWeek,
 }: {
     setEventID: any;
+    timelinesData: any;
     timelineSingleData: any;
     setTimelineSingleData: any;
     setLineChartSelectedWeek: any;
@@ -34,7 +37,7 @@ const ChartConstructor = ({
     const [sortByIsAsc] = useState(true);
 
     useEffect(() => {
-        console.log("Timeline UseEffect()");
+        console.log("ChartConstructor UseEffect()");
         setIsLoading(true);
         getEvents(timelineSingleData.timeline_name, sortByQuery, sortByIsAsc)
             .then((events) => {
@@ -52,6 +55,9 @@ const ChartConstructor = ({
             {eventsData[0] !== undefined ? (
                 <>
                     <TimelineApex
+                        timelinesData={timelinesData}
+                        timelineSingleData={timelineSingleData}
+                        setTimelineSingleData={setTimelineSingleData}
                         eventsData={eventsData}
                         setEventID={setEventID}
                     />
