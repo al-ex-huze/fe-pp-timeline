@@ -14,13 +14,13 @@ const Portfolio = () => {
     const [sortByQuery] = useState("");
     const [sortByIsAsc] = useState(true);
 
-    
 
     useEffect(() => {
         console.log("Portfolio UseEffect()");
         setIsLoading(true);
-        getEvents("Project", sortByQuery, sortByIsAsc)
+        getEvents("Projects", sortByQuery, sortByIsAsc)
             .then((events) => {
+                console.log(events)
                 setProjectEventsData(events);
                 setIsLoading(false);
             })

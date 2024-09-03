@@ -2,12 +2,10 @@ import "../../../styles/Timeline.css";
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const TimelineApex = ({
     timelinesData,
     eventsData,
-    timelineSingleData,
     setEventID,
     timelineSingleName,
     setTimelineSingleName,
@@ -20,10 +18,9 @@ const TimelineApex = ({
     timelineSingleName: any;
     setTimelineSingleName: any;
 }) => {
-    const navigate = useNavigate();
-
     const [groupRowsState, setGroupRowsState] = useState(true);
     const [isExpanded, setIsExpanded] = useState(false);
+
     const toggleGroupRowsState = () => {
         setGroupRowsState(!groupRowsState);
     };
@@ -35,49 +32,21 @@ const TimelineApex = ({
     if (timelineSingleName) {
         console.log("DEBUG");
         series = [
-            // {
-            //     name: "Northcoders Bootcamp",
-            //     data: [
-            //         {
-            //             x: "Northcoders Bootcamp",
-            //             y: [
-            //                 new Date(eventsData[0].start_date).getTime(),
-            //                 new Date(eventsData[4].end_date).getTime(),
-            //             ],
-            //             ID: "ID",
-            //             Title: eventsData[0].timeline,
-            //             Body: "body",
-            //         },
-            //     ],
-            // },
-            ...timelinesData.map((timelineDatum: any) => {
-                // console.log(JSON.stringify(timelineDatum));
-                return {
-                    name: timelineDatum.timeline_name,
-                    data: [
-                        {
-                            x: "Timeline",
-                            y: [
-                                new Date(timelineDatum.begin_date).getTime(),
-                                new Date(timelineDatum.finish_date).getTime(),
-                            ],
-                            Timeline: timelineDatum.timeline_name,
-                            Description: timelineDatum.description,
-                        },
-                    ],
-                };
-            }),
             ...eventsData.map((event: any) => {
+                // console.log("EVENT DATA " + JSON.stringify(event))
                 return {
                     name: event.title,
                     data: [
                         {
-                            x: event.timeline,
+                            x: event.timeline, //toggle group
                             y: [
                                 new Date(event.start_date).getTime(),
-                                new Date(event.end_date).getTime(),
+                                event.end_date
+                                    ? new Date(event.end_date).getTime()
+                                    : new Date().getTime(),
                             ],
                             ID: event.event_id,
+                            Timeline: event.timeline,
                             Title: event.title,
                             Body: event.body,
                         },
@@ -98,7 +67,7 @@ const TimelineApex = ({
                 animations: {
                     enabled: true,
                     easing: "easeinout",
-                    speed: 800,
+                    speed: 1000,
                     animateGradually: {
                         enabled: true,
                         delay: 150,
@@ -145,8 +114,8 @@ const TimelineApex = ({
                 "#E2C044",
             ],
             dataLabels: {
-                enabled: true,
-                enabledOnSeries: [0],
+                enabled: false,
+                enabledOnSeries: [],
                 formatter: function (_val, opt) {
                     const data =
                         opt.w.globals.initialSeries[opt.seriesIndex].data[
@@ -199,7 +168,7 @@ const TimelineApex = ({
             plotOptions: {
                 bar: {
                     horizontal: true,
-                    barHeight: "50%", // change as variable
+                    barHeight: "100%", // change as variable
                     rangeBarGroupRows: groupRowsState, // change as variable
                     distributed: false,
                     dataLabels: {
@@ -228,13 +197,16 @@ const TimelineApex = ({
                             dataPointIndex
                         ];
                     return (
-                        '<div style="color:black;padding:5px 5px 5px 5px;">' +
+                        '<div style="color:black;padding:5px 5px 5px 5px;width:25%;">' +
                         "<span>" +
+                        "<b>" +
+                        data.Timeline +
+                        "</b><br>" +
                         "<b>" +
                         data.Title +
                         "</b><br>" +
                         "<b>" +
-                        data.Body +
+                        // data.Body +
                         "</b>" +
                         "</span>" +
                         "</div>"
@@ -259,31 +231,23 @@ const TimelineApex = ({
         };
     } else {
         series = [
-            // {
-            //     name: "Northcoders Bootcamp",
-            //     data: [
-            //         {
-            //             x: "Northcoders Bootcamp",
-            //             y: [
-            //                 new Date(eventsData[0].start_date).getTime(),
-            //                 new Date(eventsData[4].end_date).getTime(),
-            //             ],
-            //             ID: "ID",
-            //             Title: eventsData[0].timeline,
-            //             Body: "body",
-            //         },
-            //     ],
-            // },
             ...timelinesData.map((timelineDatum: any) => {
-                // console.log(JSON.stringify(timelineDatum));
                 return {
                     name: timelineDatum.timeline_name,
                     data: [
                         {
                             x: "Timeline",
                             y: [
-                                new Date(timelineDatum.begin_date).getTime(),
-                                new Date(timelineDatum.finish_date).getTime(),
+                                timelineDatum.begin_date
+                                    ? new Date(
+                                          timelineDatum.begin_date
+                                      ).getTime()
+                                    : new Date().getTime(),
+                                timelineDatum.finish_date
+                                    ? new Date(
+                                          timelineDatum.finish_date
+                                      ).getTime()
+                                    : new Date().getTime(),
                             ],
                             Timeline: timelineDatum.timeline_name,
                             Description: timelineDatum.description,
@@ -364,7 +328,7 @@ const TimelineApex = ({
             ],
             dataLabels: {
                 enabled: true,
-                enabledOnSeries: [0],
+                enabledOnSeries: [],
                 formatter: function (_val, opt) {
                     const data =
                         opt.w.globals.initialSeries[opt.seriesIndex].data[
@@ -446,7 +410,7 @@ const TimelineApex = ({
                             dataPointIndex
                         ];
                     return (
-                        '<div style="color:black;padding:5px 5px 5px 5px;">' +
+                        '<div style="color:black;padding:5px 5px 5px 5px;width:25%;">' +
                         "<span>" +
                         "<b>" +
                         data.Timeline +

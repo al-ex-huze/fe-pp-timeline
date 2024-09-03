@@ -45,8 +45,9 @@ const ChartConstructor = ({
     useEffect(() => {
         console.log("ChartConstructor UseEffect()");
         setIsLoading(true);
-        getEvents(timeline_name, sortByQuery, sortByIsAsc)
+        getEvents(timelineSingleName, sortByQuery, sortByIsAsc)
             .then((events) => {
+                console.log("events " +events)
                 setEventsData(events);
                 setIsLoading(false);
             })
