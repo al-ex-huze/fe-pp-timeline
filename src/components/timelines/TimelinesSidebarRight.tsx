@@ -3,6 +3,7 @@ import AddEvent from "../events/AddEvent";
 import AddTimeline from "./AddTimeline";
 import DeleteTimeline from "./DeleteTimeline";
 import UpdateFeels from "./UpdateFeels";
+import BarApex from "./charts/BarApex";
 
 const TimelineSidebarRight = ({
     timeline_name,
@@ -24,6 +25,8 @@ const TimelineSidebarRight = ({
     };
     return (
         <>
+            <BarApex timelineSingleData={timelineSingleData} />
+
             {lineChartSelectedWeek ? (
                 <UpdateFeels lineChartSelectedWeek={lineChartSelectedWeek} />
             ) : null}

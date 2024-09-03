@@ -6,6 +6,7 @@ import "../src/styles/Nav.css";
 import "../src/styles/SidebarLeft.css";
 import "../src/styles/SidebarRight.css";
 import "../src/styles/Content.css";
+import "../src/styles/Chart.css";
 
 import Header from "./components/Header";
 import Nav from "./components/Nav";

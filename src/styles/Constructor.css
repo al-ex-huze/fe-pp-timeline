@@ -4,27 +4,8 @@
     grid-template-columns: 100%;
     grid-template-rows: auto;
     grid-template-areas:
-        "Chart-Line"
         "Timeline"
-        "Chart-1"
-        "Chart-2"
-        "Chart-3"
-        "Chart-4"
-        "Chart-5"
-        "Chart-Gantt";
-}
-
-@media only screen and (min-width: 768px) {
-    .Constructor {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 25% 25% 25% 25%;
-        grid-template-rows: auto auto auto auto auto;
-        grid-template-areas:
-        "Timeline Timeline Timeline Timeline"
-            "Chart-Line Chart-Line Chart-Line Chart-Line"
-            "Chart-1 Chart-2 Chart-3 Chart-4";
-    }
+        "Chart-Line"
 }
 
 .Chart-1 {

@@ -56,7 +56,7 @@ const TimelinesHome = () => {
                     lineChartSelectedWeek={lineChartSelectedWeek}
                 />
             </div>
-            <div className="Content">
+            <>
                 <TimelineSingleCard
                     timeline_name={timeline_name}
                     timelinesData={timelinesData}
@@ -70,7 +70,7 @@ const TimelinesHome = () => {
                     groupNames={groupNames}
                     setGroupNames={setGroupNames}
                 />
-            </div>
+            </>
         </>
     );
 };

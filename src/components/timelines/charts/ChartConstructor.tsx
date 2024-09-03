@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getEvents } from "../../../../api";
 
 import "../../../styles/Constructor.css";
+import "../../../styles/Chart.css";
 
 // import BarChartOne from "./BarChartOne";
 // import TimelineChartOneG from "./TimelineChartOneG";
@@ -13,7 +14,6 @@ import LineConstructor from "./LineConstructor";
 
 import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
-// import BarApex from "./BarApex";
 import TimelineApex from "./TimelineApex";
 Chart.register(CategoryScale);
 
@@ -29,7 +29,7 @@ const ChartConstructor = ({
     groupRowsState,
     setGroupRowsState,
     groupNames,
-    setGroupNames
+    setGroupNames,
 }: {
     setEventID: any;
     timelinesData: any;
@@ -71,7 +71,7 @@ const ChartConstructor = ({
 
     if (isLoading) return <p>Loading Data</p>;
     return (
-        <div className="Constructor">
+        <><div className="Constructor">
             {eventsData[0] !== undefined ? (
                 <>
                     <TimelineApex
@@ -85,23 +85,22 @@ const ChartConstructor = ({
                         groupRowsState={groupRowsState}
                         setGroupRowsState={setGroupRowsState}
                         groupNames={groupNames}
-                        setGroupNames={setGroupNames}
-                    />
+                        setGroupNames={setGroupNames} />
                     {/* <TimelineChartOneG
-                        eventsData={eventsData}
-                        setEventID={setEventID}
-                    /> */}
+                eventsData={eventsData}
+                setEventID={setEventID}
+            /> */}
                     <LineConstructor
-                        setLineChartSelectedWeek={setLineChartSelectedWeek}
-                    />
+                        setLineChartSelectedWeek={setLineChartSelectedWeek} />
+
                     {/* <BarApex eventsData={eventsData} setEventID={setEventID} /> */}
                     {/* <DoughnutChartOne eventsData={eventsData} />
-                    <BarChartOne eventsData={eventsData} />
-                    <PolarAreaChartOne eventsData={eventsData} />
-                    <RadarChartOne eventsData={eventsData} /> */}
+            <BarChartOne eventsData={eventsData} />
+            <PolarAreaChartOne eventsData={eventsData} />
+            <RadarChartOne eventsData={eventsData} /> */}
                 </>
             ) : null}
-        </div>
+        </div></>
     );
 };
 

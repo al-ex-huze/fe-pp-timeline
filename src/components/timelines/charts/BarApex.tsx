@@ -1,12 +1,9 @@
 import Chart from "react-apexcharts";
-import "../../../styles/Timeline.css";
 
-const BarApex = ({
-    // eventsData,
-}: // setEventID,
+const BarApex = ({}: // eventsData,
+// setEventID,
 {
-    eventsData: any;
-    setEventID: any;
+    timelineSingleData: any;
 }) => {
     const options = {
         chart: {
@@ -23,11 +20,7 @@ const BarApex = ({
         },
     ];
 
-    return (
-        <div className="mixed-chart">
-            <Chart options={options} series={series} type="bar" width="500" />
-        </div>
-    );
+    return <Chart options={options} series={series} type="bar" width="100%" />;
 };
 
 export default BarApex;

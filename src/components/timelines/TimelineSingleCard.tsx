@@ -24,7 +24,7 @@ const TimelineSingleCard = ({
     groupRowsState,
     setGroupRowsState,
     groupNames,
-    setGroupNames
+    setGroupNames,
 }: {
     timeline_name: any;
     timelinesData: any;
@@ -86,6 +86,7 @@ const TimelineSingleCard = ({
                 <AddTimeline />
                 <DeleteTimeline timelineToDelete={timeline_name} /> */}
             </div>
+
         </>
     );
 };
