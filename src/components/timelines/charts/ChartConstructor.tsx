@@ -26,7 +26,6 @@ const ChartConstructor = ({
     timelineSingleData: any;
     setTimelineSingleData: any;
     setLineChartSelectedWeek: any;
-    
 }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [eventsData, setEventsData] = useState([]);
@@ -60,7 +59,9 @@ const ChartConstructor = ({
                         eventsData={eventsData}
                         setEventID={setEventID}
                     /> */}
-                    <LineConstructor setLineChartSelectedWeek={setLineChartSelectedWeek}/>
+                    <LineConstructor
+                        setLineChartSelectedWeek={setLineChartSelectedWeek}
+                    />
                     {/* <BarApex eventsData={eventsData} setEventID={setEventID} /> */}
                     {/* <DoughnutChartOne eventsData={eventsData} />
                     <BarChartOne eventsData={eventsData} />
