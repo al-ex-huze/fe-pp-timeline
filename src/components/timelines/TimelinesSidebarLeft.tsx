@@ -1,27 +1,48 @@
-// import { useEffect, useState } from "react";
-// import { getTimelines } from "../../../api";
-// import UpdateFeels from "./UpdateFeels";
+import { useState } from "react";
 
-const TimelineSidebarLeft = () => {
-    // const [isLoading, setIsLoading] = useState(false);
+const TimelineSidebarLeft = ({
+    // timeline_name,
+    // timelineSingleData,
+    // lineChartSelectedWeek,
+    groupRowsState,
+    setGroupRowsState,
+    groupNames,
+    setGroupNames,
+}: // setLineChartSelectedWeek,
+// setTimelineSingleData,
+{
+    timeline_name: any;
+    timelineSingleData: any;
+    setTimelineSingleData: any;
+    lineChartSelectedWeek: any;
+    setLineChartSelectedWeek: any;
+    groupRowsState: any;
+    setGroupRowsState: any;
+    groupNames: any;
+    setGroupNames: any;
+}) => {
+    const [showControlPanelToggle, setShowControlPanelToggle] = useState(false);
 
-    // useEffect(() => {
-    //     setIsLoading(true);
-    //     console.log("TimelinesSidebar Use Effect()");
-    //     getTimelines()
-    //         .then((timelines) => {
-    //             setTimelinesData(timelines);
-    //             setIsLoading(false);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-    // }, []);
+    const toggleShowControlPanel = () => {
+        setShowControlPanelToggle(!showControlPanelToggle);
+    };
 
-    // if (isLoading) return <p>Loading Sidebar</p>;
+    const toggleGroupRowsState = () => {
+        setGroupRowsState(!groupRowsState);
+    };
+
+    const toggleGroupNames = () => {
+        setGroupNames(!groupNames);
+    };
     return (
         <>
-            SIDE BAR LEFT
+            <button onClick={toggleShowControlPanel}>Timeline Control</button>
+            {showControlPanelToggle && (
+                <>
+                    <button onClick={toggleGroupRowsState}>Expand</button>
+                    <button onClick={toggleGroupNames}>Group</button>
+                </>
+            )}
         </>
     );
 };

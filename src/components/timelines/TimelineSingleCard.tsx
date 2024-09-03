@@ -21,6 +21,10 @@ const TimelineSingleCard = ({
     setTimelineSingleData,
     timelineSingleName,
     setTimelineSingleName,
+    groupRowsState,
+    setGroupRowsState,
+    groupNames,
+    setGroupNames
 }: {
     timeline_name: any;
     timelinesData: any;
@@ -29,6 +33,10 @@ const TimelineSingleCard = ({
     setLineChartSelectedWeek: any;
     timelineSingleName: any;
     setTimelineSingleName: any;
+    groupRowsState: any;
+    setGroupRowsState: any;
+    groupNames: any;
+    setGroupNames: any;
 }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [eventSingleData, setEventSingleData] = useState({});
@@ -63,6 +71,10 @@ const TimelineSingleCard = ({
                     setLineChartSelectedWeek={setLineChartSelectedWeek}
                     timelineSingleName={timelineSingleName}
                     setTimelineSingleName={setTimelineSingleName}
+                    groupRowsState={groupRowsState}
+                    setGroupRowsState={setGroupRowsState}
+                    groupNames={groupNames}
+                    setGroupNames={setGroupNames}
                 />
                 <EventSelector
                     eventID={eventID}

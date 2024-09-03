@@ -16,13 +16,16 @@ const TimelinesHome = () => {
     const [timelineSingleName, setTimelineSingleName] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
+    const [groupRowsState, setGroupRowsState] = useState(true);
+    const [groupNames, setGroupNames] = useState(true);
+
     const { timeline_name } = useParams();
 
     useEffect(() => {
         setIsLoading(true);
         console.log("TimelineSingleCard Use Effect()");
         getTimelines().then((timelines) => {
-            console.log(timelines)
+            console.log(timelines);
             setTimelinesData(timelines);
             setIsLoading(false);
         });
@@ -32,7 +35,17 @@ const TimelinesHome = () => {
     return (
         <>
             <div className="Sidebar-Left">
-                <TimelineSidebarLeft />
+                <TimelineSidebarLeft
+                    timeline_name={timeline_name}
+                    timelineSingleData={timelineSingleData}
+                    setTimelineSingleData={setTimelineSingleData}
+                    setLineChartSelectedWeek={setLineChartSelectedWeek}
+                    lineChartSelectedWeek={lineChartSelectedWeek}
+                    groupRowsState={groupRowsState}
+                    setGroupRowsState={setGroupRowsState}
+                    groupNames={groupNames}
+                    setGroupNames={setGroupNames}
+                />
             </div>
             <div className="Sidebar-Right">
                 <TimelineSidebarRight
@@ -52,6 +65,10 @@ const TimelinesHome = () => {
                     setLineChartSelectedWeek={setLineChartSelectedWeek}
                     timelineSingleName={timelineSingleName}
                     setTimelineSingleName={setTimelineSingleName}
+                    groupRowsState={groupRowsState}
+                    setGroupRowsState={setGroupRowsState}
+                    groupNames={groupNames}
+                    setGroupNames={setGroupNames}
                 />
             </div>
         </>

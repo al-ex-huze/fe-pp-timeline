@@ -4,7 +4,7 @@ import AddTimeline from "./AddTimeline";
 import DeleteTimeline from "./DeleteTimeline";
 import UpdateFeels from "./UpdateFeels";
 
-const TimelineSidebar = ({
+const TimelineSidebarRight = ({
     timeline_name,
     timelineSingleData,
     lineChartSelectedWeek,
@@ -24,7 +24,6 @@ const TimelineSidebar = ({
     };
     return (
         <>
-            SIDE BAR RIGHT
             {lineChartSelectedWeek ? (
                 <UpdateFeels lineChartSelectedWeek={lineChartSelectedWeek} />
             ) : null}
@@ -40,4 +39,4 @@ const TimelineSidebar = ({
     );
 };
 
-export default TimelineSidebar;
+export default TimelineSidebarRight;

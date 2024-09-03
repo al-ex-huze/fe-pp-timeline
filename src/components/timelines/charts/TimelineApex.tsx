@@ -1,7 +1,6 @@
 import "../../../styles/Timeline.css";
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
-import { useState } from "react";
 
 const TimelineApex = ({
     timelinesData,
@@ -9,6 +8,8 @@ const TimelineApex = ({
     setEventID,
     timelineSingleName,
     setTimelineSingleName,
+    groupRowsState,
+    groupNames,
 }: {
     timelinesData: any;
     eventsData: any;
@@ -17,14 +18,12 @@ const TimelineApex = ({
     setEventID: any;
     timelineSingleName: any;
     setTimelineSingleName: any;
+    groupRowsState: any;
+    setGroupRowsState: any;
+    groupNames: any;
+    setGroupNames: any;
 }) => {
-    const [groupRowsState, setGroupRowsState] = useState(true);
-    const [isExpanded, setIsExpanded] = useState(false);
-
-    const toggleGroupRowsState = () => {
-        setGroupRowsState(!groupRowsState);
-    };
-
+    // const [isExpanded, setIsExpanded] = useState(false);
     let series = [];
     let options: ApexOptions = {};
     // console.log(timelineSingleData);
@@ -38,7 +37,7 @@ const TimelineApex = ({
                     name: event.title,
                     data: [
                         {
-                            x: event.timeline, //toggle group
+                            x: groupNames ? "all" : event.timeline, //toggle group
                             y: [
                                 new Date(event.start_date).getTime(),
                                 event.end_date
@@ -78,9 +77,8 @@ const TimelineApex = ({
                     },
                 },
                 events: {
-                    click: function (_event, _chartContext, _opts) {
-                        toggleGroupRowsState();
-                    },
+                    // click: function (_event, _chartContext, _opts) {
+                    // },
                     dataPointSelection: function (_event, _chartContext, opts) {
                         // console.log(opts.w.globals.initialSeries[opts.seriesIndex].data[opts.dataPointIndex].ID, "<<--");
                         // console.log(opts.series);
@@ -236,7 +234,9 @@ const TimelineApex = ({
                     name: timelineDatum.timeline_name,
                     data: [
                         {
-                            x: "Timeline",
+                            x: groupNames
+                                ? "Timeline"
+                                : timelineDatum.timeline_name,
                             y: [
                                 timelineDatum.begin_date
                                     ? new Date(
@@ -248,6 +248,16 @@ const TimelineApex = ({
                                           timelineDatum.finish_date
                                       ).getTime()
                                     : new Date().getTime(),
+                                // timelineDatum.begin_date
+                                //     ? new Date(
+                                //           timelineDatum.begin_date
+                                //       ).getTime()
+                                //     : new Date().getTime(),
+                                // timelineDatum.finish_date
+                                //     ? new Date(
+                                //           timelineDatum.finish_date
+                                //       ).getTime()
+                                //     : new Date().getTime(),
                             ],
                             Timeline: timelineDatum.timeline_name,
                             Description: timelineDatum.description,
@@ -283,12 +293,12 @@ const TimelineApex = ({
                     // click: function (_event, _chartContext, _opts) {
                     //     toggleGroupRowsState();
                     // },
-                    click: function (_event, _chartContext, _opts) {
-                        if (!isExpanded) {
-                            toggleGroupRowsState();
-                            setIsExpanded(true);
-                        }
-                    },
+                    // click: function (_event, _chartContext, _opts) {
+                    //     if (!isExpanded) {
+                    //         toggleGroupRowsState();
+                    //         setIsExpanded(true);
+                    //     }
+                    // },
                     dataPointSelection: function (_event, _chartContext, opts) {
                         // console.log(opts.w.globals.initialSeries[opts.seriesIndex].data[opts.dataPointIndex].ID, "<<--");
                         // console.log(opts.series);
@@ -296,17 +306,18 @@ const TimelineApex = ({
                         // console.log(opts.dataPointIndex);
                         // console.log(opts.globals.initialSeries[opts.seriesIndex].name); //events: click
                         // console.log(opts.globals.initialSeries[opts.seriesIndex].data[opts.dataPointIndex].ID); //events: click
-                        if (isExpanded) {
-                            setTimelineSingleName(
-                                opts.w.globals.initialSeries[opts.seriesIndex]
-                                    .data[opts.dataPointIndex].Timeline
-                            );
-                            // setTimelineSingleData(
-                            //     opts.w.globals.initialSeries[opts.seriesIndex]
-                            //         .data[opts.dataPointIndex].Timeline
-                            // );
-                        }
+                        // if (isExpanded) {
+                        setTimelineSingleName(
+                            opts.w.globals.initialSeries[opts.seriesIndex].data[
+                                opts.dataPointIndex
+                            ].Timeline
+                        );
+                        // setTimelineSingleData(
+                        //     opts.w.globals.initialSeries[opts.seriesIndex]
+                        //         .data[opts.dataPointIndex].Timeline
+                        // );
                     },
+                    // },
                 },
             },
             colors: [

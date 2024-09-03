@@ -26,6 +26,10 @@ const ChartConstructor = ({
     timeline_name,
     timelineSingleName,
     setTimelineSingleName,
+    groupRowsState,
+    setGroupRowsState,
+    groupNames,
+    setGroupNames
 }: {
     setEventID: any;
     timelinesData: any;
@@ -33,8 +37,12 @@ const ChartConstructor = ({
     setTimelineSingleData: any;
     setLineChartSelectedWeek: any;
     timeline_name: any;
-    timelineSingleName:any;
+    timelineSingleName: any;
     setTimelineSingleName: any;
+    groupRowsState: any;
+    setGroupRowsState: any;
+    groupNames: any;
+    setGroupNames: any;
 }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [eventsData, setEventsData] = useState([]);
@@ -47,14 +55,19 @@ const ChartConstructor = ({
         setIsLoading(true);
         getEvents(timelineSingleName, sortByQuery, sortByIsAsc)
             .then((events) => {
-                console.log("events " +events)
+                console.log("events " + events);
                 setEventsData(events);
                 setIsLoading(false);
             })
             .catch((error) => {
                 console.log(error);
             });
-    }, [timeline_name, timelineSingleData.timeline_name, sortByQuery, sortByIsAsc]);
+    }, [
+        timeline_name,
+        timelineSingleData.timeline_name,
+        sortByQuery,
+        sortByIsAsc,
+    ]);
 
     if (isLoading) return <p>Loading Data</p>;
     return (
@@ -68,7 +81,11 @@ const ChartConstructor = ({
                         eventsData={eventsData}
                         setEventID={setEventID}
                         timelineSingleName={timelineSingleName}
-                    setTimelineSingleName={setTimelineSingleName}
+                        setTimelineSingleName={setTimelineSingleName}
+                        groupRowsState={groupRowsState}
+                        setGroupRowsState={setGroupRowsState}
+                        groupNames={groupNames}
+                        setGroupNames={setGroupNames}
                     />
                     {/* <TimelineChartOneG
                         eventsData={eventsData}

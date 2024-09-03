@@ -138,6 +138,7 @@ button:hover {
         grid-template-areas:
             "Header Nav Nav"
             "Header Nav Nav"
+            "Sidebar-Left Content Sidebar-Right"
             "Sidebar-Left Content Sidebar-Right";
     }
 }
