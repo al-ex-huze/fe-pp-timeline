@@ -41,10 +41,7 @@ const TimelinesHome = () => {
                     setTimelineSingleData={setTimelineSingleData}
                     setLineChartSelectedWeek={setLineChartSelectedWeek}
                     lineChartSelectedWeek={lineChartSelectedWeek}
-                    groupRowsState={groupRowsState}
-                    setGroupRowsState={setGroupRowsState}
-                    groupNames={groupNames}
-                    setGroupNames={setGroupNames}
+
                 />
             </div>
             <div className="Sidebar-Right">
@@ -54,6 +51,10 @@ const TimelinesHome = () => {
                     setTimelineSingleData={setTimelineSingleData}
                     setLineChartSelectedWeek={setLineChartSelectedWeek}
                     lineChartSelectedWeek={lineChartSelectedWeek}
+                    groupRowsState={groupRowsState}
+                    setGroupRowsState={setGroupRowsState}
+                    groupNames={groupNames}
+                    setGroupNames={setGroupNames}
                 />
             </div>
             <>
