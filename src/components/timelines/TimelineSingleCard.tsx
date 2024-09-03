@@ -10,11 +10,10 @@ import EventSelector from "../events/EventSelector";
 import AddTimeline from "./AddTimeline";
 
 import "../../styles/Content.css";
-import UpdateFeels from "./UpdateFeels";
 
 // import ReposParent from "./repos/ReposParent";
 
-const TimelineSingleCard = () => {
+const TimelineSingleCard = ({setLineChartSelectedWeek}:{setLineChartSelectedWeek:any}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [timelineSingleData, setTimelineSingleData] = useState({});
     const [eventSingleData, setEventSingleData] = useState({});
@@ -42,13 +41,13 @@ const TimelineSingleCard = () => {
                     setEventID={setEventID}
                     timelineSingleData={timelineSingleData}
                     setTimelineSingleData={setTimelineSingleData}
+                    setLineChartSelectedWeek={setLineChartSelectedWeek}
                 />
                 <EventSelector
                     eventID={eventID}
                     eventSingleData={eventSingleData}
                     setEventSingleData={setEventSingleData}
                 />
-                <UpdateFeels />
                 {/* <ReposParent /> */}
                 <AddEvent timelineSingleData={timelineSingleData} />
                 <AddTimeline />

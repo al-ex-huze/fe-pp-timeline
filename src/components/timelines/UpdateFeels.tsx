@@ -6,9 +6,14 @@ import ErrorComponent from "../Error-Component";
 
 // import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Slider } from "@mui/material";
 
 // const updateFeels = ({ weekToPatch }: { weekToPatch: any }) => {
-const UpdateFeels = () => {
+const UpdateFeels = ({
+    lineChartSelectedWeek,
+}: {
+    lineChartSelectedWeek: any;
+}) => {
     const [isUpdating, setIsUpdating] = useState(false);
     const [updateFeelsError, setUpdateFeelsError] = useState("");
     const [patchWeekInput, setPatchWeekInput] = useState("");
@@ -21,6 +26,7 @@ const UpdateFeels = () => {
     const [despairInput, setDespairInput] = useState("");
     const [inputInput, setInputInput] = useState("");
     const [outputInput, setOutputInput] = useState("");
+
 
     const [showupdateFeelsToggle, setShowupdateFeelsToggle] = useState(false);
 
@@ -62,6 +68,15 @@ const UpdateFeels = () => {
                     <form onSubmit={handleSubmitFeelsUpdate}>
                         <ul>
                             <li>
+                                <label>
+                                    <Slider
+                                        size="small"
+                                        defaultValue={70}
+                                        aria-label="Small"
+                                        valueLabelDisplay="auto"
+                                    />
+                                </label>
+                                <label>{lineChartSelectedWeek} </label>
                                 <label>
                                     <input
                                         required

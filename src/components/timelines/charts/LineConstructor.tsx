@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 import { getFeels } from "../../../../api";
 import LineApex from "./LineApex";
 
-const LineConstructor = () => {
+const LineConstructor = ({
+    setLineChartSelectedWeek,
+}: {
+    setLineChartSelectedWeek: any;
+}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [feelingsData, setFeelingsdata] = useState([]);
 
@@ -23,7 +27,11 @@ const LineConstructor = () => {
     if (isLoading) return <p>Loading Feelings</p>;
     return (
         <>
-            <LineApex feelingsData={feelingsData} />
+            <LineApex
+                feelingsData={feelingsData}
+                setLineChartSelectedWeek={setLineChartSelectedWeek}
+            />
+
             {/* <LineChartOne feelingsData={feelingsData} /> */}
         </>
     );
