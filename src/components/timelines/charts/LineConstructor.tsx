@@ -16,6 +16,7 @@ const LineConstructor = ({
         setIsLoading(true);
         getFeels()
             .then((feelings) => {
+                console.log(feelings)
                 setFeelingsdata(feelings);
                 setIsLoading(false);
             })

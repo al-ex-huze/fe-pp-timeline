@@ -16,17 +16,34 @@ const UpdateFeels = ({
 }) => {
     const [isUpdating, setIsUpdating] = useState(false);
     const [updateFeelsError, setUpdateFeelsError] = useState("");
-    const [patchWeekInput, setPatchWeekInput] = useState("");
-    const [knowledgeInput, setKnowledgeInput] = useState("");
-    const [experienceInput, setExperienceInput] = useState("");
-    const [passionInput, setPassionInput] = useState("");
-    const [enthusiasmInput, setEnthusiasmInput] = useState("");
-    const [confidenceInput, setConfidenceInput] = useState("");
-    const [wisdomInput, setWisdomInput] = useState("");
-    const [despairInput, setDespairInput] = useState("");
-    const [inputInput, setInputInput] = useState("");
-    const [outputInput, setOutputInput] = useState("");
-
+    // const [patchWeekInput, setPatchWeekInput] = useState();
+    const [knowledgeInput, setKnowledgeInput] = useState(
+        lineChartSelectedWeek.selectedKnowledgeValue
+    );
+    const [experienceInput, setExperienceInput] = useState(
+        lineChartSelectedWeek.selectedExperienceValue
+    );
+    const [passionInput, setPassionInput] = useState(
+        lineChartSelectedWeek.selectedPassionValue
+    );
+    const [enthusiasmInput, setEnthusiasmInput] = useState(
+        lineChartSelectedWeek.selectedEnthusiasmValue
+    );
+    const [confidenceInput, setConfidenceInput] = useState(
+        lineChartSelectedWeek.selectedConfidenceValue
+    );
+    const [wisdomInput, setWisdomInput] = useState(
+        lineChartSelectedWeek.selectedWisdomValue
+    );
+    const [despairInput, setDespairInput] = useState(
+        lineChartSelectedWeek.selectedDespairValue
+    );
+    const [inputInput, setInputInput] = useState(
+        lineChartSelectedWeek.selectedInputValue
+    );
+    const [outputInput, setOutputInput] = useState(
+        lineChartSelectedWeek.selectedOutputValue
+    );
 
     const [showupdateFeelsToggle, setShowupdateFeelsToggle] = useState(false);
 
@@ -37,6 +54,7 @@ const UpdateFeels = ({
     const handleSubmitFeelsUpdate = (event: any) => {
         event.preventDefault();
         setIsUpdating(true);
+        const patchWeekInput = lineChartSelectedWeek.selectedWeekNumber;
         const update = {
             knowledge_update: Number(knowledgeInput),
             experience_update: Number(experienceInput),
@@ -48,7 +66,7 @@ const UpdateFeels = ({
             input_update: Number(inputInput),
             output_update: Number(outputInput),
         };
-        patchFeels(update, patchWeekInput)
+        patchFeels(update, patchWeekInput!)
             .then(() => {
                 setIsUpdating(false);
             })
@@ -59,6 +77,7 @@ const UpdateFeels = ({
     };
 
     if (updateFeelsError) return <ErrorComponent error={updateFeelsError} />;
+
     if (isUpdating) return <p>Please Wait</p>;
     return (
         <div>
@@ -69,22 +88,22 @@ const UpdateFeels = ({
                         <ul>
                             <li>
                                 <label>
+                                    {lineChartSelectedWeek.selectedWeekNumber}{" "}
+                                </label>
+                                <label>
                                     <Slider
                                         size="small"
-                                        defaultValue={70}
+                                        key={`slider-${lineChartSelectedWeek.selectedKnowledgeValue}`}
+                                        defaultValue={
+                                            lineChartSelectedWeek.selectedKnowledgeValue
+                                        }
                                         aria-label="Small"
                                         valueLabelDisplay="auto"
-                                    />
-                                </label>
-                                <label>{lineChartSelectedWeek} </label>
-                                <label>
-                                    <input
-                                        required
-                                        placeholder="w-yyyy *"
-                                        value={patchWeekInput}
                                         onChange={(event) => {
-                                            setPatchWeekInput(
-                                                event.target.value
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
+                                            setKnowledgeInput(
+                                                Number(inputTarget.value)
                                             );
                                         }}
                                     />
@@ -94,8 +113,28 @@ const UpdateFeels = ({
                                         placeholder="Knowledge"
                                         value={knowledgeInput}
                                         onChange={(event) => {
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
                                             setKnowledgeInput(
-                                                event.target.value
+                                                Number(inputTarget.value)
+                                            );
+                                        }}
+                                    />
+                                </label>
+                                <label>
+                                    <Slider
+                                        size="small"
+                                        key={`slider-${lineChartSelectedWeek.selectedExperienceValue}`}
+                                        defaultValue={
+                                            lineChartSelectedWeek.selectedExperienceValue
+                                        }
+                                        aria-label="Small"
+                                        valueLabelDisplay="auto"
+                                        onChange={(event) => {
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
+                                            setExperienceInput(
+                                                Number(inputTarget.value)
                                             );
                                         }}
                                     />
@@ -105,8 +144,28 @@ const UpdateFeels = ({
                                         placeholder="Experience"
                                         value={experienceInput}
                                         onChange={(event) => {
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
                                             setExperienceInput(
-                                                event.target.value
+                                                Number(inputTarget.value)
+                                            );
+                                        }}
+                                    />
+                                </label>
+                                <label>
+                                    <Slider
+                                        size="small"
+                                        key={`slider-${lineChartSelectedWeek.selectedPassionValue}`}
+                                        defaultValue={
+                                            lineChartSelectedWeek.selectedPassionValue
+                                        }
+                                        aria-label="Small"
+                                        valueLabelDisplay="auto"
+                                        onChange={(event) => {
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
+                                            setPassionInput(
+                                                Number(inputTarget.value)
                                             );
                                         }}
                                     />
@@ -116,7 +175,29 @@ const UpdateFeels = ({
                                         placeholder="Passion"
                                         value={passionInput}
                                         onChange={(event) => {
-                                            setPassionInput(event.target.value);
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
+                                            setPassionInput(
+                                                Number(inputTarget.value)
+                                            );
+                                        }}
+                                    />
+                                </label>
+                                <label>
+                                    <Slider
+                                        size="small"
+                                        key={`slider-${lineChartSelectedWeek.selectedEnthusiasmValue}`}
+                                        defaultValue={
+                                            lineChartSelectedWeek.selectedEnthusiasmValue
+                                        }
+                                        aria-label="Small"
+                                        valueLabelDisplay="auto"
+                                        onChange={(event) => {
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
+                                            setEnthusiasmInput(
+                                                Number(inputTarget.value)
+                                            );
                                         }}
                                     />
                                 </label>
@@ -125,8 +206,28 @@ const UpdateFeels = ({
                                         placeholder="Enthusiasm"
                                         value={enthusiasmInput}
                                         onChange={(event) => {
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
                                             setEnthusiasmInput(
-                                                event.target.value
+                                                Number(inputTarget.value)
+                                            );
+                                        }}
+                                    />
+                                </label>
+                                <label>
+                                    <Slider
+                                        size="small"
+                                        key={`slider-${lineChartSelectedWeek.selectedConfidenceValue}`}
+                                        defaultValue={
+                                            lineChartSelectedWeek.selectedConfidenceValue
+                                        }
+                                        aria-label="Small"
+                                        valueLabelDisplay="auto"
+                                        onChange={(event) => {
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
+                                            setConfidenceInput(
+                                                Number(inputTarget.value)
                                             );
                                         }}
                                     />
@@ -136,8 +237,28 @@ const UpdateFeels = ({
                                         placeholder="Confidence"
                                         value={confidenceInput}
                                         onChange={(event) => {
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
                                             setConfidenceInput(
-                                                event.target.value
+                                                Number(inputTarget.value)
+                                            );
+                                        }}
+                                    />
+                                </label>
+                                <label>
+                                    <Slider
+                                        size="small"
+                                        key={`slider-${lineChartSelectedWeek.selectedWisdomValue}`}
+                                        defaultValue={
+                                            lineChartSelectedWeek.selectedWisdomValue
+                                        }
+                                        aria-label="Small"
+                                        valueLabelDisplay="auto"
+                                        onChange={(event) => {
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
+                                            setWisdomInput(
+                                                Number(inputTarget.value)
                                             );
                                         }}
                                     />
@@ -147,7 +268,29 @@ const UpdateFeels = ({
                                         placeholder="Wisdom"
                                         value={wisdomInput}
                                         onChange={(event) => {
-                                            setWisdomInput(event.target.value);
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
+                                            setWisdomInput(
+                                                Number(inputTarget.value)
+                                            );
+                                        }}
+                                    />
+                                </label>
+                                <label>
+                                    <Slider
+                                        size="small"
+                                        key={`slider-${lineChartSelectedWeek.selectedDespairValue}`}
+                                        defaultValue={
+                                            lineChartSelectedWeek.selectedDespairValue
+                                        }
+                                        aria-label="Small"
+                                        valueLabelDisplay="auto"
+                                        onChange={(event) => {
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
+                                            setDespairInput(
+                                                Number(inputTarget.value)
+                                            );
                                         }}
                                     />
                                 </label>
@@ -156,7 +299,29 @@ const UpdateFeels = ({
                                         placeholder="Despair"
                                         value={despairInput}
                                         onChange={(event) => {
-                                            setDespairInput(event.target.value);
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
+                                            setDespairInput(
+                                                Number(inputTarget.value)
+                                            );
+                                        }}
+                                    />
+                                </label>
+                                <label>
+                                    <Slider
+                                        size="small"
+                                        key={`slider-${lineChartSelectedWeek.selectedInputValue}`}
+                                        defaultValue={
+                                            lineChartSelectedWeek.selectedInputValue
+                                        }
+                                        aria-label="Small"
+                                        valueLabelDisplay="auto"
+                                        onChange={(event) => {
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
+                                            setInputInput(
+                                                Number(inputTarget.value)
+                                            );
                                         }}
                                     />
                                 </label>
@@ -165,7 +330,29 @@ const UpdateFeels = ({
                                         placeholder="Input"
                                         value={inputInput}
                                         onChange={(event) => {
-                                            setInputInput(event.target.value);
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
+                                            setInputInput(
+                                                Number(inputTarget.value)
+                                            );
+                                        }}
+                                    />
+                                </label>
+                                <label>
+                                    <Slider
+                                        size="small"
+                                        key={`slider-${lineChartSelectedWeek.selectedOutputValue}`}
+                                        defaultValue={
+                                            lineChartSelectedWeek.selectedOutputValue
+                                        }
+                                        aria-label="Small"
+                                        valueLabelDisplay="auto"
+                                        onChange={(event) => {
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
+                                            setOutputInput(
+                                                Number(inputTarget.value)
+                                            );
                                         }}
                                     />
                                 </label>
@@ -174,7 +361,11 @@ const UpdateFeels = ({
                                         placeholder="Output"
                                         value={outputInput}
                                         onChange={(event) => {
-                                            setOutputInput(event.target.value);
+                                            const inputTarget =
+                                                event.target as HTMLInputElement;
+                                            setOutputInput(
+                                                Number(inputTarget.value)
+                                            );
                                         }}
                                     />
                                 </label>

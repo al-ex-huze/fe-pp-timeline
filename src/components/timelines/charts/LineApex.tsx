@@ -126,25 +126,64 @@ const LineApex = ({
                 },
             },
             events: {
-                click: function (event, chartContext, opts) {
-                    console.log(opts);
-                    console.log(opts.seriesIndex);
-                    console.log(opts.dataPointIndex);
+                click: function (_event, _chartContext, opts) {
+                    // console.log(opts);
+                    // console.log(opts.seriesIndex);
+                    // console.log(opts.dataPointIndex);
+                    // console.log(opts.globals.initialSeries[opts.seriesIndex]);
                     // console.log(
-                    //     opts.globals.initialSeries[opts.seriesIndex],
-                    //     "<<--"
+                    //     opts.globals.initialSeries[opts.seriesIndex].data[
+                    //         opts.dataPointIndex
+                    //     ]
                     // );
-                    console.log(
-                        opts.globals.initialSeries[opts.seriesIndex].data[
-                            opts.dataPointIndex
-                        ].x,
-                        "<<--"
-                    );
-                    setLineChartSelectedWeek(
-                        opts.globals.initialSeries[opts.seriesIndex].data[
-                            opts.dataPointIndex
-                        ].x
-                    );
+                    // console.log(opts.globals);
+                    // console.log(
+                    //     opts.globals.initialSeries[1].data[opts.dataPointIndex]
+                    //         .y,
+                    //     "<<<---"
+                    // );
+                    setLineChartSelectedWeek({
+                        selectedWeekNumber:
+                            opts.globals.initialSeries[opts.seriesIndex].data[
+                                opts.dataPointIndex
+                            ].weekNumber,
+                        selectedKnowledgeValue:
+                            opts.globals.initialSeries[0].data[
+                                opts.dataPointIndex
+                            ].y,
+                        selectedExperienceValue:
+                            opts.globals.initialSeries[1].data[
+                                opts.dataPointIndex
+                            ].y,
+                        selectedEnthusiasmValue:
+                            opts.globals.initialSeries[2].data[
+                                opts.dataPointIndex
+                            ].y,
+                        selectedConfidenceValue:
+                            opts.globals.initialSeries[3].data[
+                                opts.dataPointIndex
+                            ].y,
+                        selectedPassionValue:
+                            opts.globals.initialSeries[4].data[
+                                opts.dataPointIndex
+                            ].y,
+                        selectedWisdomValue:
+                            opts.globals.initialSeries[5].data[
+                                opts.dataPointIndex
+                            ].y,
+                        selectedDespairValue:
+                            opts.globals.initialSeries[6].data[
+                                opts.dataPointIndex
+                            ].y,
+                        selectedInputValue:
+                            opts.globals.initialSeries[7].data[
+                                opts.dataPointIndex
+                            ].y,
+                        selectedOutputValue:
+                            opts.globals.initialSeries[8].data[
+                                opts.dataPointIndex
+                            ].y,
+                    });
                 },
             },
         },

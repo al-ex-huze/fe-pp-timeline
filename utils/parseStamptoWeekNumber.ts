@@ -7,7 +7,6 @@ export const parseStamptoWeekNumber: any = (timestamp) => {
         minute: "2-digit",
         second: "2-digit",
     }).format(timestamp);
-    console.log(formattedWeekNumber)
     const splitArr = formattedWeekNumber.split("/")
     const parsedWeekNumber : string[] = []
     let toRemoveTimeStrSplitArr : string[] =[]

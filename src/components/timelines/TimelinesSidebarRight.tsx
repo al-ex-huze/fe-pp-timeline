@@ -8,7 +8,9 @@ const TimelineSidebar = ({
     return (
         <>
             SIDE BAR RIGHT
-            <UpdateFeels lineChartSelectedWeek={lineChartSelectedWeek} />
+            {lineChartSelectedWeek ? (
+                <UpdateFeels lineChartSelectedWeek={lineChartSelectedWeek} />
+            ) : null}
         </>
     );
 };
