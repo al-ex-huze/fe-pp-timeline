@@ -9,12 +9,16 @@ const TimelineApex = ({
     eventsData,
     timelineSingleData,
     setEventID,
+    timelineSingleName,
+    setTimelineSingleName,
 }: {
     timelinesData: any;
     eventsData: any;
     timelineSingleData: any;
     setTimelineSingleData: any;
     setEventID: any;
+    timelineSingleName: any;
+    setTimelineSingleName: any;
 }) => {
     const navigate = useNavigate();
 
@@ -26,25 +30,43 @@ const TimelineApex = ({
 
     let series = [];
     let options: ApexOptions = {};
-    console.log(timelineSingleData);
-    console.log(timelinesData);
-    if (timelineSingleData.timeline_name) {
+    // console.log(timelineSingleData);
+    // console.log(timelinesData);
+    if (timelineSingleName) {
+        console.log("DEBUG");
         series = [
-            {
-                name: "Northcoders Bootcamp",
-                data: [
-                    {
-                        x: "Northcoders Bootcamp",
-                        y: [
-                            new Date(eventsData[0].start_date).getTime(),
-                            new Date(eventsData[4].end_date).getTime(),
-                        ],
-                        ID: "ID",
-                        Title: eventsData[0].timeline,
-                        Body: "body",
-                    },
-                ],
-            },
+            // {
+            //     name: "Northcoders Bootcamp",
+            //     data: [
+            //         {
+            //             x: "Northcoders Bootcamp",
+            //             y: [
+            //                 new Date(eventsData[0].start_date).getTime(),
+            //                 new Date(eventsData[4].end_date).getTime(),
+            //             ],
+            //             ID: "ID",
+            //             Title: eventsData[0].timeline,
+            //             Body: "body",
+            //         },
+            //     ],
+            // },
+            ...timelinesData.map((timelineDatum: any) => {
+                // console.log(JSON.stringify(timelineDatum));
+                return {
+                    name: timelineDatum.timeline_name,
+                    data: [
+                        {
+                            x: "Timeline",
+                            y: [
+                                new Date(timelineDatum.begin_date).getTime(),
+                                new Date(timelineDatum.finish_date).getTime(),
+                            ],
+                            Timeline: timelineDatum.timeline_name,
+                            Description: timelineDatum.description,
+                        },
+                    ],
+                };
+            }),
             ...eventsData.map((event: any) => {
                 return {
                     name: event.title,
@@ -223,7 +245,7 @@ const TimelineApex = ({
                 type: "datetime",
                 min: new Date(2024, 0, 0).getTime(),
                 max: new Date(2024, 11, 0).getTime(),
-                position: "top",
+                position: "bottom",
                 labels: {
                     show: false,
                 },
@@ -253,7 +275,7 @@ const TimelineApex = ({
             //     ],
             // },
             ...timelinesData.map((timelineDatum: any) => {
-                console.log(JSON.stringify(timelineDatum));
+                // console.log(JSON.stringify(timelineDatum));
                 return {
                     name: timelineDatum.timeline_name,
                     data: [
@@ -311,12 +333,9 @@ const TimelineApex = ({
                         // console.log(opts.globals.initialSeries[opts.seriesIndex].name); //events: click
                         // console.log(opts.globals.initialSeries[opts.seriesIndex].data[opts.dataPointIndex].ID); //events: click
                         if (isExpanded) {
-                            navigate(
-                                `/timelines/${
-                                    opts.w.globals.initialSeries[
-                                        opts.seriesIndex
-                                    ].data[opts.dataPointIndex].Timeline
-                                }`
+                            setTimelineSingleName(
+                                opts.w.globals.initialSeries[opts.seriesIndex]
+                                    .data[opts.dataPointIndex].Timeline
                             );
                             // setTimelineSingleData(
                             //     opts.w.globals.initialSeries[opts.seriesIndex]
@@ -444,7 +463,7 @@ const TimelineApex = ({
                 type: "datetime",
                 min: new Date(2024, 0, 0).getTime(),
                 max: new Date(2024, 11, 0).getTime(),
-                position: "top",
+                position: "bottom",
                 labels: {
                     show: false,
                 },

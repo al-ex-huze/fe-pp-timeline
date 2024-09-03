@@ -23,12 +23,18 @@ const ChartConstructor = ({
     timelineSingleData,
     setTimelineSingleData,
     setLineChartSelectedWeek,
+    timeline_name,
+    timelineSingleName,
+    setTimelineSingleName,
 }: {
     setEventID: any;
     timelinesData: any;
     timelineSingleData: any;
     setTimelineSingleData: any;
     setLineChartSelectedWeek: any;
+    timeline_name: any;
+    timelineSingleName:any;
+    setTimelineSingleName: any;
 }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [eventsData, setEventsData] = useState([]);
@@ -39,7 +45,7 @@ const ChartConstructor = ({
     useEffect(() => {
         console.log("ChartConstructor UseEffect()");
         setIsLoading(true);
-        getEvents(timelineSingleData.timeline_name, sortByQuery, sortByIsAsc)
+        getEvents(timeline_name, sortByQuery, sortByIsAsc)
             .then((events) => {
                 setEventsData(events);
                 setIsLoading(false);
@@ -47,7 +53,7 @@ const ChartConstructor = ({
             .catch((error) => {
                 console.log(error);
             });
-    }, [timelineSingleData.timeline_name, sortByQuery, sortByIsAsc]);
+    }, [timeline_name, timelineSingleData.timeline_name, sortByQuery, sortByIsAsc]);
 
     if (isLoading) return <p>Loading Data</p>;
     return (
@@ -60,6 +66,8 @@ const ChartConstructor = ({
                         setTimelineSingleData={setTimelineSingleData}
                         eventsData={eventsData}
                         setEventID={setEventID}
+                        timelineSingleName={timelineSingleName}
+                    setTimelineSingleName={setTimelineSingleName}
                     />
                     {/* <TimelineChartOneG
                         eventsData={eventsData}

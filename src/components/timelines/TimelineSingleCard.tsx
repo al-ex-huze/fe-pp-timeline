@@ -19,12 +19,16 @@ const TimelineSingleCard = ({
     timelineSingleData,
     setLineChartSelectedWeek,
     setTimelineSingleData,
+    timelineSingleName,
+    setTimelineSingleName,
 }: {
     timeline_name: any;
     timelinesData: any;
     timelineSingleData: any;
     setTimelineSingleData: any;
     setLineChartSelectedWeek: any;
+    timelineSingleName: any;
+    setTimelineSingleName: any;
 }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [eventSingleData, setEventSingleData] = useState({});
@@ -41,7 +45,7 @@ const TimelineSingleCard = ({
                 setIsLoading(false);
             });
         } else {
-            setIsLoading(false)
+            setIsLoading(false);
         }
     }, []);
 
@@ -51,11 +55,14 @@ const TimelineSingleCard = ({
             <div className="Content">
                 <h1>{timeline_name}</h1>
                 <ChartConstructor
+                    timeline_name={timeline_name}
                     setEventID={setEventID}
                     timelinesData={timelinesData}
                     timelineSingleData={timelineSingleData}
                     setTimelineSingleData={setTimelineSingleData}
                     setLineChartSelectedWeek={setLineChartSelectedWeek}
+                    timelineSingleName={timelineSingleName}
+                    setTimelineSingleName={setTimelineSingleName}
                 />
                 <EventSelector
                     eventID={eventID}

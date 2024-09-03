@@ -210,10 +210,10 @@ const LineApex = ({
             width: 1,
         },
         theme: { mode: "dark" },
-        title: {
-            text: "Feelings 2024",
-            align: "left",
-        },
+        // title: {
+        //     text: "Feelings 2024",
+        //     align: "left",
+        // },
         tooltip: {
             enabled: true,
             enabledOnSeries: undefined,
@@ -272,7 +272,7 @@ const LineApex = ({
             floating: false,
             decimalsInFloat: undefined,
             overwriteCategories: undefined,
-            position: "bottom",
+            position: "top",
             labels: {
                 show: true,
                 rotate: -45,
@@ -290,7 +290,7 @@ const LineApex = ({
                     cssClass: "apexcharts-xaxis-label",
                 },
                 offsetX: 0,
-                offsetY: 2,
+                offsetY: -10,
                 format: undefined,
                 formatter: undefined,
                 datetimeUTC: true,

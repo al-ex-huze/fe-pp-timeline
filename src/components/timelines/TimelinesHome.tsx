@@ -13,6 +13,7 @@ const TimelinesHome = () => {
     const [lineChartSelectedWeek, setLineChartSelectedWeek] = useState(null);
     const [timelinesData, setTimelinesData] = useState({});
     const [timelineSingleData, setTimelineSingleData] = useState({});
+    const [timelineSingleName, setTimelineSingleName] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
     const { timeline_name } = useParams();
@@ -38,7 +39,7 @@ const TimelinesHome = () => {
                     timeline_name={timeline_name}
                     timelineSingleData={timelineSingleData}
                     setTimelineSingleData={setTimelineSingleData}
-                    setLineChartSelectedWeek
+                    setLineChartSelectedWeek={setLineChartSelectedWeek}
                     lineChartSelectedWeek={lineChartSelectedWeek}
                 />
             </div>
@@ -49,6 +50,8 @@ const TimelinesHome = () => {
                     timelineSingleData={timelineSingleData}
                     setTimelineSingleData={setTimelineSingleData}
                     setLineChartSelectedWeek={setLineChartSelectedWeek}
+                    timelineSingleName={timelineSingleName}
+                    setTimelineSingleName={setTimelineSingleName}
                 />
             </div>
         </>
